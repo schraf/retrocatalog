@@ -1,0 +1,9 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 300 400" role="img" aria-label="No artwork available">
+  <rect x="58" y="86" width="184" height="226" rx="12" fill="#1e222c" stroke="#343a49" stroke-width="4"/>
+  <rect x="82" y="76" width="136" height="26" rx="5" fill="#272c38" stroke="#343a49" stroke-width="3"/>
+  <rect x="82" y="116" width="136" height="108" rx="5" fill="#151820" stroke="#2c3140" stroke-width="3"/>
+  <rect x="82" y="240" width="136" height="18" rx="4" fill="#2a2f3c"/>
+  <rect x="82" y="268" width="96" height="12" rx="4" fill="#252a36"/>
+  <rect x="82" y="290" width="60" height="10" rx="4" fill="#252a36"/>
+  <text x="150" y="360" text-anchor="middle" fill="#5b6273" font-family="system-ui, -apple-system, sans-serif" font-size="16" font-weight="600" letter-spacing="4">NO ART</text>
+</svg>
