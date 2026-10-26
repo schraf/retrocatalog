@@ -36,21 +36,22 @@ func TestArtCacheFind(t *testing.T) {
 	dir := t.TempDir()
 	cache := &ArtCache{dir: dir}
 
-	if _, ok := cache.find("42"); ok {
+	const id = "igdb-42-nes"
+	if _, ok := cache.find(id); ok {
 		t.Fatal("found art before it was cached")
 	}
 
-	path := filepath.Join(dir, "42.png")
+	path := filepath.Join(dir, id+".png")
 	if err := os.WriteFile(path, []byte("png"), 0o644); err != nil {
 		t.Fatal(err)
 	}
 
-	got, ok := cache.find("42")
+	got, ok := cache.find(id)
 	if !ok || got != path {
-		t.Fatalf("find(42) = %q, %v; want %q, true", got, ok, path)
+		t.Fatalf("find(%q) = %q, %v; want %q, true", id, got, ok, path)
 	}
-	if _, ok := cache.find("420"); ok {
-		t.Fatal("find(420) should not match 42.png")
+	if _, ok := cache.find(id + "0"); ok {
+		t.Fatalf("find(%q) should not match %s.png", id+"0", id)
 	}
 }
 
@@ -74,10 +75,11 @@ func TestArtCacheServesDownscaledVariant(t *testing.T) {
 		t.Fatal(err)
 	}
 
+	const id = "igdb-42-nes"
 	serve := func(width int) *httptest.ResponseRecorder {
-		req := httptest.NewRequest(http.MethodGet, "/art/box/42", nil)
+		req := httptest.NewRequest(http.MethodGet, "/art/box/"+id, nil)
 		rec := httptest.NewRecorder()
-		cache.Serve(rec, req, "box", 42, server.URL+"/box.jpg", width)
+		cache.Serve(rec, req, "box", id, server.URL+"/box.jpg", width)
 		return rec
 	}
 
@@ -95,10 +97,10 @@ func TestArtCacheServesDownscaledVariant(t *testing.T) {
 	if out.Bounds().Dx() != gridThumbWidth || out.Bounds().Dy() != 540 {
 		t.Fatalf("size = %dx%d, want 360x540", out.Bounds().Dx(), out.Bounds().Dy())
 	}
-	if _, ok := cache.find("box-42-w360"); !ok {
+	if _, ok := cache.find("box-" + id + "-w360"); !ok {
 		t.Fatal("thumbnail was not cached")
 	}
-	if _, ok := cache.find("box-42"); !ok {
+	if _, ok := cache.find("box-" + id); !ok {
 		t.Fatal("original was not cached")
 	}
 
@@ -134,8 +136,9 @@ func TestArtCacheRejectsUnsupportedVariant(t *testing.T) {
 
 func TestValidateArtURL(t *testing.T) {
 	valid := []string{
-		"https://images.launchbox-app.com/a.jpg",
-		"https://thumbnails.libretro.com/Nintendo%20-%20NES/a.png",
+		"",
+		"https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1234.jpg",
+		"https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc1234.jpg",
 	}
 	for _, raw := range valid {
 		if err := validateArtURL(raw); err != nil {
@@ -144,9 +147,10 @@ func TestValidateArtURL(t *testing.T) {
 	}
 
 	invalid := []string{
-		"http://images.launchbox-app.com/a.jpg",
+		"http://images.igdb.com/igdb/image/upload/a.jpg",
 		"https://example.com/a.jpg",
-		"https://images.launchbox-app.com/",
+		"https://images.igdb.com/",
+		"https://images.igdb.com",
 		"not a url",
 	}
 	for _, raw := range invalid {

@@ -3,16 +3,16 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>NES Catalog</title>
+<title>Retro Game Catalog</title>
 <meta name="color-scheme" content="dark">
-<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%23e04a5f'/%3E%3Ctext x='32' y='45' font-family='system-ui,sans-serif' font-size='36' font-weight='700' text-anchor='middle' fill='white'%3EN%3C/text%3E%3C/svg%3E">
+<link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='12' fill='%235b6fd6'/%3E%3Ctext x='32' y='45' font-family='system-ui,sans-serif' font-size='36' font-weight='700' text-anchor='middle' fill='white'%3EC%3C/text%3E%3C/svg%3E">
 <link rel="stylesheet" href="/static/style.css">
 </head>
 <body>
 
 <header class="topbar">
   <div class="brand">
-    <span class="brand-mark" aria-hidden="true">NES</span>
+    <span id="brand-mark" class="brand-mark" aria-hidden="true">ALL</span>
     <span class="brand-name">Catalog</span>
   </div>
 
@@ -35,6 +35,11 @@
 </header>
 
 <section class="controls" aria-label="Filters">
+  <div class="control-group platforms">
+    <span class="control-label">Platform</span>
+    <div id="platform-chips" class="chips"></div>
+  </div>
+
   <div class="control-group genres">
     <span class="control-label">Genre</span>
     <div id="genre-chips" class="chips"></div>
@@ -112,12 +117,10 @@
       <p id="detail-overview" class="muted"></p>
     </section>
 
-    <figure class="screenshot">
-      <button id="screenshot-button" class="screenshot-button" type="button" aria-label="Enlarge screenshot">
-        <img id="detail-shot" alt="">
-      </button>
-      <figcaption class="muted">Gameplay screenshot</figcaption>
-    </figure>
+    <section id="detail-screenshots" class="screenshots" hidden>
+      <h3>Screenshots</h3>
+      <div id="detail-shots" class="screenshot-grid"></div>
+    </section>
   </div>
 </aside>
 

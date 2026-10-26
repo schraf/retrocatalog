@@ -1,28 +1,26 @@
 package main
 
 import (
-	"encoding/json"
 	"fmt"
 	"net/url"
-	"os"
 	"sort"
+	"strings"
 )
 
 // allowedArtHosts limits the art proxy to the hosts that appear in the catalog.
 var allowedArtHosts = map[string]bool{
-	"images.launchbox-app.com": true,
-	"thumbnails.libretro.com":  true,
+	"images.igdb.com": true,
 }
 
-// Game mirrors one record in games.json.
+// Game mirrors one record in the catalog cache.
 type Game struct {
+	ID          string   `json:"id"`
 	Name        string   `json:"name"`
+	Platform    string   `json:"platform"`
 	Publisher   string   `json:"publisher"`
 	Developer   string   `json:"developer"`
-	Players     int      `json:"players"`
 	ReleaseYear int      `json:"release_year"`
-	Genre       string   `json:"genre"`
-	Tags        []string `json:"tags"`
+	Genres      []string `json:"genres"`
 	Rating      float64  `json:"rating"`
 	RatingCount int      `json:"rating_count"`
 	RatingScale int      `json:"rating_scale"`
@@ -30,14 +28,16 @@ type Game struct {
 	Cooperative bool     `json:"cooperative"`
 	ESRB        string   `json:"esrb"`
 	Overview    string   `json:"overview"`
-	LaunchboxID int      `json:"launchbox_id"`
 	BoxArt      string   `json:"box_art"`
-	Screenshot  string   `json:"screenshot"`
+	Screenshots []string `json:"screenshots"`
 }
 
 // priorWeight controls how many ratings a game needs before its own score
 // outweighs the catalog average in the weighted rating.
 const priorWeight = 75.0
+
+// maxScreenshots is the number of IGDB screenshots kept per game.
+const maxScreenshots = 3
 
 // GenreCount is a facet used by the filter chips.
 type GenreCount struct {
@@ -47,27 +47,28 @@ type GenreCount struct {
 
 // IndexGame is the compact shape sent to the shelf grid.
 type IndexGame struct {
-	ID             int     `json:"id"`
-	Name           string  `json:"name"`
-	Year           int     `json:"year"`
-	Genre          string  `json:"genre"`
-	Rating         float64 `json:"rating"`
-	RatingCount    int     `json:"rating_count"`
-	WeightedRating float64 `json:"weighted_rating"`
-	Publisher      string  `json:"publisher"`
-	Developer      string  `json:"developer"`
-	Players        int     `json:"players"`
-	MaxPlayers     int     `json:"max_players"`
-	Cooperative    bool    `json:"cooperative"`
-	ESRB           string  `json:"esrb"`
+	ID             string   `json:"id"`
+	Name           string   `json:"name"`
+	Year           int      `json:"year"`
+	Genres         []string `json:"genres"`
+	Platform       string   `json:"platform"`
+	Rating         float64  `json:"rating"`
+	RatingCount    int      `json:"rating_count"`
+	WeightedRating float64  `json:"weighted_rating"`
+	Publisher      string   `json:"publisher"`
+	Developer      string   `json:"developer"`
+	MaxPlayers     int      `json:"max_players"`
+	Cooperative    bool     `json:"cooperative"`
+	ESRB           string   `json:"esrb"`
 }
 
-// Catalog is the immutable in-memory view of games.json.
+// Catalog is the immutable in-memory view of the catalog cache.
 type Catalog struct {
 	games      []*Game
-	byID       map[int]*Game
+	byID       map[string]*Game
 	index      []IndexGame
 	genres     []GenreCount
+	platforms  []PlatformCount
 	yearMin    int
 	yearMax    int
 	ratingMin  float64
@@ -75,26 +76,21 @@ type Catalog struct {
 	ratingMean float64
 }
 
-// LoadCatalog reads and validates the single catalog file.
-func LoadCatalog(path string) (*Catalog, error) {
-	data, err := os.ReadFile(path)
-	if err != nil {
-		return nil, fmt.Errorf("read catalog: %w", err)
-	}
-
-	var games []Game
-	if err := json.Unmarshal(data, &games); err != nil {
-		return nil, fmt.Errorf("parse %s: %w", path, err)
-	}
+// buildCatalog validates normalized records and derives the indexes and facets.
+func buildCatalog(games []Game) (*Catalog, error) {
 	if len(games) == 0 {
-		return nil, fmt.Errorf("%s contains no games", path)
+		return nil, fmt.Errorf("catalog contains no games")
 	}
 
 	c := &Catalog{
 		games: make([]*Game, 0, len(games)),
-		byID:  make(map[int]*Game, len(games)),
+		byID:  make(map[string]*Game, len(games)),
 	}
 	genreCounts := make(map[string]int)
+	platformCounts := make(map[string]int, len(supportedPlatforms))
+	for _, p := range supportedPlatforms {
+		platformCounts[p.Slug] = 0
+	}
 	var voteSum, voteCount float64
 	first := true
 
@@ -103,40 +99,63 @@ func LoadCatalog(path string) (*Catalog, error) {
 		if g.Name == "" {
 			return nil, fmt.Errorf("record %d has no name", i)
 		}
-		if g.LaunchboxID <= 0 {
-			return nil, fmt.Errorf("%q has invalid launchbox_id %d", g.Name, g.LaunchboxID)
+		_, slug, ok := parseGameID(g.ID)
+		if !ok {
+			return nil, fmt.Errorf("%q has invalid id %q", g.Name, g.ID)
 		}
-		if _, dup := c.byID[g.LaunchboxID]; dup {
-			return nil, fmt.Errorf("duplicate launchbox_id %d (%q)", g.LaunchboxID, g.Name)
+		if slug != g.Platform {
+			return nil, fmt.Errorf("%q id platform %q does not match platform %q", g.Name, slug, g.Platform)
 		}
-		if g.Genre == "" {
-			return nil, fmt.Errorf("%q has no genre", g.Name)
+		if g.ReleaseYear <= 0 {
+			return nil, fmt.Errorf("%q has invalid release_year %d", g.Name, g.ReleaseYear)
 		}
-		if g.RatingScale <= 0 {
-			g.RatingScale = 5
+		if _, dup := c.byID[g.ID]; dup {
+			return nil, fmt.Errorf("duplicate id %q (%q)", g.ID, g.Name)
 		}
+
+		g.RatingScale = 5
+		if g.Rating < 0 {
+			g.Rating = 0
+		}
+		if g.Rating > 5 {
+			g.Rating = 5
+		}
+		if g.RatingCount < 0 {
+			g.RatingCount = 0
+		}
+		if g.MaxPlayers < 0 {
+			g.MaxPlayers = 0
+		}
+		g.Genres = normalizeGenres(g.Genres)
+
 		if err := validateArtURL(g.BoxArt); err != nil {
 			return nil, fmt.Errorf("%q box art: %w", g.Name, err)
 		}
-		if err := validateArtURL(g.Screenshot); err != nil {
+		screenshots, err := normalizeScreenshots(g.Screenshots)
+		if err != nil {
 			return nil, fmt.Errorf("%q screenshot: %w", g.Name, err)
 		}
+		g.Screenshots = screenshots
 
-		c.byID[g.LaunchboxID] = g
+		c.byID[g.ID] = g
 		c.games = append(c.games, g)
-		genreCounts[g.Genre]++
+		for _, genre := range g.Genres {
+			genreCounts[genre]++
+		}
+		platformCounts[g.Platform]++
 		voteSum += g.Rating * float64(g.RatingCount)
 		voteCount += float64(g.RatingCount)
+
 		c.index = append(c.index, IndexGame{
-			ID:          g.LaunchboxID,
+			ID:          g.ID,
 			Name:        g.Name,
 			Year:        g.ReleaseYear,
-			Genre:       g.Genre,
+			Genres:      g.Genres,
+			Platform:    g.Platform,
 			Rating:      g.Rating,
 			RatingCount: g.RatingCount,
 			Publisher:   g.Publisher,
 			Developer:   g.Developer,
-			Players:     g.Players,
 			MaxPlayers:  g.MaxPlayers,
 			Cooperative: g.Cooperative,
 			ESRB:        g.ESRB,
@@ -180,7 +199,56 @@ func LoadCatalog(path string) (*Catalog, error) {
 		return c.genres[i].Genre < c.genres[j].Genre
 	})
 
+	c.platforms = make([]PlatformCount, 0, len(supportedPlatforms))
+	for _, p := range supportedPlatforms {
+		c.platforms = append(c.platforms, PlatformCount{
+			Slug:  p.Slug,
+			Name:  p.Name,
+			Short: p.Short,
+			Count: platformCounts[p.Slug],
+		})
+	}
+
 	return c, nil
+}
+
+func normalizeGenres(genres []string) []string {
+	out := make([]string, 0, len(genres))
+	seen := make(map[string]bool, len(genres))
+	for _, genre := range genres {
+		genre = strings.TrimSpace(genre)
+		if genre == "" {
+			continue
+		}
+		key := strings.ToLower(genre)
+		if seen[key] {
+			continue
+		}
+		seen[key] = true
+		out = append(out, genre)
+	}
+	return out
+}
+
+// normalizeScreenshots keeps at most three valid, unique IGDB screenshot URLs.
+func normalizeScreenshots(urls []string) ([]string, error) {
+	out := make([]string, 0, len(urls))
+	seen := make(map[string]bool, len(urls))
+	for _, raw := range urls {
+		raw = strings.TrimSpace(raw)
+		if raw == "" || seen[raw] {
+			continue
+		}
+		if err := validateArtURL(raw); err != nil {
+			return nil, err
+		}
+		seen[raw] = true
+		out = append(out, raw)
+		if len(out) == maxScreenshots {
+			break
+		}
+	}
+	return out, nil
 }
 
 // weightedRating shrinks scores with few votes toward the catalog average.
@@ -190,6 +258,9 @@ func weightedRating(rating float64, count int, mean float64) float64 {
 }
 
 func validateArtURL(raw string) error {
+	if raw == "" {
+		return nil
+	}
 	u, err := url.Parse(raw)
 	if err != nil {
 		return err
@@ -197,7 +268,7 @@ func validateArtURL(raw string) error {
 	if u.Scheme != "https" {
 		return fmt.Errorf("must use https, got %q", raw)
 	}
-	if !allowedArtHosts[u.Hostname()] {
+	if !allowedArtHosts[strings.ToLower(u.Hostname())] {
 		return fmt.Errorf("host %q is not allowed", u.Hostname())
 	}
 	if u.Path == "" || u.Path == "/" {
@@ -207,7 +278,7 @@ func validateArtURL(raw string) error {
 }
 
 // ByID returns the full record for a game, or nil.
-func (c *Catalog) ByID(id int) *Game {
+func (c *Catalog) ByID(id string) *Game {
 	return c.byID[id]
 }
 
@@ -219,6 +290,11 @@ func (c *Catalog) Index() []IndexGame {
 // Genres returns genre facets, largest first.
 func (c *Catalog) Genres() []GenreCount {
 	return c.genres
+}
+
+// Platforms returns platform facets in registry order.
+func (c *Catalog) Platforms() []PlatformCount {
+	return c.platforms
 }
 
 // Total returns the number of games in the catalog.

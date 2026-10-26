@@ -75,11 +75,11 @@ func NewArtCache(dir string) (*ArtCache, error) {
 }
 
 // Serve streams the cached image, downloading it first when needed. Kind is
-// "box" or "shot"; the two are cached separately for the same game. A non-zero
-// width serves a cached, downscaled JPEG variant; width zero serves the
-// original for the lightbox.
-func (c *ArtCache) Serve(w http.ResponseWriter, r *http.Request, kind string, id int, source string, width int) {
-	baseKey := kind + "-" + strconv.Itoa(id)
+// "box", "shot", or a gallery slot such as "shot1"; each kind is cached
+// separately for the same game. A non-zero width serves a cached, downscaled
+// JPEG variant; width zero serves the original for the lightbox.
+func (c *ArtCache) Serve(w http.ResponseWriter, r *http.Request, kind string, id string, source string, width int) {
+	baseKey := kind + "-" + id
 
 	if width == 0 {
 		path, err := c.ensure(r.Context(), baseKey, source)
@@ -238,7 +238,7 @@ func (c *ArtCache) download(ctx context.Context, key, source string) (string, er
 	if err != nil {
 		return "", err
 	}
-	req.Header.Set("User-Agent", "nesdb/1.0 (+local catalog)")
+	req.Header.Set("User-Agent", "nesdb/2.0 (+IGDB catalog)")
 
 	resp, err := c.client.Do(req)
 	if err != nil {

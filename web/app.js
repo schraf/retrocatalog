@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "nesdb.state.v1";
+  const STORAGE_KEY = "nesdb.state.v2";
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
   const SORTS = ["name", "year", "top", "rating", "popular", "genre"];
   const DESCENDING_SORTS = new Set(["year", "top", "rating", "popular"]);
@@ -11,6 +11,8 @@
 
   const el = {
     search: document.getElementById("search"),
+    brandMark: document.getElementById("brand-mark"),
+    platformChips: document.getElementById("platform-chips"),
     genreChips: document.getElementById("genre-chips"),
     yearMin: document.getElementById("year-min"),
     yearMax: document.getElementById("year-max"),
@@ -33,7 +35,8 @@
     prevGame: document.getElementById("prev-game"),
     nextGame: document.getElementById("next-game"),
     detailBox: document.getElementById("detail-box"),
-    detailShot: document.getElementById("detail-shot"),
+    screenshots: document.getElementById("detail-screenshots"),
+    detailShots: document.getElementById("detail-shots"),
     detailTitle: document.getElementById("detail-title"),
     detailSub: document.getElementById("detail-sub"),
     detailRating: document.getElementById("detail-rating"),
@@ -41,7 +44,6 @@
     detailTags: document.getElementById("detail-tags"),
     detailOverview: document.getElementById("detail-overview"),
     detailFavorite: document.getElementById("detail-favorite"),
-    screenshotButton: document.getElementById("screenshot-button"),
     lightbox: document.getElementById("lightbox"),
     lightboxImage: document.getElementById("lightbox-image"),
     lightboxClose: document.getElementById("lightbox-close"),
@@ -52,8 +54,11 @@
   let byId = new Map();
   let favorites = new Set();
   let facets = null;
+  let platforms = new Map();
   let visible = [];
   let selectedId = null;
+  let selectedShots = [];
+  let lightboxTrigger = null;
   let detailCache = new Map();
   let tiles = new Map();
   let highlightedTile = null;
@@ -62,6 +67,7 @@
 
   const state = {
     query: "",
+    platforms: new Set(),
     genres: new Set(),
     yearMin: 1985,
     yearMax: 1994,
@@ -92,6 +98,7 @@
         STORAGE_KEY,
         JSON.stringify({
           query: state.query,
+          platforms: [...state.platforms],
           genres: [...state.genres],
           yearMin: state.yearMin,
           yearMax: state.yearMax,
@@ -111,6 +118,10 @@
 
     if (typeof saved.query === "string") {
       state.query = saved.query;
+    }
+    if (Array.isArray(saved.platforms)) {
+      const known = new Set(facets.platforms.map((platform) => platform.slug));
+      state.platforms = new Set(saved.platforms.filter((slug) => known.has(slug)));
     }
     if (Array.isArray(saved.genres)) {
       const known = new Set(facets.genres.map((genre) => genre.genre));
@@ -139,6 +150,26 @@
   }
 
   function buildControls(data) {
+    el.platformChips.replaceChildren();
+    for (const facet of data.platforms) {
+      const chip = document.createElement("button");
+      chip.type = "button";
+      chip.className = "chip";
+      chip.dataset.platform = facet.slug;
+      chip.setAttribute("aria-pressed", "false");
+      chip.title = facet.name;
+
+      const name = document.createElement("span");
+      name.textContent = facet.short;
+
+      const count = document.createElement("span");
+      count.className = "chip-count";
+      count.textContent = String(facet.count);
+
+      chip.append(name, count);
+      el.platformChips.append(chip);
+    }
+
     el.genreChips.replaceChildren();
     for (const facet of data.genres) {
       const chip = document.createElement("button");
@@ -172,6 +203,20 @@
   function syncControls() {
     el.search.value = state.query;
 
+    if (state.platforms.size === 1) {
+      el.brandMark.textContent = platformShort([...state.platforms][0]);
+      el.brandMark.classList.add("brand-mark-platform");
+    } else {
+      el.brandMark.textContent = "ALL";
+      el.brandMark.classList.remove("brand-mark-platform");
+    }
+
+    for (const chip of el.platformChips.children) {
+      const on = state.platforms.has(chip.dataset.platform);
+      chip.classList.toggle("active", on);
+      chip.setAttribute("aria-pressed", on ? "true" : "false");
+    }
+
     for (const chip of el.genreChips.children) {
       const on = state.genres.has(chip.dataset.genre);
       chip.classList.toggle("active", on);
@@ -203,6 +248,19 @@
     el.search.addEventListener("input", () => {
       state.query = el.search.value;
       scheduleRender();
+    });
+
+    el.platformChips.addEventListener("click", (event) => {
+      const chip = event.target.closest(".chip");
+      if (!chip) return;
+      const platform = chip.dataset.platform;
+      if (state.platforms.has(platform)) {
+        state.platforms.delete(platform);
+      } else {
+        state.platforms.add(platform);
+      }
+      syncControls();
+      render();
     });
 
     el.genreChips.addEventListener("click", (event) => {
@@ -274,7 +332,7 @@
     el.grid.addEventListener("click", (event) => {
       const tile = event.target.closest(".tile");
       if (!tile) return;
-      openPanel(Number(tile.dataset.id));
+      openPanel(tile.dataset.id);
     });
 
     // Image events do not bubble, so listen during the capture phase.
@@ -304,7 +362,6 @@
     el.detailFavorite.addEventListener("click", () => {
       if (selectedId !== null) toggleFavorite(selectedId);
     });
-    el.screenshotButton.addEventListener("click", openLightbox);
 
     el.lightboxClose.addEventListener("click", closeLightbox);
     el.lightbox.addEventListener("click", (event) => {
@@ -316,6 +373,7 @@
 
   function clearFilters() {
     state.query = "";
+    state.platforms.clear();
     state.genres.clear();
     state.yearMin = facets.year_min;
     state.yearMax = facets.year_max;
@@ -343,7 +401,8 @@
 
     const list = games.filter((game) => {
       if (onlyFavorites && !favorites.has(game.id)) return false;
-      if (state.genres.size > 0 && !state.genres.has(game.genre)) return false;
+      if (state.platforms.size > 0 && !state.platforms.has(game.platform)) return false;
+      if (state.genres.size > 0 && !game.genres.some((genre) => state.genres.has(genre))) return false;
       if (game.year < minYear || game.year > maxYear) return false;
       if (game.rating < minRating) return false;
       for (const token of tokens) {
@@ -367,7 +426,7 @@
         primary = (a, b) => a.rating_count - b.rating_count;
         break;
       case "genre":
-        primary = (a, b) => collator.compare(a.genre, b.genre);
+        primary = (a, b) => collator.compare(a.genres[0] || "", b.genres[0] || "");
         break;
       default:
         primary = (a, b) => collator.compare(a.name, b.name);
@@ -403,6 +462,16 @@
     saveState();
   }
 
+  function platformShort(slug) {
+    const platform = platforms.get(slug);
+    return platform ? platform.short : slug;
+  }
+
+  function platformName(slug) {
+    const platform = platforms.get(slug);
+    return platform ? platform.name : slug;
+  }
+
   function tileFor(game) {
     let tile = tiles.get(game.id);
     if (tile) return tile;
@@ -410,8 +479,8 @@
     tile = document.createElement("button");
     tile.type = "button";
     tile.className = "tile";
-    tile.dataset.id = String(game.id);
-    tile.setAttribute("aria-label", `${game.name}, ${game.year}, ${game.genre}`);
+    tile.dataset.id = game.id;
+    tile.setAttribute("aria-label", `${game.name}, ${game.year}, ${platformName(game.platform)}`);
 
     const art = document.createElement("div");
     art.className = "tile-art";
@@ -423,12 +492,16 @@
     image.height = 400;
     setImage(image, `/art/box/${game.id}?w=${GRID_THUMB_WIDTH}`, "");
 
+    const platformBadge = document.createElement("span");
+    platformBadge.className = "platform-badge";
+    platformBadge.textContent = platformShort(game.platform);
+
     const badge = document.createElement("span");
     badge.className = "favorite-badge";
     badge.textContent = "★";
     badge.setAttribute("aria-hidden", "true");
 
-    art.append(image, badge);
+    art.append(image, platformBadge, badge);
 
     const caption = document.createElement("div");
     caption.className = "tile-caption";
@@ -439,7 +512,7 @@
 
     const year = document.createElement("span");
     year.className = "tile-year";
-    year.textContent = `${game.year} · ${game.genre}`;
+    year.textContent = `${game.year} · ${game.genres[0] || "Uncategorized"}`;
 
     caption.append(title, year);
     tile.append(art, caption);
@@ -535,6 +608,7 @@
   function closePanel() {
     const previous = selectedId;
     selectedId = null;
+    selectedShots = [];
     el.panel.classList.remove("open");
     el.panel.inert = true;
     el.panel.setAttribute("aria-hidden", "true");
@@ -547,7 +621,8 @@
   }
 
   function playersLabel(maxPlayers) {
-    if (!maxPlayers || maxPlayers <= 1) return "1 player";
+    if (!maxPlayers || maxPlayers < 1) return "";
+    if (maxPlayers === 1) return "1 player";
     return `Up to ${maxPlayers} players`;
   }
 
@@ -569,6 +644,14 @@
     el.detailRating.hidden = false;
     el.detailRating.replaceChildren();
 
+    if (!ratingCount || rating <= 0) {
+      const none = document.createElement("span");
+      none.className = "muted";
+      none.textContent = "No ratings";
+      el.detailRating.append(none);
+      return;
+    }
+
     const starSpan = document.createElement("span");
     starSpan.className = "stars";
     starSpan.textContent = stars(rating, scale);
@@ -585,10 +668,11 @@
 
   function fillPanelBasic(game) {
     el.detailTitle.textContent = game.name;
-    el.detailSub.textContent = `${game.year} · ${game.genre}`;
+    el.detailSub.textContent = `${game.year} · ${platformName(game.platform)}`;
     renderRating(game.rating, game.rating_count, 5);
 
     el.detailFacts.replaceChildren();
+    appendFact("Platform", platformName(game.platform));
     appendFact("Publisher", game.publisher);
     appendFact("Developer", game.developer);
     appendFact("Players", playersLabel(game.max_players));
@@ -596,32 +680,65 @@
     appendFact("ESRB", game.esrb);
 
     el.detailTags.replaceChildren();
+    for (const genre of game.genres || []) {
+      const span = document.createElement("span");
+      span.className = "tag";
+      span.textContent = genre;
+      el.detailTags.append(span);
+    }
     el.detailOverview.textContent = "Loading details…";
     el.detailOverview.classList.add("muted");
 
     setImage(el.detailBox, `/art/box/${game.id}?w=${PANEL_THUMB_WIDTH}`, `${game.name} box art`);
-    setImage(el.detailShot, `/art/shot/${game.id}`, `${game.name} gameplay screenshot`);
+    renderScreenshots(null);
     updateFavoriteButton();
   }
 
   function fillPanelDetail(game) {
     el.detailTitle.textContent = game.name;
-    el.detailSub.textContent = `${game.release_year} · ${game.genre}`;
+    el.detailSub.textContent = `${game.release_year} · ${platformName(game.platform)}`;
     renderRating(game.rating, game.rating_count, game.rating_scale || 5);
-    setImage(el.detailBox, `/art/box/${game.launchbox_id}?w=${PANEL_THUMB_WIDTH}`, `${game.name} box art`);
-    setImage(el.detailShot, `/art/shot/${game.launchbox_id}`, `${game.name} gameplay screenshot`);
+    setImage(el.detailBox, `/art/box/${game.id}?w=${PANEL_THUMB_WIDTH}`, `${game.name} box art`);
+    renderScreenshots(game);
 
     el.detailTags.replaceChildren();
-    for (const tag of game.tags || []) {
+    for (const genre of game.genres || []) {
       const span = document.createElement("span");
       span.className = "tag";
-      span.textContent = tag;
+      span.textContent = genre;
       el.detailTags.append(span);
     }
 
     el.detailOverview.textContent = game.overview || "No overview available.";
     el.detailOverview.classList.toggle("muted", !game.overview);
     updateFavoriteButton();
+  }
+
+  function renderScreenshots(game) {
+    selectedShots = (game && game.screenshots) || [];
+    el.detailShots.replaceChildren();
+    el.screenshots.hidden = selectedShots.length === 0;
+    if (selectedShots.length === 0) return;
+
+    selectedShots.forEach((_, index) => {
+      const button = document.createElement("button");
+      button.type = "button";
+      button.className = "screenshot-button";
+      button.setAttribute("aria-label", `Enlarge screenshot ${index + 1} of ${selectedShots.length}`);
+
+      const image = document.createElement("img");
+      image.loading = "lazy";
+      image.decoding = "async";
+      setImage(
+        image,
+        `/art/shot/${game.id}?i=${index}&w=${PANEL_THUMB_WIDTH}`,
+        `${game.name} screenshot ${index + 1}`,
+      );
+
+      button.append(image);
+      button.addEventListener("click", () => openLightbox(index, button));
+      el.detailShots.append(button);
+    });
   }
 
   function updateFavoriteButton() {
@@ -693,13 +810,14 @@
     return parts.join(" · ");
   }
 
-  function openLightbox() {
-    if (selectedId === null) return;
+  function openLightbox(index, trigger) {
+    if (selectedId === null || index < 0 || index >= selectedShots.length) return;
     const game = byId.get(selectedId);
+    lightboxTrigger = trigger || null;
     delete el.lightboxImage.dataset.fallback;
     el.lightboxImage.onerror = () => fallbackImage(el.lightboxImage);
-    el.lightboxImage.src = `/art/shot/${selectedId}`;
-    el.lightboxImage.alt = `${game ? game.name : "Game"} gameplay screenshot`;
+    el.lightboxImage.src = `/art/shot/${selectedId}?i=${index}`;
+    el.lightboxImage.alt = `${game ? game.name : "Game"} screenshot ${index + 1}`;
     el.lightbox.hidden = false;
     el.lightboxClose.focus();
   }
@@ -707,9 +825,12 @@
   function closeLightbox() {
     el.lightbox.hidden = true;
     el.lightboxImage.removeAttribute("src");
-    if (selectedId !== null) {
-      el.screenshotButton.focus();
+    if (lightboxTrigger && document.contains(lightboxTrigger)) {
+      lightboxTrigger.focus();
+    } else if (selectedId !== null) {
+      el.panel.focus({ preventScroll: true });
     }
+    lightboxTrigger = null;
   }
 
   function onKeyDown(event) {
@@ -728,6 +849,7 @@
       return;
     }
 
+    if (!el.lightbox.hidden) return;
     if (isTyping(event.target)) return;
 
     if (event.key === "/") {
@@ -783,9 +905,10 @@
       byId = new Map(games.map((game) => [game.id, game]));
       favorites = new Set(data.favorites);
       facets = data;
+      platforms = new Map(data.platforms.map((platform) => [platform.slug, platform]));
 
       for (const game of games) {
-        game._search = `${game.name} ${game.publisher} ${game.developer}`.toLowerCase();
+        game._search = `${game.name} ${game.publisher} ${game.developer} ${(game.genres || []).join(" ")} ${platformName(game.platform)}`.toLowerCase();
       }
 
       buildControls(data);

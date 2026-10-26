@@ -12,6 +12,7 @@ import (
 	"net/http"
 	"os"
 	"os/signal"
+	"path/filepath"
 	"strconv"
 	"syscall"
 	"time"
@@ -29,12 +30,27 @@ type app struct {
 
 func main() {
 	addr := flag.String("addr", "127.0.0.1:8080", "address to listen on")
-	dataPath := flag.String("data", "games.json", "catalog JSON file")
-	cacheDir := flag.String("cache", ".cache/art", "directory for cached art")
+	cacheDir := flag.String("cache", ".cache", "directory for the catalog cache and cached art")
 	favoritesPath := flag.String("favorites", "favorites.json", "file used to persist favorites")
+	refresh := flag.Bool("refresh", false, "ignore a fresh catalog cache and fetch from IGDB")
 	flag.Parse()
 
-	catalog, err := LoadCatalog(*dataPath)
+	if err := loadDotEnv(".env"); err != nil {
+		log.Fatal(err)
+	}
+
+	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
+	defer stop()
+
+	clientID := os.Getenv("IGDB_CLIENT_ID")
+	clientSecret := os.Getenv("IGDB_CLIENT_SECRET")
+	var fetch fetchFunc
+	if clientID != "" && clientSecret != "" {
+		client := newIGDBClient(clientID, clientSecret)
+		fetch = client.fetchCatalog
+	}
+
+	catalog, err := loadOrFetch(ctx, *cacheDir, *refresh, fetch, log.Printf)
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -42,7 +58,7 @@ func main() {
 	if err != nil {
 		log.Fatal(err)
 	}
-	art, err := NewArtCache(*cacheDir)
+	art, err := NewArtCache(filepath.Join(*cacheDir, "art"))
 	if err != nil {
 		log.Fatal(err)
 	}
@@ -82,14 +98,10 @@ func main() {
 
 	errCh := make(chan error, 1)
 	go func() {
-		log.Printf("loaded %d games from %s (%d genres, %d favorites)",
-			catalog.Total(), *dataPath, len(catalog.Genres()), len(favorites.List()))
+		log.Printf("catalog: %d games (%s)", catalog.Total(), platformCountsSummary(catalog.Platforms()))
 		log.Printf("listening on http://%s", *addr)
 		errCh <- server.ListenAndServe()
 	}()
-
-	ctx, stop := signal.NotifyContext(context.Background(), os.Interrupt, syscall.SIGTERM)
-	defer stop()
 
 	select {
 	case err := <-errCh:
@@ -113,14 +125,15 @@ func (a *app) handleIndex(w http.ResponseWriter, r *http.Request) {
 }
 
 type catalogResponse struct {
-	Games     []IndexGame  `json:"games"`
-	Favorites []int        `json:"favorites"`
-	Genres    []GenreCount `json:"genres"`
-	YearMin   int          `json:"year_min"`
-	YearMax   int          `json:"year_max"`
-	RatingMin float64      `json:"rating_min"`
-	RatingMax float64      `json:"rating_max"`
-	Total     int          `json:"total"`
+	Games     []IndexGame     `json:"games"`
+	Favorites []string        `json:"favorites"`
+	Genres    []GenreCount    `json:"genres"`
+	Platforms []PlatformCount `json:"platforms"`
+	YearMin   int             `json:"year_min"`
+	YearMax   int             `json:"year_max"`
+	RatingMin float64         `json:"rating_min"`
+	RatingMax float64         `json:"rating_max"`
+	Total     int             `json:"total"`
 }
 
 func (a *app) handleCatalog(w http.ResponseWriter, r *http.Request) {
@@ -128,6 +141,7 @@ func (a *app) handleCatalog(w http.ResponseWriter, r *http.Request) {
 		Games:     a.catalog.Index(),
 		Favorites: a.favorites.List(),
 		Genres:    a.catalog.Genres(),
+		Platforms: a.catalog.Platforms(),
 		YearMin:   a.catalog.yearMin,
 		YearMax:   a.catalog.yearMax,
 		RatingMin: a.catalog.ratingMin,
@@ -166,7 +180,25 @@ func (a *app) handleArt(w http.ResponseWriter, r *http.Request) {
 	case "box":
 		source = game.BoxArt
 	case "shot":
-		source = game.Screenshot
+		index := 0
+		if raw := r.URL.Query().Get("i"); raw != "" {
+			n, err := strconv.Atoi(raw)
+			if err != nil || n < 0 {
+				writeError(w, http.StatusBadRequest, "invalid screenshot index")
+				return
+			}
+			index = n
+		}
+		if index >= len(game.Screenshots) {
+			http.NotFound(w, r)
+			return
+		}
+		source = game.Screenshots[index]
+		// Keep one cache key per gallery slot so the thumbnails do not
+		// overwrite each other.
+		if index > 0 {
+			kind = "shot" + strconv.Itoa(index)
+		}
 	default:
 		http.NotFound(w, r)
 		return
@@ -190,7 +222,7 @@ func (a *app) handleArt(w http.ResponseWriter, r *http.Request) {
 }
 
 func (a *app) handleFavorites(w http.ResponseWriter, r *http.Request) {
-	writeJSON(w, http.StatusOK, map[string][]int{"favorites": a.favorites.List()})
+	writeJSON(w, http.StatusOK, map[string][]string{"favorites": a.favorites.List()})
 }
 
 func (a *app) handleFavoritePut(w http.ResponseWriter, r *http.Request) {
@@ -222,7 +254,7 @@ func (a *app) mutateFavorite(w http.ResponseWriter, r *http.Request, add bool) {
 		writeError(w, http.StatusInternalServerError, "could not save favorites")
 		return
 	}
-	writeJSON(w, http.StatusOK, map[string][]int{"favorites": a.favorites.List()})
+	writeJSON(w, http.StatusOK, map[string][]string{"favorites": a.favorites.List()})
 }
 
 func (a *app) handleExport(w http.ResponseWriter, r *http.Request) {
@@ -233,20 +265,25 @@ func (a *app) handleExport(w http.ResponseWriter, r *http.Request) {
 	}
 	data = append(data, '\n')
 
-	name := fmt.Sprintf("nesdb-favorites-%s.json", time.Now().Format("2006-01-02"))
+	name := fmt.Sprintf("catalog-favorites-%s.json", time.Now().Format("2006-01-02"))
 	w.Header().Set("Content-Type", "application/json; charset=utf-8")
 	w.Header().Set("Content-Disposition", fmt.Sprintf("attachment; filename=%q", name))
 	w.Header().Set("Cache-Control", "no-store")
 	_, _ = w.Write(data)
 }
 
-func pathID(w http.ResponseWriter, r *http.Request) (int, bool) {
-	id, err := strconv.Atoi(r.PathValue("id"))
-	if err != nil || id <= 0 {
+func pathID(w http.ResponseWriter, r *http.Request) (string, bool) {
+	id := r.PathValue("id")
+	if !validGameID(id) {
 		writeError(w, http.StatusBadRequest, "invalid game id")
-		return 0, false
+		return "", false
 	}
 	return id, true
+}
+
+func validGameID(id string) bool {
+	_, _, ok := parseGameID(id)
+	return ok
 }
 
 func writeJSON(w http.ResponseWriter, status int, value any) {
