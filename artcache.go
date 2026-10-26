@@ -238,7 +238,7 @@ func (c *ArtCache) download(ctx context.Context, key, source string) (string, er
 	if err != nil {
 		return "", err
 	}
-	req.Header.Set("User-Agent", "nesdb/2.0 (+IGDB catalog)")
+	req.Header.Set("User-Agent", "retrocatalog/2.0 (+IGDB catalog)")
 
 	resp, err := c.client.Do(req)
 	if err != nil {

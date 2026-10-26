@@ -1,7 +1,7 @@
 (() => {
   "use strict";
 
-  const STORAGE_KEY = "nesdb.state.v2";
+  const STORAGE_KEY = "retrocatalog.state.v2";
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
   const SORTS = ["name", "year", "top", "rating", "popular", "genre"];
   const DESCENDING_SORTS = new Set(["year", "top", "rating", "popular"]);

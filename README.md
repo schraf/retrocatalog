@@ -1,4 +1,4 @@
-# nesdb
+# retrocatalog
 
 A small, self-hosted catalog browser for four retro platforms:
 

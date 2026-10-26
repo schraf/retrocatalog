@@ -1,3 +1,3 @@
-module nesdb
+module retrocatalog
 
 go 1.26
