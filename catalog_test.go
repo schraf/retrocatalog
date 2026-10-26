@@ -99,6 +99,9 @@ func TestBuildCatalog(t *testing.T) {
 	if math.Abs(index[0].WeightedRating-695.0/175.0) > 1e-9 {
 		t.Fatalf("Alpha weighted rating = %v, want %v", index[0].WeightedRating, 695.0/175.0)
 	}
+	if index[0].BoxArt != games[0].BoxArt {
+		t.Fatalf("index[0].BoxArt = %q, want %q", index[0].BoxArt, games[0].BoxArt)
+	}
 	if math.Abs(index[1].WeightedRating-3.56) > 1e-9 {
 		t.Fatalf("Beta weighted rating = %v, want 3.56", index[1].WeightedRating)
 	}

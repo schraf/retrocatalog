@@ -1,30 +1,44 @@
 # retrocatalog
 
-A small, self-hosted catalog browser for four retro platforms:
+A small static catalog browser for four retro platforms:
 
 - Nintendo Entertainment System
 - Super Nintendo Entertainment System
 - Sega Genesis
 - TurboGrafx-16
 
-Game metadata comes from the [IGDB API](https://api-docs.igdb.com/). The
-normalized catalog is cached locally so the app runs offline once it has been
-fetched.
+Game metadata and artwork come from the [IGDB API](https://api-docs.igdb.com/).
+The catalog is normalized once, committed as a snapshot, and rendered as a
+self-contained static site. Favorites live in the browser; there is no backend.
 
-## Running
+## Building
 
 ```sh
-export IGDB_CLIENT_ID=...
-export IGDB_CLIENT_SECRET=...
 go run .
 ```
 
-Then open <http://127.0.0.1:8080>.
+This reads `data/catalog-v2.json` and writes the site to `dist/`. It needs no
+network access or IGDB credentials.
 
-Credentials are only needed when the catalog cache is missing or stale. A fresh
-cache starts without network access.
+Preview it locally:
 
-The app also loads a `.env` file from the working directory when present:
+```sh
+python3 -m http.server -d dist
+```
+
+Then open <http://127.0.0.1:8000>. The app fetches JSON, so open it through
+a local web server rather than directly from `file://`.
+
+| Flag | Default | Description |
+| --- | --- | --- |
+| `-cache` | `data` | Directory containing `catalog-v2.json` |
+| `-export` | `dist` | Directory to write the static site |
+| `-refresh` | `false` | Ignore the snapshot and fetch from IGDB |
+
+## Refreshing the snapshot
+
+The catalog changes rarely, so refreshes are manual. Set credentials in the
+environment or in a local `.env` file:
 
 ```sh
 # .env
@@ -32,33 +46,42 @@ IGDB_CLIENT_ID=...
 IGDB_CLIENT_SECRET=...
 ```
 
-Existing environment variables take precedence over values from `.env`, and the
-file is ignored by git.
+Then run:
 
-### Flags
+```sh
+go run . -refresh
+```
 
-| Flag | Default | Description |
-| --- | --- | --- |
-| `-addr` | `127.0.0.1:8080` | Listen address |
-| `-cache` | `.cache` | Catalog and art cache directory |
-| `-favorites` | `favorites.json` | Favorites persistence file |
-| `-refresh` | `false` | Ignore a fresh cache and fetch from IGDB |
+`-refresh` fetches from IGDB, normalizes the data, writes
+`data/catalog-v2.json`, and rebuilds `dist/`. Commit the snapshot to publish the
+new data:
 
-## Catalog cache
+```sh
+git add data/catalog-v2.json
+git commit -m "Refresh catalog snapshot"
+```
 
-The catalog is stored as a plain `[]Game` array in
-`.cache/catalog-v2.json`. Its modification time is the cache timestamp:
+The snapshot is committed so builds and contributors do not need credentials.
+Existing environment variables take precedence over `.env`; the file is ignored
+by git.
 
-- younger than 24 hours: used as-is
-- older, or `-refresh`: refetched from IGDB
-- refetch fails: a valid stale cache is served with a warning
-- no valid cache and the fetch fails: startup fails with an error
+## Static output
 
-Writes are atomic. Delete the cache file to force a refetch. Bump the filename
-in `igdb.go` when the schema or filtering rules change.
+```text
+dist/
+  index.html
+  .nojekyll
+  static/
+    style.css
+    app.js
+    placeholder.svg
+  data/
+    catalog.json        # grid index and filter facets
+    games/<id>.json     # full detail records, loaded on demand
+```
 
-The cache is intentionally not committed. Favorites and downloaded art are
-local state as well.
+The generated `dist/` directory is ignored by git. GitHub Actions builds it and
+uploads it as a Pages artifact.
 
 ## Catalog rules
 
@@ -73,8 +96,38 @@ local state as well.
   `main_game`, then more ratings, then a higher rating, then the lower IGDB ID.
 - Up to three IGDB screenshots are kept per game. The detail panel shows them
   as thumbnails and opens the full-size image in the lightbox.
-- Art URLs are restricted to `images.igdb.com` and proxied through the local
-  art cache.
+- Art URLs are restricted to `images.igdb.com`. Cover art and screenshots are
+  hotlinked from the IGDB image CDN; no image files are stored in this
+  repository.
+
+## Favorites
+
+Favorites are stored in `localStorage` under `retrocatalog.favorites.v2`. They
+are per browser and per device; clearing site data removes them.
+
+- **Export** downloads a JSON file with the same format as the old server:
+  `{ "version": 2, "updated_at": "...", "favorites": [...] }`.
+- **Import** accepts that format or a plain JSON string array, merges the IDs
+  into the current list, and ignores unknown games. To carry over favorites from
+  the old local server, select its `favorites.json` file.
+- Filter state is stored separately under `retrocatalog.state.v2`.
+
+The keys are namespaced because all `*.github.io` project sites share one
+`localStorage` origin.
+
+## Deployment
+
+The workflow in `.github/workflows/pages.yml` runs on pushes to `main` and on
+manual dispatch. It runs the tests, builds `dist/`, and deploys it with the
+GitHub Pages Actions flow.
+
+In the repository settings, set **Pages → Build and deployment → Source** to
+**GitHub Actions**. The site is published at
+`https://<user>.github.io/<repo>/`; all asset and data paths are relative, so
+project sites work without a custom domain.
+
+The workflow needs no IGDB secrets because it builds from the committed
+snapshot. GitHub Pages is available for public repositories on the free plan.
 
 ## Tests
 
@@ -83,4 +136,15 @@ go test ./...
 go vet ./...
 ```
 
-Tests use `httptest`; no IGDB credentials or network access are required.
+Tests use `httptest` for the IGDB client; no credentials or network access are
+required.
+
+## Attribution
+
+Game data and images are provided by [IGDB.com](https://www.igdb.com/). This
+project is not affiliated with IGDB, Twitch, Nintendo, Sega, or NEC. All game
+titles, cover art, and screenshots belong to their respective owners.
+
+## License
+
+MIT. See [LICENSE](LICENSE).

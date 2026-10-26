@@ -2,3 +2,4 @@
 .env
 /favorites.json
 /retrocatalog
+/dist

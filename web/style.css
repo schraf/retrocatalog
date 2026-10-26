@@ -547,6 +547,33 @@ main {
   text-align: center;
 }
 
+/* ---------- footer ---------- */
+
+.site-footer {
+  width: 100%;
+  max-width: 1720px;
+  margin: 0 auto;
+  padding: 0 20px 48px;
+  color: var(--muted-dim);
+  font-size: 12px;
+  line-height: 1.6;
+}
+
+.site-footer p {
+  max-width: 980px;
+  margin: 0 0 4px;
+}
+
+.site-footer a {
+  color: var(--muted);
+  text-decoration: underline;
+  text-underline-offset: 2px;
+}
+
+.site-footer a:hover {
+  color: var(--text);
+}
+
 /* ---------- detail panel ---------- */
 
 body.panel-open {
@@ -877,6 +904,10 @@ body.panel-open {
 
   .controls {
     padding: 14px 14px 12px;
+  }
+
+  .site-footer {
+    padding: 0 14px 36px;
   }
 
   .control-group.platforms,

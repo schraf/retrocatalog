@@ -60,6 +60,7 @@ type IndexGame struct {
 	MaxPlayers     int      `json:"max_players"`
 	Cooperative    bool     `json:"cooperative"`
 	ESRB           string   `json:"esrb"`
+	BoxArt         string   `json:"box_art"`
 }
 
 // Catalog is the immutable in-memory view of the catalog cache.
@@ -159,6 +160,7 @@ func buildCatalog(games []Game) (*Catalog, error) {
 			MaxPlayers:  g.MaxPlayers,
 			Cooperative: g.Cooperative,
 			ESRB:        g.ESRB,
+			BoxArt:      g.BoxArt,
 		})
 
 		if first {

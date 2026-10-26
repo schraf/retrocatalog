@@ -2,12 +2,12 @@
   "use strict";
 
   const STORAGE_KEY = "retrocatalog.state.v2";
+  const FAVORITES_KEY = "retrocatalog.favorites.v2";
+  const CATALOG_URL = "data/catalog.json";
+  const PLACEHOLDER_URL = "static/placeholder.svg";
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
   const SORTS = ["name", "year", "top", "rating", "popular", "genre"];
   const DESCENDING_SORTS = new Set(["year", "top", "rating", "popular"]);
-  // Must match the widths accepted by the Go art cache.
-  const GRID_THUMB_WIDTH = 360;
-  const PANEL_THUMB_WIDTH = 900;
 
   const el = {
     search: document.getElementById("search"),
@@ -23,6 +23,8 @@
     favoritesToggle: document.getElementById("favorites-toggle"),
     favoritesCount: document.getElementById("favorites-count"),
     export: document.getElementById("export"),
+    import: document.getElementById("import"),
+    importFile: document.getElementById("import-file"),
     clearFilters: document.getElementById("clear-filters"),
     emptyClear: document.getElementById("empty-clear"),
     status: document.getElementById("status"),
@@ -106,6 +108,44 @@
           favoritesOnly: state.favoritesOnly,
           sort: state.sort,
           dir: state.dir,
+        }),
+      );
+    } catch {
+      // Storage can be unavailable in private mode; the app still works.
+    }
+  }
+
+  function loadFavorites() {
+    let ids = [];
+    try {
+      const raw = localStorage.getItem(FAVORITES_KEY);
+      if (raw) {
+        const parsed = JSON.parse(raw);
+        if (Array.isArray(parsed)) {
+          ids = parsed;
+        } else if (parsed && Array.isArray(parsed.favorites)) {
+          ids = parsed.favorites;
+        }
+      }
+    } catch {
+      // Ignore malformed or unavailable storage.
+    }
+
+    const next = new Set();
+    for (const id of ids) {
+      if (typeof id === "string" && byId.has(id)) next.add(id);
+    }
+    favorites = next;
+  }
+
+  function persistFavorites() {
+    try {
+      localStorage.setItem(
+        FAVORITES_KEY,
+        JSON.stringify({
+          version: 2,
+          updated_at: new Date().toISOString(),
+          favorites: [...favorites],
         }),
       );
     } catch {
@@ -322,11 +362,12 @@
       render();
     });
 
-    el.export.addEventListener("click", (event) => {
-      if (favorites.size === 0) {
-        event.preventDefault();
-        toast("No favorites to export yet.");
-      }
+    el.export.addEventListener("click", exportFavorites);
+    el.import.addEventListener("click", () => el.importFile.click());
+    el.importFile.addEventListener("change", async () => {
+      const file = el.importFile.files && el.importFile.files[0];
+      el.importFile.value = "";
+      if (file) await importFavorites(file);
     });
 
     el.grid.addEventListener("click", (event) => {
@@ -369,6 +410,12 @@
     });
 
     document.addEventListener("keydown", onKeyDown);
+    window.addEventListener("storage", (event) => {
+      if (event.key !== FAVORITES_KEY && event.key !== null) return;
+      loadFavorites();
+      syncFavoriteUI();
+      render();
+    });
   }
 
   function clearFilters() {
@@ -490,7 +537,7 @@
     image.decoding = "async";
     image.width = 300;
     image.height = 400;
-    setImage(image, `/art/box/${game.id}?w=${GRID_THUMB_WIDTH}`, "");
+    setImage(image, game.box_art, "");
 
     const platformBadge = document.createElement("span");
     platformBadge.className = "platform-badge";
@@ -524,6 +571,10 @@
     image.classList.remove("loaded", "missing");
     delete image.dataset.fallback;
     image.alt = alt;
+    if (!src) {
+      fallbackImage(image);
+      return;
+    }
     image.onload = () => image.classList.add("loaded");
     image.onerror = () => fallbackImage(image);
     image.src = src;
@@ -536,7 +587,7 @@
     if (image.dataset.fallback) return;
     image.dataset.fallback = "1";
     image.onerror = null;
-    image.src = "/static/placeholder.svg";
+    image.src = PLACEHOLDER_URL;
     image.classList.add("loaded", "missing");
   }
 
@@ -689,7 +740,7 @@
     el.detailOverview.textContent = "Loading details…";
     el.detailOverview.classList.add("muted");
 
-    setImage(el.detailBox, `/art/box/${game.id}?w=${PANEL_THUMB_WIDTH}`, `${game.name} box art`);
+    setImage(el.detailBox, game.box_art, `${game.name} box art`);
     renderScreenshots(null);
     updateFavoriteButton();
   }
@@ -698,7 +749,7 @@
     el.detailTitle.textContent = game.name;
     el.detailSub.textContent = `${game.release_year} · ${platformName(game.platform)}`;
     renderRating(game.rating, game.rating_count, game.rating_scale || 5);
-    setImage(el.detailBox, `/art/box/${game.id}?w=${PANEL_THUMB_WIDTH}`, `${game.name} box art`);
+    setImage(el.detailBox, game.box_art, `${game.name} box art`);
     renderScreenshots(game);
 
     el.detailTags.replaceChildren();
@@ -731,7 +782,7 @@
       image.decoding = "async";
       setImage(
         image,
-        `/art/shot/${game.id}?i=${index}&w=${PANEL_THUMB_WIDTH}`,
+        selectedShots[index],
         `${game.name} screenshot ${index + 1}`,
       );
 
@@ -751,7 +802,7 @@
 
   async function getDetail(id) {
     if (detailCache.has(id)) return detailCache.get(id);
-    const response = await fetch(`/api/games/${id}`);
+    const response = await fetch(`data/games/${encodeURIComponent(id)}.json`);
     if (!response.ok) {
       throw new Error(`game request failed (${response.status})`);
     }
@@ -760,32 +811,84 @@
     return detail;
   }
 
-  async function toggleFavorite(id) {
+  function toggleFavorite(id) {
     const wasFavorite = favorites.has(id);
     applyFavorite(id, !wasFavorite);
+    persistFavorites();
 
-    try {
-      const response = await fetch(`/api/favorites/${id}`, {
-        method: wasFavorite ? "DELETE" : "PUT",
-      });
-      if (!response.ok) {
-        throw new Error(`favorites request failed (${response.status})`);
-      }
-      const data = await response.json();
-      favorites = new Set(data.favorites);
-    } catch (error) {
-      console.error(error);
-      applyFavorite(id, wasFavorite);
-      toast("Could not update favorites.");
-      return;
-    }
-
-    syncFavoriteUI();
     if (state.favoritesOnly && wasFavorite) {
       render();
     } else {
       el.status.textContent = statusText();
     }
+  }
+
+  function exportFavorites() {
+    if (favorites.size === 0) {
+      toast("No favorites to export yet.");
+      return;
+    }
+
+    const payload = {
+      version: 2,
+      updated_at: new Date().toISOString(),
+      favorites: [...favorites].sort(),
+    };
+    const blob = new Blob([`${JSON.stringify(payload, null, 2)}\n`], {
+      type: "application/json",
+    });
+    const url = URL.createObjectURL(blob);
+    const link = document.createElement("a");
+    const date = new Date().toISOString().slice(0, 10);
+    link.href = url;
+    link.download = `catalog-favorites-${date}.json`;
+    document.body.append(link);
+    link.click();
+    link.remove();
+    window.setTimeout(() => URL.revokeObjectURL(url), 1000);
+  }
+
+  async function importFavorites(file) {
+    let parsed;
+    try {
+      parsed = JSON.parse(await file.text());
+    } catch {
+      toast("Could not read that favorites file.");
+      return;
+    }
+
+    let ids;
+    if (Array.isArray(parsed)) {
+      ids = parsed;
+    } else if (parsed && Array.isArray(parsed.favorites)) {
+      ids = parsed.favorites;
+    } else {
+      toast("That file does not contain favorites.");
+      return;
+    }
+
+    let added = 0;
+    let skipped = 0;
+    for (const id of ids) {
+      if (typeof id !== "string" || !byId.has(id)) {
+        skipped++;
+        continue;
+      }
+      if (!favorites.has(id)) {
+        favorites.add(id);
+        added++;
+      }
+    }
+
+    persistFavorites();
+    syncControls();
+    render();
+    if (added === 0 && skipped === 0) {
+      toast("No new favorites to import.");
+      return;
+    }
+    const skippedText = skipped > 0 ? `; skipped ${skipped}` : "";
+    toast(`Imported ${added} favorite${added === 1 ? "" : "s"}${skippedText}.`);
   }
 
   function applyFavorite(id, on) {
@@ -816,7 +919,7 @@
     lightboxTrigger = trigger || null;
     delete el.lightboxImage.dataset.fallback;
     el.lightboxImage.onerror = () => fallbackImage(el.lightboxImage);
-    el.lightboxImage.src = `/art/shot/${selectedId}?i=${index}`;
+    el.lightboxImage.src = selectedShots[index];
     el.lightboxImage.alt = `${game ? game.name : "Game"} screenshot ${index + 1}`;
     el.lightbox.hidden = false;
     el.lightboxClose.focus();
@@ -895,7 +998,7 @@
 
   async function boot() {
     try {
-      const response = await fetch("/api/catalog", { headers: { Accept: "application/json" } });
+      const response = await fetch(CATALOG_URL, { headers: { Accept: "application/json" } });
       if (!response.ok) {
         throw new Error(`catalog request failed (${response.status})`);
       }
@@ -903,7 +1006,7 @@
 
       games = data.games;
       byId = new Map(games.map((game) => [game.id, game]));
-      favorites = new Set(data.favorites);
+      loadFavorites();
       facets = data;
       platforms = new Map(data.platforms.map((platform) => [platform.slug, platform]));
 
