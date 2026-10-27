@@ -321,7 +321,7 @@ func TestNormalizeGamesFanOut(t *testing.T) {
 			ReleaseDates: []igdbReleaseDate{
 				{Platform: 18, Y: 1986, ReleaseRegion: igdbRegionNorthAmerica},
 				{Platform: 19, Y: 1991, ReleaseRegion: igdbRegionNorthAmerica},
-				{Platform: 86, Y: 1990, ReleaseRegion: igdbRegionNorthAmerica},
+				{Platform: 4, Y: 1996, ReleaseRegion: igdbRegionNorthAmerica},
 				{Platform: 99, Y: 1990, ReleaseRegion: igdbRegionNorthAmerica},
 			},
 			Genres: []igdbGenre{{Name: "Action"}, {Name: "action"}, {Name: "Platformer"}},
@@ -393,9 +393,9 @@ func TestNormalizeGamesFanOut(t *testing.T) {
 		t.Fatalf("snes multiplayer = max %d coop %v", snes.MaxPlayers, snes.Cooperative)
 	}
 
-	tg16 := candidates[2].game
-	if tg16.ID != "igdb-10-tg16" || tg16.ReleaseYear != 1990 {
-		t.Fatalf("tg16 = %#v", tg16)
+	n64 := candidates[2].game
+	if n64.ID != "igdb-10-n64" || n64.ReleaseYear != 1996 {
+		t.Fatalf("n64 = %#v", n64)
 	}
 }
 
@@ -425,8 +425,8 @@ func TestMultiplayerHelpers(t *testing.T) {
 		t.Fatalf("maxPlayers(snes) = %d, want 8", got)
 	}
 	// Platform zero applies to every platform.
-	if got := maxPlayers(modes, 29); got != 4 {
-		t.Fatalf("maxPlayers(genesis) = %d, want 4", got)
+	if got := maxPlayers(modes, 21); got != 4 {
+		t.Fatalf("maxPlayers(gamecube) = %d, want 4", got)
 	}
 	if !cooperative(modes, 18) {
 		t.Fatal("nes should be cooperative from offlinecoopmax")
@@ -553,7 +553,7 @@ func TestLoadOrFetchRefreshBypassesFreshCache(t *testing.T) {
 		fetched = true
 		return []Game{
 			testGame("igdb-1-nes", "Alpha", "nes", 1986, "Action"),
-			testGame("igdb-3-genesis", "Gamma", "genesis", 1990, "Action"),
+			testGame("igdb-3-n64", "Gamma", "n64", 1996, "Action"),
 		}, nil
 	}, nil)
 	if err != nil {

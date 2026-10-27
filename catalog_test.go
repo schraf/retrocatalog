@@ -40,7 +40,7 @@ func TestBuildCatalog(t *testing.T) {
 			BoxArt: "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/beta.jpg",
 		},
 		{
-			ID: "igdb-3-genesis", Name: "Gamma", Platform: "genesis", ReleaseYear: 1990,
+			ID: "igdb-3-n64", Name: "Gamma", Platform: "n64", ReleaseYear: 1996,
 			Genres: []string{"Platformer"},
 			BoxArt: "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/gamma.jpg",
 		},
@@ -60,8 +60,8 @@ func TestBuildCatalog(t *testing.T) {
 	if catalog.ByID("igdb-99-nes") != nil {
 		t.Fatal("ByID(igdb-99-nes) should be nil")
 	}
-	if catalog.yearMin != 1986 || catalog.yearMax != 1991 {
-		t.Fatalf("year range = %d-%d, want 1986-1991", catalog.yearMin, catalog.yearMax)
+	if catalog.yearMin != 1986 || catalog.yearMax != 1996 {
+		t.Fatalf("year range = %d-%d, want 1986-1996", catalog.yearMin, catalog.yearMax)
 	}
 	if catalog.ratingMin != 0 || catalog.ratingMax != 4.1 {
 		t.Fatalf("rating range = %v-%v, want 0-4.1", catalog.ratingMin, catalog.ratingMax)
@@ -79,10 +79,10 @@ func TestBuildCatalog(t *testing.T) {
 	}
 
 	platforms := catalog.Platforms()
-	if len(platforms) != 4 {
+	if len(platforms) != len(supportedPlatforms) {
 		t.Fatalf("platforms = %#v", platforms)
 	}
-	wantCounts := map[string]int{"nes": 1, "snes": 1, "genesis": 1, "tg16": 0}
+	wantCounts := map[string]int{"nes": 1, "snes": 1, "n64": 1}
 	for _, p := range platforms {
 		if p.Count != wantCounts[p.Slug] {
 			t.Errorf("platform %s count = %d, want %d", p.Slug, p.Count, wantCounts[p.Slug])
@@ -201,8 +201,8 @@ func TestBuildCatalogExcludesLateReleases(t *testing.T) {
 	games := []Game{
 		testGame("igdb-1-nes", "Last Licensed", "nes", 1994, "Action"),
 		testGame("igdb-2-nes", "Homebrew", "nes", 1995, "Action"),
-		testGame("igdb-3-genesis", "Last Licensed", "genesis", 1997, "Action"),
-		testGame("igdb-4-genesis", "Unreleased", "genesis", 2027, "Action"),
+		testGame("igdb-3-gamecube", "Last Licensed", "gamecube", 2007, "Action"),
+		testGame("igdb-4-gamecube", "Unreleased", "gamecube", 2008, "Action"),
 	}
 
 	catalog, err := buildCatalog(games)
@@ -212,7 +212,7 @@ func TestBuildCatalogExcludesLateReleases(t *testing.T) {
 	if catalog.Total() != 2 {
 		t.Fatalf("Total() = %d, want 2", catalog.Total())
 	}
-	for _, id := range []string{"igdb-2-nes", "igdb-4-genesis"} {
+	for _, id := range []string{"igdb-2-nes", "igdb-4-gamecube"} {
 		if catalog.ByID(id) != nil {
 			t.Errorf("ByID(%s) should be nil", id)
 		}
@@ -259,12 +259,12 @@ func TestBuildCatalogAllowsSameNameOnDifferentPlatforms(t *testing.T) {
 }
 
 func TestBuildCatalogAcceptsMissingOptionalFields(t *testing.T) {
-	games := []Game{testGame("igdb-1-tg16", "Minimal", "tg16", 1990)}
+	games := []Game{testGame("igdb-1-gb", "Minimal", "gb", 1990)}
 	catalog, err := buildCatalog(games)
 	if err != nil {
 		t.Fatal(err)
 	}
-	game := catalog.ByID("igdb-1-tg16")
+	game := catalog.ByID("igdb-1-gb")
 	if game == nil {
 		t.Fatal("missing game")
 	}
