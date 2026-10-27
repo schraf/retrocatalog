@@ -30,9 +30,12 @@ type PlatformCount struct {
 // are stable enum values (see the IGDB enums-to-tables migration).
 var supportedPlatforms = []Platform{
 	{Slug: "nes", Name: "Nintendo Entertainment System", Short: "NES", IGDBID: 18, LastYear: 1994},
+	{Slug: "gb", Name: "Game Boy", Short: "GB", IGDBID: 33, LastYear: 1999},
 	{Slug: "snes", Name: "Super Nintendo Entertainment System", Short: "SNES", IGDBID: 19, LastYear: 1998},
-	{Slug: "genesis", Name: "Sega Genesis", Short: "Genesis", IGDBID: 29, LastYear: 1997},
-	{Slug: "tg16", Name: "TurboGrafx-16", Short: "TG16", IGDBID: 86, LastYear: 1994},
+	{Slug: "n64", Name: "Nintendo 64", Short: "N64", IGDBID: 4, LastYear: 2002},
+	{Slug: "gbc", Name: "Game Boy Color", Short: "GBC", IGDBID: 22, LastYear: 2003},
+	{Slug: "gba", Name: "Game Boy Advance", Short: "GBA", IGDBID: 24, LastYear: 2008},
+	{Slug: "gamecube", Name: "Nintendo GameCube", Short: "GCN", IGDBID: 21, LastYear: 2007},
 }
 
 func platformBySlug(slug string) *Platform {

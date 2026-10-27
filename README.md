@@ -1,11 +1,14 @@
 # retrocatalog
 
-A small static catalog browser for four retro platforms:
+A small static catalog browser for seven Nintendo platforms:
 
 - Nintendo Entertainment System
+- Game Boy
 - Super Nintendo Entertainment System
-- Sega Genesis
-- TurboGrafx-16
+- Nintendo 64
+- Game Boy Color
+- Game Boy Advance
+- Nintendo GameCube
 
 Game metadata and artwork come from the [IGDB API](https://api-docs.igdb.com/).
 The catalog is normalized once, committed as a snapshot, and rendered as a
@@ -89,8 +92,9 @@ uploads it as a Pages artifact.
 - Only `main_game` and `port` entries. Records marked Released, or with no
   IGDB status, are included; other statuses are excluded.
 - Releases dated after a platform's commercial lifespan are treated as homebrew,
-  bootlegs, or modern re-releases and excluded: NES and TG16 through 1994, SNES
-  through 1998, Genesis through 1997.
+  bootlegs, or modern re-releases and excluded. The cutoffs are NES 1994, Game
+  Boy 1999, SNES 1998, Nintendo 64 2002, Game Boy Color 2003, Game Boy Advance
+  2008, and GameCube 2007.
 - Entries without cover art are excluded. Screenshots are optional.
 - A North American release is preferred; a Worldwide release is used as a
   fallback. The earliest eligible date supplies the year.
@@ -146,8 +150,8 @@ required.
 ## Attribution
 
 Game data and images are provided by [IGDB.com](https://www.igdb.com/). This
-project is not affiliated with IGDB, Twitch, Nintendo, Sega, or NEC. All game
-titles, cover art, and screenshots belong to their respective owners.
+project is not affiliated with IGDB, Twitch, or Nintendo. All game titles, cover
+art, and screenshots belong to their respective owners.
 
 ## License
 
