@@ -14,6 +14,7 @@ func testGame(id, name, platform string, year int, genres ...string) Game {
 		ReleaseYear: year,
 		Genres:      genres,
 		RatingScale: 5,
+		BoxArt:      "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/" + id + ".jpg",
 	}
 }
 
@@ -36,10 +37,12 @@ func TestBuildCatalog(t *testing.T) {
 			Publisher: "Pub B", Developer: "Dev B",
 			Genres: []string{"Shooter"},
 			Rating: 3.2, RatingCount: 50, RatingScale: 5,
+			BoxArt: "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/beta.jpg",
 		},
 		{
 			ID: "igdb-3-genesis", Name: "Gamma", Platform: "genesis", ReleaseYear: 1990,
 			Genres: []string{"Platformer"},
+			BoxArt: "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/gamma.jpg",
 		},
 	}
 
@@ -191,6 +194,47 @@ func TestBuildCatalogRejectsForeignArtHost(t *testing.T) {
 	game.BoxArt = "https://example.com/a.jpg"
 	if _, err := buildCatalog([]Game{game}); err == nil {
 		t.Fatal("expected disallowed art host error")
+	}
+}
+
+func TestBuildCatalogExcludesLateReleases(t *testing.T) {
+	games := []Game{
+		testGame("igdb-1-nes", "Last Licensed", "nes", 1994, "Action"),
+		testGame("igdb-2-nes", "Homebrew", "nes", 1995, "Action"),
+		testGame("igdb-3-genesis", "Last Licensed", "genesis", 1997, "Action"),
+		testGame("igdb-4-genesis", "Unreleased", "genesis", 2027, "Action"),
+	}
+
+	catalog, err := buildCatalog(games)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if catalog.Total() != 2 {
+		t.Fatalf("Total() = %d, want 2", catalog.Total())
+	}
+	for _, id := range []string{"igdb-2-nes", "igdb-4-genesis"} {
+		if catalog.ByID(id) != nil {
+			t.Errorf("ByID(%s) should be nil", id)
+		}
+	}
+}
+
+func TestBuildCatalogRequiresBoxArt(t *testing.T) {
+	games := []Game{
+		testGame("igdb-1-nes", "With Art", "nes", 1990, "Action"),
+		testGame("igdb-2-nes", "No Art", "nes", 1990, "Action"),
+	}
+	games[1].BoxArt = ""
+
+	catalog, err := buildCatalog(games)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if catalog.Total() != 1 {
+		t.Fatalf("Total() = %d, want 1", catalog.Total())
+	}
+	if catalog.ByID("igdb-2-nes") != nil {
+		t.Fatal("ByID(igdb-2-nes) should be nil")
 	}
 }
 

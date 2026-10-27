@@ -88,6 +88,10 @@ uploads it as a Pages artifact.
 - One tile per platform release, with ID `igdb-<gameID>-<platform>`.
 - Only `main_game` and `port` entries. Records marked Released, or with no
   IGDB status, are included; other statuses are excluded.
+- Releases dated after a platform's commercial lifespan are treated as homebrew,
+  bootlegs, or modern re-releases and excluded: NES and TG16 through 1994, SNES
+  through 1998, Genesis through 1997.
+- Entries without cover art are excluded. Screenshots are optional.
 - A North American release is preferred; a Worldwide release is used as a
   fallback. The earliest eligible date supplies the year.
 - Canceled and rumored release dates are ignored.

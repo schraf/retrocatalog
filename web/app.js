@@ -71,8 +71,9 @@
     query: "",
     platforms: new Set(),
     genres: new Set(),
-    yearMin: 1985,
-    yearMax: 1994,
+    // The year range is resolved from the catalog facets in applySavedState().
+    yearMin: null,
+    yearMax: null,
     minRating: 0,
     favoritesOnly: false,
     sort: "name",
@@ -154,38 +155,45 @@
   }
 
   function applySavedState() {
-    if (!saved || typeof saved !== "object") return;
+    const savedState = saved && typeof saved === "object" ? saved : {};
 
-    if (typeof saved.query === "string") {
-      state.query = saved.query;
+    if (typeof savedState.query === "string") {
+      state.query = savedState.query;
     }
-    if (Array.isArray(saved.platforms)) {
+    if (Array.isArray(savedState.platforms)) {
       const known = new Set(facets.platforms.map((platform) => platform.slug));
-      state.platforms = new Set(saved.platforms.filter((slug) => known.has(slug)));
+      state.platforms = new Set(savedState.platforms.filter((slug) => known.has(slug)));
     }
-    if (Array.isArray(saved.genres)) {
+    if (Array.isArray(savedState.genres)) {
       const known = new Set(facets.genres.map((genre) => genre.genre));
-      state.genres = new Set(saved.genres.filter((genre) => known.has(genre)));
+      state.genres = new Set(savedState.genres.filter((genre) => known.has(genre)));
     }
 
-    const yearMin = Number.isFinite(saved.yearMin) ? saved.yearMin : facets.year_min;
-    const yearMax = Number.isFinite(saved.yearMax) ? saved.yearMax : facets.year_max;
+    // Early builds hardcoded a 1985-1994 range, so treat that exact pair as a
+    // stale default instead of a deliberate filter.
+    const legacyDefaultRange = savedState.yearMin === 1985 && savedState.yearMax === 1994;
+    const yearMin = Number.isFinite(savedState.yearMin) ? savedState.yearMin : facets.year_min;
+    const yearMax = Number.isFinite(savedState.yearMax) ? savedState.yearMax : facets.year_max;
     state.yearMin = clamp(Math.trunc(yearMin), facets.year_min, facets.year_max);
     state.yearMax = clamp(Math.trunc(yearMax), facets.year_min, facets.year_max);
+    if (legacyDefaultRange) {
+      state.yearMin = facets.year_min;
+      state.yearMax = facets.year_max;
+    }
     if (state.yearMin > state.yearMax) {
       [state.yearMin, state.yearMax] = [state.yearMax, state.yearMin];
     }
 
-    if (Number.isFinite(saved.minRating)) {
-      state.minRating = clamp(saved.minRating, 0, 5);
+    if (Number.isFinite(savedState.minRating)) {
+      state.minRating = clamp(savedState.minRating, 0, 5);
     }
-    state.favoritesOnly = Boolean(saved.favoritesOnly);
+    state.favoritesOnly = Boolean(savedState.favoritesOnly);
 
-    if (SORTS.includes(saved.sort)) {
-      state.sort = saved.sort;
+    if (SORTS.includes(savedState.sort)) {
+      state.sort = savedState.sort;
     }
-    if (saved.dir === 1 || saved.dir === -1) {
-      state.dir = saved.dir;
+    if (savedState.dir === 1 || savedState.dir === -1) {
+      state.dir = savedState.dir;
     }
   }
 

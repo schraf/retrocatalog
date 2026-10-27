@@ -113,6 +113,11 @@ func buildCatalog(games []Game) (*Catalog, error) {
 		if _, dup := c.byID[g.ID]; dup {
 			return nil, fmt.Errorf("duplicate id %q (%q)", g.ID, g.Name)
 		}
+		if platform := platformBySlug(g.Platform); g.ReleaseYear > platform.LastYear {
+			// Treat anything after the commercial lifespan as homebrew, a
+			// bootleg, or a modern re-release and leave it out.
+			continue
+		}
 
 		g.RatingScale = 5
 		if g.Rating < 0 {
@@ -137,6 +142,11 @@ func buildCatalog(games []Game) (*Catalog, error) {
 			return nil, fmt.Errorf("%q screenshot: %w", g.Name, err)
 		}
 		g.Screenshots = screenshots
+
+		if g.BoxArt == "" {
+			// The grid depends on cover art; skip entries that lack it.
+			continue
+		}
 
 		c.byID[g.ID] = g
 		c.games = append(c.games, g)
