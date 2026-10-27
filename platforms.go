@@ -12,6 +12,10 @@ type Platform struct {
 	Name   string
 	Short  string
 	IGDBID int
+	// LastYear is the final year of commercial releases. Later entries are
+	// homebrew, bootlegs, or modern re-releases and are excluded from the
+	// catalog.
+	LastYear int
 }
 
 // PlatformCount is a facet used by the platform filter chips.
@@ -25,10 +29,10 @@ type PlatformCount struct {
 // supportedPlatforms is the fixed platform set for this catalog. The IGDB IDs
 // are stable enum values (see the IGDB enums-to-tables migration).
 var supportedPlatforms = []Platform{
-	{Slug: "nes", Name: "Nintendo Entertainment System", Short: "NES", IGDBID: 18},
-	{Slug: "snes", Name: "Super Nintendo Entertainment System", Short: "SNES", IGDBID: 19},
-	{Slug: "genesis", Name: "Sega Genesis", Short: "Genesis", IGDBID: 29},
-	{Slug: "tg16", Name: "TurboGrafx-16", Short: "TG16", IGDBID: 86},
+	{Slug: "nes", Name: "Nintendo Entertainment System", Short: "NES", IGDBID: 18, LastYear: 1994},
+	{Slug: "snes", Name: "Super Nintendo Entertainment System", Short: "SNES", IGDBID: 19, LastYear: 1998},
+	{Slug: "genesis", Name: "Sega Genesis", Short: "Genesis", IGDBID: 29, LastYear: 1997},
+	{Slug: "tg16", Name: "TurboGrafx-16", Short: "TG16", IGDBID: 86, LastYear: 1994},
 }
 
 func platformBySlug(slug string) *Platform {
