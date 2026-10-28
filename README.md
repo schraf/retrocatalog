@@ -119,6 +119,12 @@ uploads it as a Pages artifact.
 - The detail panel shows the selected source and, when both exist, the raw
   LaunchBox and IGDB scores and vote counts. The grid index also carries the
   selected source.
+- Genres come from LaunchBox when the matched record has them, with IGDB genres
+  as the fallback. Both vocabularies are folded into a fixed set of twelve
+  genres: Action, Adventure, Platformer, Shooter, Fighting, RPG, Strategy,
+  Simulation, Racing, Sports, Puzzle, and Casual. Source order is preserved
+  after mapping, duplicate genres are removed, and labels that do not fit the
+  set (for example IGDB's `Indie`) are dropped.
 - Duplicate `(platform, normalized title)` entries are merged, preferring a
   `main_game`, then more ratings, then a higher rating, then the lower IGDB ID.
 - Compilation sub-games (Action 52 and Kirby Super Star), promotional or

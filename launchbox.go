@@ -24,8 +24,8 @@ const launchBoxMetadataURL = "https://gamesdb.launchbox-app.com/Metadata.zip"
 const minRatingVotes = 5
 
 // launchBoxGame is the subset of a LaunchBox metadata record needed for
-// ratings. The bulk export contains many more fields; they are decoded and
-// discarded.
+// ratings and genres. The bulk export contains many more fields; they are
+// decoded and discarded.
 type launchBoxGame struct {
 	DatabaseID  int
 	Name        string
@@ -34,6 +34,7 @@ type launchBoxGame struct {
 	ReleaseType string
 	Rating      float64
 	RatingCount int
+	Genres      []string
 }
 
 // launchBoxClient downloads and parses the LaunchBox Games Database bulk
@@ -126,6 +127,7 @@ type launchBoxRecord struct {
 	CommunityRating      float64 `xml:"CommunityRating"`
 	CommunityRatingCount int     `xml:"CommunityRatingCount"`
 	Platform             string  `xml:"Platform"`
+	Genres               string  `xml:"Genres"`
 }
 
 func parseLaunchBoxFile(path string) ([]launchBoxGame, launchBoxParseStats, error) {
@@ -233,10 +235,26 @@ func parseLaunchBoxXML(r io.Reader) ([]launchBoxGame, launchBoxParseStats, error
 			ReleaseType: releaseType,
 			Rating:      rating,
 			RatingCount: count,
+			Genres:      splitLaunchBoxGenres(record.Genres),
 		})
 		stats.Kept++
 	}
 	return games, stats, nil
+}
+
+// splitLaunchBoxGenres parses LaunchBox's semicolon-separated genre field.
+func splitLaunchBoxGenres(raw string) []string {
+	var genres []string
+	seen := make(map[string]bool)
+	for _, part := range strings.Split(raw, ";") {
+		genre := strings.TrimSpace(part)
+		if genre == "" || seen[genre] {
+			continue
+		}
+		seen[genre] = true
+		genres = append(genres, genre)
+	}
+	return genres
 }
 
 func launchBoxPlatformSlug(name string) string {
@@ -457,19 +475,21 @@ func yearDistance(a, b int) int {
 }
 
 type launchBoxMergeStats struct {
-	Games     int
-	Matched   int
-	Exact     int
-	Alias     int
-	Fuzzy     int
-	LaunchBox int
-	IGDB      int
-	Unrated   int
+	Games           int
+	Matched         int
+	Exact           int
+	Alias           int
+	Fuzzy           int
+	LaunchBox       int
+	IGDB            int
+	Unrated         int
+	LaunchBoxGenres int
 }
 
-// mergeLaunchBoxRatings attaches LaunchBox ratings and selects the source used
-// by the catalog. Both raw scores stay on the record for the detail panel.
-func mergeLaunchBoxRatings(games []Game, entries []launchBoxGame) launchBoxMergeStats {
+// mergeLaunchBoxData attaches LaunchBox ratings and genres, then selects the
+// rating source used by the catalog. Both raw scores stay on the record for the
+// detail panel.
+func mergeLaunchBoxData(games []Game, entries []launchBoxGame) launchBoxMergeStats {
 	matchers := make(map[string]*launchBoxMatcher, len(supportedPlatforms))
 	for _, platform := range supportedPlatforms {
 		matchers[platform.Slug] = newLaunchBoxMatcher(platform.Slug, entries)
@@ -490,6 +510,10 @@ func mergeLaunchBoxRatings(games []Game, entries []launchBoxGame) launchBoxMerge
 				game.LaunchBoxID = candidate.game.DatabaseID
 				game.LaunchBoxRating = candidate.game.Rating
 				game.LaunchBoxRatingCount = candidate.game.RatingCount
+				if len(candidate.game.Genres) > 0 {
+					game.Genres = candidate.game.Genres
+					stats.LaunchBoxGenres++
+				}
 				stats.Matched++
 				switch kind {
 				case matchExact:

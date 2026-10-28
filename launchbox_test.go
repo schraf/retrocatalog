@@ -8,6 +8,7 @@ import (
 	"net/http/httptest"
 	"os"
 	"path/filepath"
+	"strings"
 	"testing"
 )
 
@@ -22,6 +23,7 @@ const launchBoxFixtureXML = `<?xml version="1.0" encoding="utf-8"?>
     <CommunityRating>4.73</CommunityRating>
     <CommunityRatingCount>1106</CommunityRatingCount>
     <Platform>Nintendo Entertainment System</Platform>
+    <Genres>Action; Platform</Genres>
   </Game>
   <Game>
     <Name>Unlicensed Game</Name>
@@ -107,7 +109,8 @@ func TestParseLaunchBoxXML(t *testing.T) {
 		t.Fatalf("games = %#v", games)
 	}
 	if game := byName["Super Mario Bros. 3"]; game.DatabaseID != 100 || game.Platform != "nes" ||
-		game.ReleaseYear != 1990 || game.Rating != 4.73 || game.RatingCount != 1106 {
+		game.ReleaseYear != 1990 || game.Rating != 4.73 || game.RatingCount != 1106 ||
+		len(game.Genres) != 2 || game.Genres[0] != "Action" || game.Genres[1] != "Platform" {
 		t.Fatalf("SMB3 = %#v", game)
 	}
 	if game := byName["Game Boy Game"]; game.Platform != "gb" || game.ReleaseYear != 1992 || game.Rating != 0 {
@@ -412,6 +415,64 @@ func TestLaunchBoxMatcherThreeD(t *testing.T) {
 	}
 }
 
+func TestSplitLaunchBoxGenres(t *testing.T) {
+	tests := map[string][]string{
+		"":                             nil,
+		"Action":                       {"Action"},
+		"Action; Platform":             {"Action", "Platform"},
+		" Action ;Platform;  ;Action ": {"Action", "Platform"},
+	}
+	for raw, want := range tests {
+		got := splitLaunchBoxGenres(raw)
+		if len(got) != len(want) {
+			t.Fatalf("splitLaunchBoxGenres(%q) = %#v, want %#v", raw, got, want)
+		}
+		for i := range want {
+			if got[i] != want[i] {
+				t.Fatalf("splitLaunchBoxGenres(%q) = %#v, want %#v", raw, got, want)
+			}
+		}
+	}
+}
+
+func TestMergeLaunchBoxDataUsesLaunchBoxGenres(t *testing.T) {
+	games := []Game{{
+		ID: "igdb-1-nes", Name: "Contra", Platform: "nes", ReleaseYear: 1988,
+		Genres: []string{"Shooter", "Adventure"},
+	}}
+	entries := []launchBoxGame{{
+		DatabaseID: 200, Name: "Contra", Platform: "nes", ReleaseYear: 1988,
+		Rating: 4, RatingCount: 10, Genres: []string{"Platform", "Shooter"},
+	}}
+
+	stats := mergeLaunchBoxData(games, entries)
+	if stats.LaunchBoxGenres != 1 {
+		t.Fatalf("stats = %#v", stats)
+	}
+	if got := strings.Join(games[0].Genres, "/"); got != "Platform/Shooter" {
+		t.Fatalf("genres = %q, want LaunchBox genres", got)
+	}
+}
+
+func TestMergeLaunchBoxDataKeepsIGDBGenresWhenLaunchBoxEmpty(t *testing.T) {
+	games := []Game{{
+		ID: "igdb-1-nes", Name: "Contra", Platform: "nes", ReleaseYear: 1988,
+		Genres: []string{"Shooter", "Platform"},
+	}}
+	entries := []launchBoxGame{{
+		DatabaseID: 200, Name: "Contra", Platform: "nes", ReleaseYear: 1988,
+		Rating: 4, RatingCount: 10,
+	}}
+
+	stats := mergeLaunchBoxData(games, entries)
+	if stats.LaunchBoxGenres != 0 {
+		t.Fatalf("stats = %#v", stats)
+	}
+	if got := strings.Join(games[0].Genres, "/"); got != "Shooter/Platform" {
+		t.Fatalf("genres = %q, want IGDB genres preserved", got)
+	}
+}
+
 func TestMergeLaunchBoxRatingsPrimary(t *testing.T) {
 	games := []Game{{
 		ID: "igdb-1-nes", Name: "Super Mario Bros. 3", Platform: "nes", ReleaseYear: 1990,
@@ -422,7 +483,7 @@ func TestMergeLaunchBoxRatingsPrimary(t *testing.T) {
 		Rating: 4.73, RatingCount: 1106,
 	}}
 
-	stats := mergeLaunchBoxRatings(games, entries)
+	stats := mergeLaunchBoxData(games, entries)
 	game := games[0]
 	if stats.LaunchBox != 1 || stats.Matched != 1 {
 		t.Fatalf("stats = %#v", stats)
@@ -448,7 +509,7 @@ func TestMergeLaunchBoxRatingsIGDBFallbackForThinLaunchBox(t *testing.T) {
 		Rating: 5, RatingCount: 2,
 	}}
 
-	mergeLaunchBoxRatings(games, entries)
+	mergeLaunchBoxData(games, entries)
 	game := games[0]
 	if game.RatingSource != "igdb" || game.Rating != 3.93 || game.RatingCount != 81 {
 		t.Fatalf("chosen rating = %v/%d from %q", game.Rating, game.RatingCount, game.RatingSource)
@@ -467,7 +528,7 @@ func TestMergeLaunchBoxRatingsThinLaunchBoxFillsGap(t *testing.T) {
 		Rating: 4.52, RatingCount: 3,
 	}}
 
-	mergeLaunchBoxRatings(games, entries)
+	mergeLaunchBoxData(games, entries)
 	game := games[0]
 	if game.RatingSource != "launchbox" || game.Rating != 4.52 || game.RatingCount != 3 {
 		t.Fatalf("chosen rating = %v/%d from %q", game.Rating, game.RatingCount, game.RatingSource)
@@ -478,7 +539,7 @@ func TestMergeLaunchBoxRatingsUnrated(t *testing.T) {
 	games := []Game{{
 		ID: "igdb-1-gb", Name: "Obscure Game", Platform: "gb", ReleaseYear: 1995,
 	}}
-	mergeLaunchBoxRatings(games, nil)
+	mergeLaunchBoxData(games, nil)
 	game := games[0]
 	if game.Rating != 0 || game.RatingCount != 0 || game.RatingSource != "" {
 		t.Fatalf("unrated game = %#v", game)

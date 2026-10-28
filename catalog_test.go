@@ -278,3 +278,79 @@ func TestBuildCatalogAcceptsMissingOptionalFields(t *testing.T) {
 		t.Fatalf("genres = %#v, want empty non-nil slice", game.Genres)
 	}
 }
+
+func TestCanonicalGenreAliases(t *testing.T) {
+	tests := map[string]string{
+		"Stealth":                    "Action",
+		"Horror":                     "Action",
+		"Pinball":                    "Action",
+		"Sandbox":                    "Action",
+		"Platform":                   "Platformer",
+		"Beat 'em Up":                "Fighting",
+		"Role-Playing":               "RPG",
+		"Life Simulation":            "Simulation",
+		"Flight Simulator":           "Simulation",
+		"Board Game":                 "Casual",
+		"Compilation":                "Casual",
+		"Sport":                      "Sports",
+		"Role-playing (RPG)":         "RPG",
+		"Hack and slash/Beat 'em up": "Fighting",
+		"Simulator":                  "Simulation",
+		"Real Time Strategy (RTS)":   "Strategy",
+		"Turn-based strategy (TBS)":  "Strategy",
+		"Tactical":                   "Strategy",
+		"Card & Board Game":          "Casual",
+		"Quiz/Trivia":                "Casual",
+		"Point-and-click":            "Adventure",
+		"Visual Novel":               "Adventure",
+		"Arcade":                     "Action",
+		"Indie":                      "",
+		"Action":                     "Action",
+		"action":                     "Action",
+		"Unknown Label":              "",
+	}
+	for input, want := range tests {
+		if got := canonicalGenre(input); got != want {
+			t.Errorf("canonicalGenre(%q) = %q, want %q", input, got, want)
+		}
+	}
+}
+
+func TestGenreAliasesTargetCanonicalGenres(t *testing.T) {
+	canonical := make(map[string]bool, len(canonicalGenres))
+	for _, genre := range canonicalGenres {
+		canonical[genre] = true
+	}
+	for alias, target := range genreAliases {
+		if target == "" {
+			continue
+		}
+		if !canonical[target] {
+			t.Errorf("genre alias %q maps to non-canonical %q", alias, target)
+		}
+	}
+}
+
+func TestCanonicalGenreListIsUnique(t *testing.T) {
+	seen := make(map[string]bool, len(canonicalGenres))
+	for _, genre := range canonicalGenres {
+		if seen[genre] {
+			t.Errorf("duplicate canonical genre %q", genre)
+		}
+		seen[genre] = true
+	}
+}
+
+func TestBuildCatalogCanonicalizesGenres(t *testing.T) {
+	games := []Game{
+		testGame("igdb-1-nes", "Mapped", "nes", 1988, "Platform", "Action", "Horror", "Beat 'em Up", "Indie"),
+	}
+	catalog, err := buildCatalog(games)
+	if err != nil {
+		t.Fatal(err)
+	}
+	game := catalog.ByID("igdb-1-nes")
+	if got := strings.Join(game.Genres, "/"); got != "Platformer/Action/Fighting" {
+		t.Fatalf("genres = %q, want canonicalized and deduplicated", got)
+	}
+}

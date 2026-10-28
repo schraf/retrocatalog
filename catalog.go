@@ -267,11 +267,91 @@ func buildCatalog(games []Game) (*Catalog, error) {
 	return c, nil
 }
 
+// canonicalGenres is the fixed genre vocabulary used by the catalog. Both
+// LaunchBox and IGDB labels are folded into these genres so the facet list
+// stays small and consistent.
+var canonicalGenres = []string{
+	"Action",
+	"Adventure",
+	"Platformer",
+	"Shooter",
+	"Fighting",
+	"RPG",
+	"Strategy",
+	"Simulation",
+	"Racing",
+	"Sports",
+	"Puzzle",
+	"Casual",
+}
+
+// genreAliases maps source-specific labels onto canonicalGenres. An empty
+// target drops the label.
+var genreAliases = map[string]string{
+	// LaunchBox labels.
+	"Stealth":      "Action",
+	"Horror":       "Action",
+	"Pinball":      "Action",
+	"Sandbox":      "Action",
+	"Platform":     "Platformer",
+	"Beat 'em Up":  "Fighting",
+	"Role-Playing": "RPG",
+
+	"Life Simulation":                        "Simulation",
+	"Construction and Management Simulation": "Simulation",
+	"Flight Simulator":                       "Simulation",
+	"Vehicle Simulation":                     "Simulation",
+
+	"Party":       "Casual",
+	"Music":       "Casual",
+	"Board Game":  "Casual",
+	"Casino":      "Casual",
+	"Quiz":        "Casual",
+	"Education":   "Casual",
+	"Compilation": "Casual",
+
+	// IGDB labels.
+	"Sport":                      "Sports",
+	"Role-playing (RPG)":         "RPG",
+	"Hack and slash/Beat 'em up": "Fighting",
+	"Simulator":                  "Simulation",
+	"Real Time Strategy (RTS)":   "Strategy",
+	"Turn-based strategy (TBS)":  "Strategy",
+	"Tactical":                   "Strategy",
+	"MOBA":                       "Strategy",
+	"Card & Board Game":          "Casual",
+	"Quiz/Trivia":                "Casual",
+	"Point-and-click":            "Adventure",
+	"Visual Novel":               "Adventure",
+	"Arcade":                     "Action",
+	"Indie":                      "",
+}
+
+var canonicalGenreIndex = func() map[string]string {
+	index := make(map[string]string, len(canonicalGenres))
+	for _, genre := range canonicalGenres {
+		index[strings.ToLower(genre)] = genre
+	}
+	return index
+}()
+
+// canonicalGenre folds a source label into the canonical vocabulary. Unknown
+// labels are dropped so the facet list cannot grow beyond canonicalGenres.
+func canonicalGenre(genre string) string {
+	if canonical, ok := genreAliases[genre]; ok {
+		return canonical
+	}
+	if canonical, ok := canonicalGenreIndex[strings.ToLower(genre)]; ok {
+		return canonical
+	}
+	return ""
+}
+
 func normalizeGenres(genres []string) []string {
 	out := make([]string, 0, len(genres))
 	seen := make(map[string]bool, len(genres))
 	for _, genre := range genres {
-		genre = strings.TrimSpace(genre)
+		genre = canonicalGenre(strings.TrimSpace(genre))
 		if genre == "" {
 			continue
 		}

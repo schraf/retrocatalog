@@ -43,9 +43,9 @@ func main() {
 			if err != nil {
 				return nil, err
 			}
-			stats := mergeLaunchBoxRatings(games, entries)
-			log.Printf("launchbox: matched %d/%d (exact %d, alias %d, fuzzy %d); ratings: %d LaunchBox, %d IGDB, %d unrated",
-				stats.Matched, stats.Games, stats.Exact, stats.Alias, stats.Fuzzy, stats.LaunchBox, stats.IGDB, stats.Unrated)
+			stats := mergeLaunchBoxData(games, entries)
+			log.Printf("launchbox: matched %d/%d (exact %d, alias %d, fuzzy %d); ratings: %d LaunchBox, %d IGDB, %d unrated; genres: %d LaunchBox",
+				stats.Matched, stats.Games, stats.Exact, stats.Alias, stats.Fuzzy, stats.LaunchBox, stats.IGDB, stats.Unrated, stats.LaunchBoxGenres)
 			return games, nil
 		}
 	}
