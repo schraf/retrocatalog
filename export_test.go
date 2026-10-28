@@ -115,13 +115,13 @@ func TestExportStaticRefusesCatalogDirectory(t *testing.T) {
 	}
 
 	dir := t.TempDir()
-	if err := os.WriteFile(filepath.Join(dir, "catalog-v2.json"), []byte("[]"), 0o644); err != nil {
+	if err := os.WriteFile(filepath.Join(dir, "catalog-v3.json"), []byte("[]"), 0o644); err != nil {
 		t.Fatal(err)
 	}
 	if err := exportStatic(dir, webRoot, catalog); err == nil {
 		t.Fatal("exportStatic(catalog dir) = nil, want an error")
 	}
-	if _, err := os.Stat(filepath.Join(dir, "catalog-v2.json")); err != nil {
+	if _, err := os.Stat(filepath.Join(dir, "catalog-v3.json")); err != nil {
 		t.Fatalf("catalog snapshot was removed: %v", err)
 	}
 }

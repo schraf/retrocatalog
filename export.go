@@ -33,7 +33,7 @@ func exportStatic(outDir string, webRoot fs.FS, catalog *Catalog) error {
 	if _, err := os.Stat(filepath.Join(outDir, ".git")); err == nil {
 		return fmt.Errorf("refusing to replace %s: it contains a .git directory", outDir)
 	}
-	if _, err := os.Stat(filepath.Join(outDir, "catalog-v2.json")); err == nil {
+	if _, err := os.Stat(filepath.Join(outDir, "catalog-v3.json")); err == nil {
 		return fmt.Errorf("refusing to replace %s: it contains the catalog snapshot", outDir)
 	}
 

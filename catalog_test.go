@@ -63,8 +63,8 @@ func TestBuildCatalog(t *testing.T) {
 	if catalog.yearMin != 1986 || catalog.yearMax != 1996 {
 		t.Fatalf("year range = %d-%d, want 1986-1996", catalog.yearMin, catalog.yearMax)
 	}
-	if catalog.ratingMin != 0 || catalog.ratingMax != 4.1 {
-		t.Fatalf("rating range = %v-%v, want 0-4.1", catalog.ratingMin, catalog.ratingMax)
+	if catalog.ratingMin != 3.2 || catalog.ratingMax != 4.1 {
+		t.Fatalf("rating range = %v-%v, want 3.2-4.1 for rated games only", catalog.ratingMin, catalog.ratingMax)
 	}
 
 	genres := catalog.Genres()
@@ -99,17 +99,20 @@ func TestBuildCatalog(t *testing.T) {
 	if math.Abs(catalog.ratingMean-3.8) > 1e-9 {
 		t.Fatalf("ratingMean = %v, want 3.8", catalog.ratingMean)
 	}
-	if math.Abs(index[0].WeightedRating-695.0/175.0) > 1e-9 {
-		t.Fatalf("Alpha weighted rating = %v, want %v", index[0].WeightedRating, 695.0/175.0)
+	if math.Abs(catalog.ratingMeans["nes"]-4.1) > 1e-9 || math.Abs(catalog.ratingMeans["snes"]-3.2) > 1e-9 {
+		t.Fatalf("platform means = %v, want nes 4.1 snes 3.2", catalog.ratingMeans)
+	}
+	if math.Abs(index[0].WeightedRating-4.1) > 1e-9 {
+		t.Fatalf("Alpha weighted rating = %v, want 4.1", index[0].WeightedRating)
 	}
 	if index[0].BoxArt != games[0].BoxArt {
 		t.Fatalf("index[0].BoxArt = %q, want %q", index[0].BoxArt, games[0].BoxArt)
 	}
-	if math.Abs(index[1].WeightedRating-3.56) > 1e-9 {
-		t.Fatalf("Beta weighted rating = %v, want 3.56", index[1].WeightedRating)
+	if math.Abs(index[1].WeightedRating-3.2) > 1e-9 {
+		t.Fatalf("Beta weighted rating = %v, want 3.2", index[1].WeightedRating)
 	}
-	if math.Abs(index[2].WeightedRating-3.8) > 1e-9 {
-		t.Fatalf("Gamma weighted rating = %v, want 3.8", index[2].WeightedRating)
+	if index[2].WeightedRating != 0 {
+		t.Fatalf("Gamma weighted rating = %v, want 0 for an unrated game", index[2].WeightedRating)
 	}
 }
 
@@ -273,5 +276,81 @@ func TestBuildCatalogAcceptsMissingOptionalFields(t *testing.T) {
 	}
 	if game.Genres == nil || len(game.Genres) != 0 {
 		t.Fatalf("genres = %#v, want empty non-nil slice", game.Genres)
+	}
+}
+
+func TestCanonicalGenreAliases(t *testing.T) {
+	tests := map[string]string{
+		"Stealth":                    "Action",
+		"Horror":                     "Action",
+		"Pinball":                    "Action",
+		"Sandbox":                    "Action",
+		"Platform":                   "Platformer",
+		"Beat 'em Up":                "Fighting",
+		"Role-Playing":               "RPG",
+		"Life Simulation":            "Simulation",
+		"Flight Simulator":           "Simulation",
+		"Board Game":                 "Casual",
+		"Compilation":                "Casual",
+		"Sport":                      "Sports",
+		"Role-playing (RPG)":         "RPG",
+		"Hack and slash/Beat 'em up": "Fighting",
+		"Simulator":                  "Simulation",
+		"Real Time Strategy (RTS)":   "Strategy",
+		"Turn-based strategy (TBS)":  "Strategy",
+		"Tactical":                   "Strategy",
+		"Card & Board Game":          "Casual",
+		"Quiz/Trivia":                "Casual",
+		"Point-and-click":            "Adventure",
+		"Visual Novel":               "Adventure",
+		"Arcade":                     "Action",
+		"Indie":                      "",
+		"Action":                     "Action",
+		"action":                     "Action",
+		"Unknown Label":              "",
+	}
+	for input, want := range tests {
+		if got := canonicalGenre(input); got != want {
+			t.Errorf("canonicalGenre(%q) = %q, want %q", input, got, want)
+		}
+	}
+}
+
+func TestGenreAliasesTargetCanonicalGenres(t *testing.T) {
+	canonical := make(map[string]bool, len(canonicalGenres))
+	for _, genre := range canonicalGenres {
+		canonical[genre] = true
+	}
+	for alias, target := range genreAliases {
+		if target == "" {
+			continue
+		}
+		if !canonical[target] {
+			t.Errorf("genre alias %q maps to non-canonical %q", alias, target)
+		}
+	}
+}
+
+func TestCanonicalGenreListIsUnique(t *testing.T) {
+	seen := make(map[string]bool, len(canonicalGenres))
+	for _, genre := range canonicalGenres {
+		if seen[genre] {
+			t.Errorf("duplicate canonical genre %q", genre)
+		}
+		seen[genre] = true
+	}
+}
+
+func TestBuildCatalogCanonicalizesGenres(t *testing.T) {
+	games := []Game{
+		testGame("igdb-1-nes", "Mapped", "nes", 1988, "Platform", "Action", "Horror", "Beat 'em Up", "Indie"),
+	}
+	catalog, err := buildCatalog(games)
+	if err != nil {
+		t.Fatal(err)
+	}
+	game := catalog.ByID("igdb-1-nes")
+	if got := strings.Join(game.Genres, "/"); got != "Platformer/Action/Fighting" {
+		t.Fatalf("genres = %q, want canonicalized and deduplicated", got)
 	}
 }

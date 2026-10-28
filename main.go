@@ -15,9 +15,10 @@ import (
 var webFiles embed.FS
 
 func main() {
-	cacheDir := flag.String("cache", "data", "directory containing catalog-v2.json")
+	cacheDir := flag.String("cache", "data", "directory containing catalog-v3.json")
 	exportDir := flag.String("export", "dist", "directory to write the static site")
-	refresh := flag.Bool("refresh", false, "ignore a fresh catalog cache and fetch from IGDB")
+	refresh := flag.Bool("refresh", false, "ignore a fresh catalog cache and fetch from IGDB and LaunchBox")
+	launchBoxMetadata := flag.String("launchbox-metadata", "", "local LaunchBox Metadata.xml or .zip; downloads the current export when empty")
 	flag.Parse()
 
 	if err := loadDotEnv(".env"); err != nil {
@@ -31,8 +32,22 @@ func main() {
 	clientSecret := os.Getenv("IGDB_CLIENT_SECRET")
 	var fetch fetchFunc
 	if clientID != "" && clientSecret != "" {
-		client := newIGDBClient(clientID, clientSecret)
-		fetch = client.fetchCatalog
+		igdbClient := newIGDBClient(clientID, clientSecret)
+		launchBox := newLaunchBoxClient(*launchBoxMetadata)
+		fetch = func(ctx context.Context) ([]Game, error) {
+			games, err := igdbClient.fetchCatalog(ctx)
+			if err != nil {
+				return nil, err
+			}
+			entries, err := launchBox.fetch(ctx)
+			if err != nil {
+				return nil, err
+			}
+			stats := mergeLaunchBoxData(games, entries)
+			log.Printf("launchbox: matched %d/%d (exact %d, alias %d, fuzzy %d); ratings: %d LaunchBox, %d IGDB, %d unrated; genres: %d LaunchBox",
+				stats.Matched, stats.Games, stats.Exact, stats.Alias, stats.Fuzzy, stats.LaunchBox, stats.IGDB, stats.Unrated, stats.LaunchBoxGenres)
+			return games, nil
+		}
 	}
 	if *refresh && fetch == nil {
 		log.Fatal("refresh requires IGDB_CLIENT_ID and IGDB_CLIENT_SECRET")

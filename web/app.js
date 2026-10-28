@@ -8,6 +8,7 @@
   const collator = new Intl.Collator(undefined, { numeric: true, sensitivity: "base" });
   const SORTS = ["name", "year", "top", "rating", "popular", "genre"];
   const DESCENDING_SORTS = new Set(["year", "top", "rating", "popular"]);
+  const RATING_SORTS = new Set(["top", "rating", "popular"]);
 
   const el = {
     search: document.getElementById("search"),
@@ -42,6 +43,7 @@
     detailTitle: document.getElementById("detail-title"),
     detailSub: document.getElementById("detail-sub"),
     detailRating: document.getElementById("detail-rating"),
+    detailSources: document.getElementById("detail-sources"),
     detailFacts: document.getElementById("detail-facts"),
     detailTags: document.getElementById("detail-tags"),
     detailOverview: document.getElementById("detail-overview"),
@@ -487,6 +489,13 @@
         primary = (a, b) => collator.compare(a.name, b.name);
     }
     list.sort((a, b) => {
+      // Unrated games stay at the end of rating-based sorts in either
+      // direction; they are in the catalog, but they are not ranked.
+      if (RATING_SORTS.has(state.sort)) {
+        const aUnrated = !a.rating_count || a.rating <= 0;
+        const bUnrated = !b.rating_count || b.rating <= 0;
+        if (aUnrated !== bUnrated) return aUnrated ? 1 : -1;
+      }
       const order = primary(a, b);
       if (order !== 0) return order * state.dir;
       return collator.compare(a.name, b.name);
@@ -699,7 +708,7 @@
     return "★".repeat(filled) + "☆".repeat(5 - filled);
   }
 
-  function renderRating(rating, ratingCount, scale) {
+  function renderRating(rating, ratingCount, scale, source) {
     el.detailRating.hidden = false;
     el.detailRating.replaceChildren();
 
@@ -720,15 +729,37 @@
 
     const count = document.createElement("span");
     count.className = "muted";
-    count.textContent = `${ratingCount} ratings`;
+    const sourceLabel = ratingSourceLabel(source);
+    count.textContent = sourceLabel
+      ? `${ratingCount.toLocaleString()} ratings · ${sourceLabel}`
+      : `${ratingCount.toLocaleString()} ratings`;
 
     el.detailRating.append(starSpan, value, count);
+  }
+
+  function ratingSourceLabel(source) {
+    if (source === "launchbox") return "LaunchBox";
+    if (source === "igdb") return "IGDB";
+    return "";
+  }
+
+  function renderSources(game) {
+    const parts = [];
+    if (game.launchbox_rating > 0 && game.launchbox_rating_count > 0) {
+      parts.push(`LaunchBox ${game.launchbox_rating.toFixed(2)} (${game.launchbox_rating_count.toLocaleString()})`);
+    }
+    if (game.igdb_rating > 0 && game.igdb_rating_count > 0) {
+      parts.push(`IGDB ${game.igdb_rating.toFixed(2)} (${game.igdb_rating_count.toLocaleString()})`);
+    }
+    el.detailSources.textContent = parts.join(" · ");
+    el.detailSources.hidden = parts.length < 2;
   }
 
   function fillPanelBasic(game) {
     el.detailTitle.textContent = game.name;
     el.detailSub.textContent = `${game.year} · ${platformName(game.platform)}`;
-    renderRating(game.rating, game.rating_count, 5);
+    renderRating(game.rating, game.rating_count, 5, game.rating_source);
+    renderSources({});
 
     el.detailFacts.replaceChildren();
     appendFact("Platform", platformName(game.platform));
@@ -756,7 +787,8 @@
   function fillPanelDetail(game) {
     el.detailTitle.textContent = game.name;
     el.detailSub.textContent = `${game.release_year} · ${platformName(game.platform)}`;
-    renderRating(game.rating, game.rating_count, game.rating_scale || 5);
+    renderRating(game.rating, game.rating_count, game.rating_scale || 5, game.rating_source);
+    renderSources(game);
     setImage(el.detailBox, game.box_art, `${game.name} box art`);
     renderScreenshots(game);
 
