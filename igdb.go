@@ -24,7 +24,7 @@ const (
 	igdbRequestGap  = 250 * time.Millisecond
 	igdbMaxAttempts = 4
 
-	catalogCacheName = "catalog-v2.json"
+	catalogCacheName = "catalog-v3.json"
 	catalogCacheTTL  = 24 * time.Hour
 
 	igdbGameTypeMain = 0
@@ -190,8 +190,10 @@ func (c *igdbClient) fetchCatalog(ctx context.Context) ([]Game, error) {
 	if len(games) == 0 {
 		return nil, errors.New("IGDB returned no US-eligible games")
 	}
-	log.Printf("igdb: fetched %d games (%d platform releases); kept %d; skipped %d without a US date, %d without a year, %d canceled dates; merged %d duplicates",
-		len(raw), stats.platformReleases, len(games), stats.noUS, stats.noYear, stats.canceled, merged)
+	filtered, excluded := filterExcludedGames(games)
+	games = filtered
+	log.Printf("igdb: fetched %d games (%d platform releases); kept %d; skipped %d without a US date, %d without a year, %d canceled dates; merged %d duplicates; excluded %d catalog artifacts",
+		len(raw), stats.platformReleases, len(games), stats.noUS, stats.noYear, stats.canceled, merged, excluded)
 	return games, nil
 }
 
@@ -350,22 +352,24 @@ func normalizeGames(raw []igdbGame) ([]candidate, normalizeStats) {
 				igdbID:   g.ID,
 				gameType: g.GameType,
 				game: Game{
-					ID:          fmt.Sprintf("igdb-%d-%s", g.ID, p.Slug),
-					Name:        name,
-					Platform:    p.Slug,
-					Publisher:   companyNames(g.InvolvedCompanies, func(c igdbInvolvedCompany) bool { return c.Publisher }),
-					Developer:   companyNames(g.InvolvedCompanies, func(c igdbInvolvedCompany) bool { return c.Developer }),
-					ReleaseYear: year,
-					Genres:      genreNames(g.Genres),
-					Rating:      rating,
-					RatingCount: ratingCount,
-					RatingScale: 5,
-					MaxPlayers:  maxPlayers(g.MultiplayerModes, p.IGDBID),
-					Cooperative: cooperative(g.MultiplayerModes, p.IGDBID),
-					ESRB:        esrb(g.AgeRatings),
-					Overview:    strings.TrimSpace(g.Summary),
-					BoxArt:      coverURL(g.Cover),
-					Screenshots: screenshotURLs(g.Screenshots),
+					ID:              fmt.Sprintf("igdb-%d-%s", g.ID, p.Slug),
+					Name:            name,
+					Platform:        p.Slug,
+					Publisher:       companyNames(g.InvolvedCompanies, func(c igdbInvolvedCompany) bool { return c.Publisher }),
+					Developer:       companyNames(g.InvolvedCompanies, func(c igdbInvolvedCompany) bool { return c.Developer }),
+					ReleaseYear:     year,
+					Genres:          genreNames(g.Genres),
+					Rating:          rating,
+					RatingCount:     ratingCount,
+					RatingScale:     5,
+					IGDBRating:      rating,
+					IGDBRatingCount: ratingCount,
+					MaxPlayers:      maxPlayers(g.MultiplayerModes, p.IGDBID),
+					Cooperative:     cooperative(g.MultiplayerModes, p.IGDBID),
+					ESRB:            esrb(g.AgeRatings),
+					Overview:        strings.TrimSpace(g.Summary),
+					BoxArt:          coverURL(g.Cover),
+					Screenshots:     screenshotURLs(g.Screenshots),
 				},
 			})
 		}

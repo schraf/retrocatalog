@@ -689,6 +689,12 @@ body.panel-open {
   letter-spacing: 0.08em;
 }
 
+.sources {
+  margin: 6px 0 0;
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
 .detail-favorite {
   width: 100%;
   margin: 16px 0 20px;

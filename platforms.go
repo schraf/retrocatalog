@@ -12,6 +12,9 @@ type Platform struct {
 	Name   string
 	Short  string
 	IGDBID int
+	// LaunchBoxName is the platform string used by the LaunchBox Games
+	// Database metadata export.
+	LaunchBoxName string
 	// LastYear is the final year of commercial releases. Later entries are
 	// homebrew, bootlegs, or modern re-releases and are excluded from the
 	// catalog.
@@ -29,13 +32,13 @@ type PlatformCount struct {
 // supportedPlatforms is the fixed platform set for this catalog. The IGDB IDs
 // are stable enum values (see the IGDB enums-to-tables migration).
 var supportedPlatforms = []Platform{
-	{Slug: "nes", Name: "Nintendo Entertainment System", Short: "NES", IGDBID: 18, LastYear: 1994},
-	{Slug: "gb", Name: "Game Boy", Short: "GB", IGDBID: 33, LastYear: 1999},
-	{Slug: "snes", Name: "Super Nintendo Entertainment System", Short: "SNES", IGDBID: 19, LastYear: 1998},
-	{Slug: "n64", Name: "Nintendo 64", Short: "N64", IGDBID: 4, LastYear: 2002},
-	{Slug: "gbc", Name: "Game Boy Color", Short: "GBC", IGDBID: 22, LastYear: 2003},
-	{Slug: "gba", Name: "Game Boy Advance", Short: "GBA", IGDBID: 24, LastYear: 2008},
-	{Slug: "gamecube", Name: "Nintendo GameCube", Short: "GCN", IGDBID: 21, LastYear: 2007},
+	{Slug: "nes", Name: "Nintendo Entertainment System", Short: "NES", IGDBID: 18, LaunchBoxName: "Nintendo Entertainment System", LastYear: 1994},
+	{Slug: "gb", Name: "Game Boy", Short: "GB", IGDBID: 33, LaunchBoxName: "Nintendo Game Boy", LastYear: 1999},
+	{Slug: "snes", Name: "Super Nintendo Entertainment System", Short: "SNES", IGDBID: 19, LaunchBoxName: "Super Nintendo Entertainment System", LastYear: 1998},
+	{Slug: "n64", Name: "Nintendo 64", Short: "N64", IGDBID: 4, LaunchBoxName: "Nintendo 64", LastYear: 2002},
+	{Slug: "gbc", Name: "Game Boy Color", Short: "GBC", IGDBID: 22, LaunchBoxName: "Nintendo Game Boy Color", LastYear: 2003},
+	{Slug: "gba", Name: "Game Boy Advance", Short: "GBA", IGDBID: 24, LaunchBoxName: "Nintendo Game Boy Advance", LastYear: 2008},
+	{Slug: "gamecube", Name: "Nintendo GameCube", Short: "GCN", IGDBID: 21, LaunchBoxName: "Nintendo GameCube", LastYear: 2007},
 }
 
 func platformBySlug(slug string) *Platform {

@@ -24,17 +24,27 @@ type Game struct {
 	Rating      float64  `json:"rating"`
 	RatingCount int      `json:"rating_count"`
 	RatingScale int      `json:"rating_scale"`
-	MaxPlayers  int      `json:"max_players"`
-	Cooperative bool     `json:"cooperative"`
-	ESRB        string   `json:"esrb"`
-	Overview    string   `json:"overview"`
-	BoxArt      string   `json:"box_art"`
-	Screenshots []string `json:"screenshots"`
+	// RatingSource is "launchbox" or "igdb" and names the source of the
+	// rating above. Both raw scores are kept for the detail panel.
+	RatingSource         string   `json:"rating_source,omitempty"`
+	IGDBRating           float64  `json:"igdb_rating,omitempty"`
+	IGDBRatingCount      int      `json:"igdb_rating_count,omitempty"`
+	LaunchBoxID          int      `json:"launchbox_id,omitempty"`
+	LaunchBoxRating      float64  `json:"launchbox_rating,omitempty"`
+	LaunchBoxRatingCount int      `json:"launchbox_rating_count,omitempty"`
+	MaxPlayers           int      `json:"max_players"`
+	Cooperative          bool     `json:"cooperative"`
+	ESRB                 string   `json:"esrb"`
+	Overview             string   `json:"overview"`
+	BoxArt               string   `json:"box_art"`
+	Screenshots          []string `json:"screenshots"`
 }
 
 // priorWeight controls how many ratings a game needs before its own score
-// outweighs the catalog average in the weighted rating.
-const priorWeight = 75.0
+// outweighs the platform average in the weighted rating. LaunchBox supplies
+// dense per-platform vote counts, so a smaller prior than the IGDB-only
+// catalog used is appropriate.
+const priorWeight = 25.0
 
 // maxScreenshots is the number of IGDB screenshots kept per game.
 const maxScreenshots = 3
@@ -54,6 +64,7 @@ type IndexGame struct {
 	Platform       string   `json:"platform"`
 	Rating         float64  `json:"rating"`
 	RatingCount    int      `json:"rating_count"`
+	RatingSource   string   `json:"rating_source,omitempty"`
 	WeightedRating float64  `json:"weighted_rating"`
 	Publisher      string   `json:"publisher"`
 	Developer      string   `json:"developer"`
@@ -65,16 +76,17 @@ type IndexGame struct {
 
 // Catalog is the immutable in-memory view of the catalog cache.
 type Catalog struct {
-	games      []*Game
-	byID       map[string]*Game
-	index      []IndexGame
-	genres     []GenreCount
-	platforms  []PlatformCount
-	yearMin    int
-	yearMax    int
-	ratingMin  float64
-	ratingMax  float64
-	ratingMean float64
+	games       []*Game
+	byID        map[string]*Game
+	index       []IndexGame
+	genres      []GenreCount
+	platforms   []PlatformCount
+	yearMin     int
+	yearMax     int
+	ratingMin   float64
+	ratingMax   float64
+	ratingMean  float64
+	ratingMeans map[string]float64
 }
 
 // buildCatalog validates normalized records and derives the indexes and facets.
@@ -93,6 +105,8 @@ func buildCatalog(games []Game) (*Catalog, error) {
 		platformCounts[p.Slug] = 0
 	}
 	var voteSum, voteCount float64
+	platformVoteSum := make(map[string]float64, len(supportedPlatforms))
+	platformVoteCount := make(map[string]float64, len(supportedPlatforms))
 	first := true
 
 	for i := range games {
@@ -106,6 +120,11 @@ func buildCatalog(games []Game) (*Catalog, error) {
 		}
 		if slug != g.Platform {
 			return nil, fmt.Errorf("%q id platform %q does not match platform %q", g.Name, slug, g.Platform)
+		}
+		if isExcludedGame(*g) {
+			// Compilation sub-games, promo carts, and non-game software are
+			// not catalog entries.
+			continue
 		}
 		if g.ReleaseYear <= 0 {
 			return nil, fmt.Errorf("%q has invalid release_year %d", g.Name, g.ReleaseYear)
@@ -154,28 +173,33 @@ func buildCatalog(games []Game) (*Catalog, error) {
 			genreCounts[genre]++
 		}
 		platformCounts[g.Platform]++
-		voteSum += g.Rating * float64(g.RatingCount)
-		voteCount += float64(g.RatingCount)
+		if g.Rating > 0 && g.RatingCount > 0 {
+			votes := float64(g.RatingCount)
+			voteSum += g.Rating * votes
+			voteCount += votes
+			platformVoteSum[g.Platform] += g.Rating * votes
+			platformVoteCount[g.Platform] += votes
+		}
 
 		c.index = append(c.index, IndexGame{
-			ID:          g.ID,
-			Name:        g.Name,
-			Year:        g.ReleaseYear,
-			Genres:      g.Genres,
-			Platform:    g.Platform,
-			Rating:      g.Rating,
-			RatingCount: g.RatingCount,
-			Publisher:   g.Publisher,
-			Developer:   g.Developer,
-			MaxPlayers:  g.MaxPlayers,
-			Cooperative: g.Cooperative,
-			ESRB:        g.ESRB,
-			BoxArt:      g.BoxArt,
+			ID:           g.ID,
+			Name:         g.Name,
+			Year:         g.ReleaseYear,
+			Genres:       g.Genres,
+			Platform:     g.Platform,
+			Rating:       g.Rating,
+			RatingCount:  g.RatingCount,
+			RatingSource: g.RatingSource,
+			Publisher:    g.Publisher,
+			Developer:    g.Developer,
+			MaxPlayers:   g.MaxPlayers,
+			Cooperative:  g.Cooperative,
+			ESRB:         g.ESRB,
+			BoxArt:       g.BoxArt,
 		})
 
 		if first {
 			c.yearMin, c.yearMax = g.ReleaseYear, g.ReleaseYear
-			c.ratingMin, c.ratingMax = g.Rating, g.Rating
 			first = false
 		} else {
 			if g.ReleaseYear < c.yearMin {
@@ -184,7 +208,10 @@ func buildCatalog(games []Game) (*Catalog, error) {
 			if g.ReleaseYear > c.yearMax {
 				c.yearMax = g.ReleaseYear
 			}
-			if g.Rating < c.ratingMin {
+		}
+		// Unrated games do not define the rating range shown by the filters.
+		if g.Rating > 0 && g.RatingCount > 0 {
+			if c.ratingMax == 0 || g.Rating < c.ratingMin {
 				c.ratingMin = g.Rating
 			}
 			if g.Rating > c.ratingMax {
@@ -196,9 +223,25 @@ func buildCatalog(games []Game) (*Catalog, error) {
 	if voteCount > 0 {
 		c.ratingMean = voteSum / voteCount
 	}
+	c.ratingMeans = make(map[string]float64, len(platformVoteCount))
+	for platform, count := range platformVoteCount {
+		if count > 0 {
+			c.ratingMeans[platform] = platformVoteSum[platform] / count
+		}
+	}
 	for i := range c.index {
 		entry := &c.index[i]
-		entry.WeightedRating = weightedRating(entry.Rating, entry.RatingCount, c.ratingMean)
+		if entry.Rating <= 0 || entry.RatingCount <= 0 {
+			// Unrated games are kept in the catalog but must not be treated as
+			// average-rated in the Top sort.
+			entry.WeightedRating = 0
+			continue
+		}
+		mean := c.ratingMeans[entry.Platform]
+		if mean == 0 {
+			mean = c.ratingMean
+		}
+		entry.WeightedRating = weightedRating(entry.Rating, entry.RatingCount, mean)
 	}
 
 	for genre, count := range genreCounts {

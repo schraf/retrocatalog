@@ -242,6 +242,40 @@ func TestIGDBFetchCatalog(t *testing.T) {
 	}
 }
 
+func TestIGDBFetchCatalogExcludesArtifacts(t *testing.T) {
+	client, _ := newTestIGDBClient(t, func(w http.ResponseWriter, r *http.Request) {
+		switch r.URL.Path {
+		case "/token":
+			writeToken(w)
+		case "/games":
+			page := []igdbGame{
+				{
+					ID: 20, Name: "Cheetahmen", GameType: igdbGameTypeExpanded,
+					ReleaseDates: []igdbReleaseDate{{Platform: 18, Y: 1991, ReleaseRegion: igdbRegionNorthAmerica}},
+					Cover:        &igdbImage{ImageID: "cheetahmen"},
+				},
+				{
+					ID: 21, Name: "Super Mario Bros. 3", GameType: igdbGameTypeMain,
+					ReleaseDates: []igdbReleaseDate{{Platform: 18, Y: 1990, ReleaseRegion: igdbRegionNorthAmerica}},
+					Cover:        &igdbImage{ImageID: "smb3"},
+				},
+			}
+			_ = json.NewEncoder(w).Encode(page)
+		default:
+			http.NotFound(w, r)
+		}
+	})
+	client.pageSize = 100
+
+	games, err := client.fetchCatalog(context.Background())
+	if err != nil {
+		t.Fatal(err)
+	}
+	if len(games) != 1 || games[0].Name != "Super Mario Bros. 3" {
+		t.Fatalf("games = %#v, want only Super Mario Bros. 3", games)
+	}
+}
+
 func TestSelectUSRelease(t *testing.T) {
 	tests := []struct {
 		name     string
@@ -374,6 +408,9 @@ func TestNormalizeGamesFanOut(t *testing.T) {
 	}
 	if nes.Rating != 4 || nes.RatingCount != 10 || nes.RatingScale != 5 {
 		t.Fatalf("rating = %#v", nes)
+	}
+	if nes.IGDBRating != 4 || nes.IGDBRatingCount != 10 {
+		t.Fatalf("IGDB rating fields = %#v", nes)
 	}
 	if nes.MaxPlayers != 2 || !nes.Cooperative {
 		t.Fatalf("multiplayer = max %d coop %v", nes.MaxPlayers, nes.Cooperative)
@@ -606,7 +643,7 @@ func TestLoadOrFetchRejectsInvalidCache(t *testing.T) {
 }
 
 func TestCatalogCachePath(t *testing.T) {
-	if got, want := catalogCachePath("/tmp/cache"), filepath.Join("/tmp/cache", "catalog-v2.json"); got != want {
+	if got, want := catalogCachePath("/tmp/cache"), filepath.Join("/tmp/cache", "catalog-v3.json"); got != want {
 		t.Fatalf("catalogCachePath = %q, want %q", got, want)
 	}
 }
