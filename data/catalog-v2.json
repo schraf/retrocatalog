@@ -510,6 +510,31 @@
     ]
   },
   {
+    "id": "igdb-406-gba",
+    "name": "Final Fantasy IV Advance",
+    "platform": "gba",
+    "publisher": "Square Enix",
+    "developer": "Square Enix Product Development Division 7, Tose",
+    "release_year": 2005,
+    "genres": [
+      "Role-playing (RPG)",
+      "Adventure"
+    ],
+    "rating": 4.302158900952409,
+    "rating_count": 21,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E10+",
+    "overview": "Final Fantasy IV Advance is largely based on the WonderSwan Color version. Some changes include the addition of character portraits in text boxes, the ability to switch party members, increased difficulty, and new dungeons with new items and weapons along with new bosses. The script received a re-translation more faithful to the original material. The Quicksave, which allows the player to save the current position (regardless of where) in a file that is deleted upon loading, is featured.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2yc0.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9ap7.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9ap5.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9ap3.jpg"
+    ]
+  },
+  {
     "id": "igdb-407-gb",
     "name": "Final Fantasy Adventure",
     "platform": "gb",
@@ -1911,6 +1936,31 @@
     ]
   },
   {
+    "id": "igdb-1027-gbc",
+    "name": "The Legend of Zelda: Link's Awakening DX",
+    "platform": "gbc",
+    "publisher": "Gradiente, Nintendo",
+    "developer": "Nintendo Entertainment Analysis \u0026 Development",
+    "release_year": 1998,
+    "genres": [
+      "Puzzle",
+      "Adventure"
+    ],
+    "rating": 4.42680636588755,
+    "rating_count": 195,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "The Legend of Zelda: Link's Awakening DX is an updated re-release of Link's Awakening with several new additions, the most notable of which being the entire game is now in color.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4o47.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckjr8.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckjrc.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckjrd.jpg"
+    ]
+  },
+  {
     "id": "igdb-1028-gb",
     "name": "The Legend of Zelda: Link's Awakening",
     "platform": "gb",
@@ -2221,7 +2271,7 @@
       "Adventure"
     ],
     "rating": 4.467660070683359,
-    "rating_count": 1746,
+    "rating_count": 1747,
     "rating_scale": 5,
     "max_players": 2,
     "cooperative": false,
@@ -2629,6 +2679,32 @@
     ]
   },
   {
+    "id": "igdb-1101-nes",
+    "name": "Metroid",
+    "platform": "nes",
+    "publisher": "Nintendo, Playtronic",
+    "developer": "Nintendo R\u0026D1",
+    "release_year": 1987,
+    "genres": [
+      "Shooter",
+      "Platform",
+      "Adventure"
+    ],
+    "rating": 3.577920523353972,
+    "rating_count": 241,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "It's you against the evil Mother Brain in the thrilling battle of Metroid! You're inside the fortress planet Zebes. The planet of endless secret passageways where the Metroid are multiplying. Left alone the Metroid are harmless. But in the wrong hands they could destroy the galaxy. It's up to you to prevent the Mother Brain that controls Zebes from using the Metroid for evil purposes. But that won't be easy. You'll have to use your spacesuit to absorb valuable energy for your search to gain the use of power items like the Ice Beam, Wave Beam, High Jump Boots and Varia. If you survive, it will be you and your acquired powers against the Mother Brain.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1xe8.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/s3f2shupqx5m4mmp8tt5.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/vk0tcjgkktesxmifxhvc.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/bgy2wmuio9eqkaeyswrq.jpg"
+    ]
+  },
+  {
     "id": "igdb-1102-gb",
     "name": "Metroid II: Return of Samus",
     "platform": "gb",
@@ -2934,6 +3010,33 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/w9zgw3qg5umv3jmu5tvg.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/lc6xoekfjhyoi0zpb08l.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/zeruwpny9qtjkz87riit.jpg"
+    ]
+  },
+  {
+    "id": "igdb-1131-n64",
+    "name": "Castlevania: Legacy of Darkness",
+    "platform": "n64",
+    "publisher": "Konami",
+    "developer": "Konami",
+    "release_year": 1999,
+    "genres": [
+      "Platform",
+      "Puzzle",
+      "Hack and slash/Beat 'em up",
+      "Adventure"
+    ],
+    "rating": 2.683018698003318,
+    "rating_count": 19,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "T",
+    "overview": "Castlevania: Legacy of Darkness is a video game that was developed and published by Konami for the Nintendo 64. It was first released in North America on November 30, 1999 and is a prequel and expanded version to the first Castlevania game on the Nintendo 64, but also contains a remake of the original game with improved graphics, added villains (Spider Queen, Medusa), and alternate versions of some levels (Forest of Silence, Tower of Science, Tower of Execution, Clock Tower).",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co54ti.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/tj9fbwf9hzfmqp6fztsw.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/nl6yfxjwgoclskn5vxbt.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/dkinqiv2jsrk4erdenae.jpg"
     ]
   },
   {
@@ -4320,6 +4423,32 @@
     ]
   },
   {
+    "id": "igdb-1512-gb",
+    "name": "Pokémon Yellow Version: Special Pikachu Edition",
+    "platform": "gb",
+    "publisher": "Gradiente, Nintendo",
+    "developer": "Game Freak",
+    "release_year": 1999,
+    "genres": [
+      "Role-playing (RPG)",
+      "Turn-based strategy (TBS)",
+      "Adventure"
+    ],
+    "rating": 4.131943011365579,
+    "rating_count": 534,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Pokémon Yellow is an enhanced version of Pokémon Red and Blue that allows you to start the game with your very own Pikachu following you around on-foot and collect the 3 other starters from strangers you meet around the region. However, your goal remains the same: catch them all and become the ultimate Pokémon Master.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pih.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scapob.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scapod.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scapoe.jpg"
+    ]
+  },
+  {
     "id": "igdb-1513-gbc",
     "name": "Pokémon Silver Version",
     "platform": "gbc",
@@ -4346,6 +4475,31 @@
     ]
   },
   {
+    "id": "igdb-1514-gbc",
+    "name": "Pokémon Crystal Version",
+    "platform": "gbc",
+    "publisher": "Gradiente, Nintendo",
+    "developer": "Game Freak",
+    "release_year": 2001,
+    "genres": [
+      "Role-playing (RPG)",
+      "Adventure"
+    ],
+    "rating": 4.453056483002117,
+    "rating_count": 433,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Pokemon Crystal is an enhanced version of Pokemon Gold and Silver and a role-playing game played from a top-down perspective. As in the earlier versions, the player explores the Johto region, catches and trains Pokemon, and battles other Trainers in turn-based combat while earning Gym Badges and filling out the Pokedex. Crystal keeps the same core adventure while adding refinements, including the option to play as a female character and animated Pokemon sprites. It retains series staples such as a real-time clock, Pokemon breeding, and trading and battling with other games via a link connection.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pil.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/schjfl.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/schjfo.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/schjfm.jpg"
+    ]
+  },
+  {
     "id": "igdb-1515-gba",
     "name": "Pokémon Sapphire Version",
     "platform": "gba",
@@ -4369,6 +4523,32 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/ft9j0an0btbagsccbuhe.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/xlb8sxxo8ltktsvjiq6m.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/naop0zr7cxmjvzn4bqxt.jpg"
+    ]
+  },
+  {
+    "id": "igdb-1517-gba",
+    "name": "Pokémon Emerald Version",
+    "platform": "gba",
+    "publisher": "Nintendo",
+    "developer": "Game Freak",
+    "release_year": 2005,
+    "genres": [
+      "Role-playing (RPG)",
+      "Turn-based strategy (TBS)",
+      "Adventure"
+    ],
+    "rating": 4.306369934180444,
+    "rating_count": 634,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Pokémon Emerald Version is a sister game to Pokémon Ruby and Sapphire. Emerald Version provided the main storyline with more depth and length, as well as making small aesthetic changes to the world and adding unique animations for each Pokémon.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1zhr.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/pxxxldjjkkhtb3jznj9h.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/uwzpqwjvmzcepd8jjxub.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/c77bodnkwu73gs2jwhw4.jpg"
     ]
   },
   {
@@ -4841,6 +5021,30 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81ju.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81jn.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81jp.jpg"
+    ]
+  },
+  {
+    "id": "igdb-1621-snes",
+    "name": "Ultimate Mortal Kombat 3",
+    "platform": "snes",
+    "publisher": "GT Interactive Software, Microsoft, Midway, Playtronic, Tec Toy, Williams Entertainment",
+    "developer": "Activision, Avalanche Software, Electronic Arts, Eurocom Entertainment Software, Midway",
+    "release_year": 1996,
+    "genres": [
+      "Fighting"
+    ],
+    "rating": 4.00308242597162,
+    "rating_count": 178,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "M",
+    "overview": "Ultimate Mortal Kombat 3 combines the best of all the Mortal Kombats into a single cartridge. 23 playable characters are immediately available, such as Reptile, Cyrax, Scorpion, Sub-Zero, Jax, Katana, Sonya, and more. There are two bosses that are unlockable, as well as additional characters and a variety of new levels, some of which are interactive. Players can go against the computer one-on-one, two-on-two, or take part in the 8-fighter tournament.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co65ka.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81jx.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81jv.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81k1.jpg"
     ]
   },
   {
@@ -5486,6 +5690,31 @@
     ]
   },
   {
+    "id": "igdb-1715-nes",
+    "name": "Mega Man 2",
+    "platform": "nes",
+    "publisher": "Capcom",
+    "developer": "Capcom",
+    "release_year": 1989,
+    "genres": [
+      "Platform",
+      "Adventure"
+    ],
+    "rating": 4.258687842213457,
+    "rating_count": 390,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "In the year 200X, a super robot named Mega Man was created. Dr. Light created Mega Man to stop the evil desires of Dr. Wily. However, after his defeat, Dr. Wily created eight of his own robots to counter Mega Man.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5x42.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/anqqksexak6j2q8welbp.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/n3ess696z5x3rofhuolm.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/gzvmpqke6whgu0weksu6.jpg"
+    ]
+  },
+  {
     "id": "igdb-1716-nes",
     "name": "Mega Man 3",
     "platform": "nes",
@@ -6124,6 +6353,58 @@
     ]
   },
   {
+    "id": "igdb-1764-gba",
+    "name": "Mega Man Battle Network 6: Cybeast Falzar",
+    "platform": "gba",
+    "publisher": "Capcom",
+    "developer": "Capcom Production Studio 2",
+    "release_year": 2006,
+    "genres": [
+      "Real Time Strategy (RTS)",
+      "Role-playing (RPG)",
+      "Tactical"
+    ],
+    "rating": 3.696022273015693,
+    "rating_count": 20,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "In Mega Man Battle Network 6, Lan's father has received a job transfer and the family moves to Cyber City, a town known for conducting various technological experiments. Lan will meet new people and build new friendships in the real world while Mega Man befriends helpful Navis and encounters dangerous new enemies on the virtual plane. Together they will face threats far more powerful and perilous than they ever have before.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3bhe.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7nky.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7nkz.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc68va.jpg"
+    ]
+  },
+  {
+    "id": "igdb-1765-gba",
+    "name": "Mega Man Battle Network 6: Cybeast Gregar",
+    "platform": "gba",
+    "publisher": "Capcom",
+    "developer": "Capcom Production Studio 2",
+    "release_year": 2006,
+    "genres": [
+      "Real Time Strategy (RTS)",
+      "Role-playing (RPG)",
+      "Tactical"
+    ],
+    "rating": 3.9669230323197637,
+    "rating_count": 21,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "In Mega Man Battle Network 6, Lan's father has received a job transfer and the family moves to Cyber City, a town known for conducting various technological experiments. Lan will meet new people and build new friendships in the real world while Mega Man befriends helpful Navis and encounters dangerous new enemies on the virtual plane. Together they will face threats far more powerful and perilous than they ever have before.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3bhf.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc68vf.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc68ve.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc68vd.jpg"
+    ]
+  },
+  {
     "id": "igdb-1766-gamecube",
     "name": "Mega Man Network Transmission",
     "platform": "gamecube",
@@ -6752,6 +7033,29 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/f8elsy9ntu1oidurfexv.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/rzxp5pw9vgbmdmpsdzo2.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/xc0yayjrt2zcpwenzt7o.jpg"
+    ]
+  },
+  {
+    "id": "igdb-2195-nes",
+    "name": "Mike Tyson's Punch-Out!!",
+    "platform": "nes",
+    "publisher": "Nintendo",
+    "developer": "Nintendo R\u0026D3",
+    "release_year": 1987,
+    "genres": [
+      "Fighting",
+      "Sport"
+    ],
+    "rating": 4.154622714060852,
+    "rating_count": 114,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Punch-Out!!, originally released in North America as Mike Tyson's Punch-Out!!, is a boxing sports fighting video game for the Nintendo Entertainment System (NES) developed and published by Nintendo in 1987. Part of the Punch-Out!! series, it is a port of both the Punch-Out!! and Super Punch-Out!! arcade games (particularly the latter) with some variations.\nPunch-Out!! features a boxer known as Little Mac working his way up the professional boxing circuits, facing a series of colorful, fictional boxers, leading to a final fight with real-life boxer, the then-World Heavyweight Champion, which is Mike Tyson in the original version and Mr. Dream in the later version.\nLittle Mac has a limited repertoire compared to most of his opponents. His punches are limited to left and right jabs, left and right body blows, and a powerful uppercut. The uppercut can only be used once the player earns a star, which is typically accomplished by counter-punching the opponent directly before or after certain attacks are launched. The player can acquire up to three stars. To perform the uppercut, the player needs to press the start button once a star is earned. To defend, Mac can dodge left or right, duck, and block punches by putting up his guard.\nLittle Mac also has a heart meter, which decreases by three upon being struck by an opponent and one upon blocking an attack or an opponent blocking/dodging the player's attack. When the heart meter decreases to zero, Little Mac temporarily turns pink and appears exhausted, leaving the player unable to attack but still able to dodge or block. At this point, Mac can regain some hearts (and his normal color palette) only by avoiding the opponent's punches. He immediately loses all of his hearts upon being knocked down, but can regain some by getting up.\nA bout can end by knockout (KO), if a fighter is unable to get up within ten seconds after being knocked down; by technical knockout (TKO), if a fighter is knocked down three times in one round; or by decision, if the bout lasts three full rounds without a clear winner. In order to win by decision, the player must accumulate higher than a certain point total by punching the opponent and/or knocking him down (different boxers require different point totals to win by decision). However, some bouts cannot be won in this manner and will automatically result in a loss for the player if the opponent is not knocked out. Mac can only get up three times during any one bout; if he is knocked down a fourth time, he will be unable to rise and thus lose by knockout.\nWhen Mac loses his first bout to a ranked opponent, he will have a chance to fight a rematch. However, if he loses a Title Bout, he will fall in the rankings - one place for the Minor or Major Circuits, two places for the World Circuit. Losing a rematch causes him to fall one place (unless he is already at the bottom of his circuit), forcing him to fight his way back up. A third loss (not necessarily a consecutive one) ends the game. The exception is the final fight against Mike Tyson/Mr. Dream; a loss to them automatically results in a game over.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6386.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/nmf8x53zvl50v9gdpkgr.jpg"
     ]
   },
   {
@@ -7868,6 +8172,30 @@
     ]
   },
   {
+    "id": "igdb-2655-gamecube",
+    "name": "Animal Crossing",
+    "platform": "gamecube",
+    "publisher": "Nintendo",
+    "developer": "Nintendo Entertainment Analysis \u0026 Development",
+    "release_year": 2002,
+    "genres": [
+      "Simulator"
+    ],
+    "rating": 3.9106480810672393,
+    "rating_count": 147,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Occasionally strange but completely addictive, Nintendo's Animal Crossing for the GameCube is not so much a game as a simulation of life on a small town. Players begin the game by setting out to live life on their own in a colorful town, where they are greeted by a seemingly endless supply of things to do and characters to meet.\n\nTime passes in Animal Crossing in real-time, as the month, day, season, and time of day matches that of the player's. Holiday seasons come and go in Animal Crossing, just as they would in the real world. Experience the freedom to fish, decorate your house, go bug catching, garden, write letters, and even play original Nintendo NES games in this imaginative, and addictive game.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3wmn.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/kh1d0asirrpszulxodag.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/bwhzcusldk2z5mbmn5kh.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/d63d56jchpcrcqaf60pn.jpg"
+    ]
+  },
+  {
     "id": "igdb-2681-gamecube",
     "name": "LEGO Star Wars: The Video Game",
     "platform": "gamecube",
@@ -7916,6 +8244,32 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/jow9oscrzmyk04swssy3.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/oqbwq4i35nmm3u2upszb.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/anms8riskt3juhl8jzhu.jpg"
+    ]
+  },
+  {
+    "id": "igdb-2690-gamecube",
+    "name": "Alien Hominid",
+    "platform": "gamecube",
+    "publisher": "O3 Entertainment, Zoo Digital",
+    "developer": "The Behemoth",
+    "release_year": 2004,
+    "genres": [
+      "Shooter",
+      "Platform",
+      "Indie"
+    ],
+    "rating": 3.5960098199581205,
+    "rating_count": 42,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "T",
+    "overview": "They've got your spaceship and you will blow up anything in your path to get it back. Completely hand-drawn high-definition graphics, coupled with old-school game play, results in ultimate mayhem and hours of fun!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8d13.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/lwbkij9ysi9n3hrxp3hm.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/f18hcxd5rwhzswjfr2df.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/nxjyr2eckjj1rgu8dtg3.jpg"
     ]
   },
   {
@@ -9761,6 +10115,31 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc78jl.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc78jn.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/f3k5vdt7h8zhfitudsdh.jpg"
+    ]
+  },
+  {
+    "id": "igdb-2927-gamecube",
+    "name": "Super Monkey Ball",
+    "platform": "gamecube",
+    "publisher": "Sega",
+    "developer": "Amusement Vision",
+    "release_year": 2001,
+    "genres": [
+      "Platform",
+      "Arcade"
+    ],
+    "rating": 3.430504214067308,
+    "rating_count": 54,
+    "rating_scale": 5,
+    "max_players": 4,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Super Monkey Ball is a 2001 platform party video game developed by Amusement Vision and published by Sega. The game debuted in Japan at the 2001 Amusement Operators Union trade show as Monkey Ball, an arcade cabinet running on Sega's NAOMI hardware and controlled with a distinctive banana-shaped analog stick. Due to the failure of Sega's Dreamcast home console and the company's subsequent restructuring, an enhanced port dubbed Super Monkey Ball was released as a launch title for the GameCube in late 2001, garnering interest as Sega's first game published for a Nintendo home console.\n\nConceived by Amusement Vision head Toshihiro Nagoshi, Super Monkey Ball involves guiding a transparent ball containing one of four monkeys—AiAi, MeeMee, Baby, and GonGon—across a series of maze-like platforms. The player must reach the goal without falling off or letting the timer reach zero to advance to the next stage. There are also several multiplayer modes: independent minigames as well as extensions of the main single-player game.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5tes.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/qhh1cdzffaco1x6onhyo.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/oixwk4rvrimsmrkasw6m.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8bpm.jpg"
     ]
   },
   {
@@ -11654,6 +12033,32 @@
     ]
   },
   {
+    "id": "igdb-3386-gamecube",
+    "name": "Harvest Moon: Magical Melody",
+    "platform": "gamecube",
+    "publisher": "Marvelous Interactive, Natsume Inc., Nintendo, Rising Star Games",
+    "developer": "Marvelous Interactive",
+    "release_year": 2006,
+    "genres": [
+      "Role-playing (RPG)",
+      "Simulator",
+      "Adventure"
+    ],
+    "rating": 2.849989487896617,
+    "rating_count": 13,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Flower Bud Village wasn't a blossom of a burg when you bought a plot of land. Now newcomers depend on the bounty from your land for their livelihoods. It's up to you to create a farm, raise a family and build a village in the most challenging Harvest ever!\n\n-Play as a girl or as a boy!\n-Buy farm land next to a river, along a seashore or in a village!\n-Plant crops, raise livestock, dig for gems or just fish!\n-Beat your farming rival in the fields and at the festivals!\n-Unlock hidden multiplayer mini games!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2xk5.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/rpu91ouqdecclhzk5q04.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88r4.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88r3.jpg"
+    ]
+  },
+  {
     "id": "igdb-3394-n64",
     "name": "Iggy's Reckin' Balls",
     "platform": "n64",
@@ -12214,6 +12619,31 @@
     ]
   },
   {
+    "id": "igdb-3423-n64",
+    "name": "Battlezone: Rise of the Black Dogs",
+    "platform": "n64",
+    "publisher": "Crave Entertainment",
+    "developer": "Climax Group",
+    "release_year": 2000,
+    "genres": [
+      "Real Time Strategy (RTS)",
+      "Strategy"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 4,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Battlezone: Rise of the Black Dogs is a port of the PC game Battlezone with extra missions.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6wh6.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scg8lg.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scg8lh.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scg8li.jpg"
+    ]
+  },
+  {
     "id": "igdb-3424-n64",
     "name": "Blast Corps",
     "platform": "n64",
@@ -12654,6 +13084,30 @@
     ]
   },
   {
+    "id": "igdb-3461-n64",
+    "name": "ClayFighter: Sculptor's Cut",
+    "platform": "n64",
+    "publisher": "Interplay Entertainment",
+    "developer": "Interplay Entertainment",
+    "release_year": 1998,
+    "genres": [
+      "Fighting"
+    ],
+    "rating": 3.4949331344651724,
+    "rating_count": 5,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "T",
+    "overview": "Get ready to crumble... with this special edition of the world's funniest fighting game! This \"director's cut\" contains many extras added to the original Clay Fighter 63 1/3 game. You might lose lives, you might lose limbs, but don't lose your sense of humor! 12 eccentric fighters plus 4 additional clay combatants only found in this version. More snide remarks and barbed wit will have you crying from laughing so hard! Original characters get additional attacks for an all-new experience. Enhanced camera angle stays put to see more details in the environment and improve fight control!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cod74p.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8ziw.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9x30.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9x31.jpg"
+    ]
+  },
+  {
     "id": "igdb-3465-gamecube",
     "name": "Custom Robo",
     "platform": "gamecube",
@@ -13045,6 +13499,30 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/jo6b8xkvh8jhapxny9wa.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/bdwtcxzidm1dlwx7hc0o.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/wu4flh6s2zk92tw3z6hq.jpg"
+    ]
+  },
+  {
+    "id": "igdb-3493-gba",
+    "name": "F-Zero: GP Legend",
+    "platform": "gba",
+    "publisher": "Nintendo",
+    "developer": "Suzak",
+    "release_year": 2004,
+    "genres": [
+      "Racing"
+    ],
+    "rating": 3.5233666272269604,
+    "rating_count": 13,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "The F-Zero series grows with new racing circuits, an intense storyline, and multiplayer modes. F-Zero GP Legend lets you take control of one of eight characters, including Captain Falcon, racing star Rick Wheeler, the evil lord Black Shadow, and more. Guide your character through various Grand Prix cups, time trials, and challenges that span multiple planets. In addition to conquering single-player challenges, you can challenge up to three of your friends in multiplayer competitions.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1tjx.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/gaga37qxfqex8dgisqag.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/wnwk3vr1qmvl5udrb8qr.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/bcw3iuakuzd8333gwjid.jpg"
     ]
   },
   {
@@ -16705,6 +17183,31 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scvjeq.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scvjer.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scvjes.jpg"
+    ]
+  },
+  {
+    "id": "igdb-3816-nes",
+    "name": "Teenage Mutant Ninja Turtles II: The Arcade Game",
+    "platform": "nes",
+    "publisher": "Konami, Ultra Software Corporation",
+    "developer": "Konami",
+    "release_year": 1990,
+    "genres": [
+      "Platform",
+      "Hack and slash/Beat 'em up"
+    ],
+    "rating": 3.982640237479154,
+    "rating_count": 121,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": true,
+    "esrb": "",
+    "overview": "This version includes two new levels (the first part of Scene 3 and all of Scene 6), which feature new enemy characters, including two new bosses: Tora (a dog-like \"blizzard beast\") and Shogun (a robotic samurai), both characters created for the game. Most of the original stages from the arcade version were extended as well and the second half of Scene 3, the parking garage stage, replaces the arcade version's end battle with Bebop and Rocksteady with a battle against the mutated fly form of Baxter Stockman.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9kln.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88wz.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88wy.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88x0.jpg"
     ]
   },
   {
@@ -21416,6 +21919,31 @@
     ]
   },
   {
+    "id": "igdb-4121-n64",
+    "name": "Mortal Kombat Trilogy",
+    "platform": "n64",
+    "publisher": "GT Interactive Software, Midway Games, SoftBank, Williams Entertainment",
+    "developer": "Avalanche Software, Midway Games, Point of View",
+    "release_year": 1996,
+    "genres": [
+      "Fighting",
+      "Arcade"
+    ],
+    "rating": 3.681997527508281,
+    "rating_count": 124,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "M",
+    "overview": "Mortal Kombat Trilogy features the same gameplay and story as Mortal Kombat 3, but adds characters and stages from the other three arcade games, including Ultimate Mortal Kombat 3. Some completely new characters were also introduced. New additions to the game included the \"Aggressor\" bar, a meter that fills during the course of the match and temporarily makes a player character faster and stronger. It also features the Brutality, a long combination of attacks that ends with the opponent exploding.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1y26.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81k6.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81k8.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc81k5.jpg"
+    ]
+  },
+  {
     "id": "igdb-4147-gamecube",
     "name": "Shaman King: Soul Fight",
     "platform": "gamecube",
@@ -21482,6 +22010,32 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scj18i.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scj18k.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scj18j.jpg"
+    ]
+  },
+  {
+    "id": "igdb-4152-gamecube",
+    "name": "Skies of Arcadia Legends",
+    "platform": "gamecube",
+    "publisher": "Sega",
+    "developer": "Overworks",
+    "release_year": 2003,
+    "genres": [
+      "Puzzle",
+      "Role-playing (RPG)",
+      "Adventure"
+    ],
+    "rating": 4.431421932694826,
+    "rating_count": 26,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "T",
+    "overview": "Skies of Arcadia Legends is an enhanced GameCube port of Skies of Arcadia. It follows the air pirate Vyse and his companions as they explore a world of floating continents and oppose the Valuan Empire, which seeks to awaken the ancient Gigas using six powerful Moon Stones. Players travel by airship, explore towns and dungeons, recruit crew members, discover hidden locations, and engage in turn-based character and ship battles.\n\nThe GameCube version retains the original story and gameplay while adding new characters, side content, backstory, collectible items, music, and changes to the reputation and battle systems. Content previously distributed online for the Dreamcast version is also included within the game.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2ola.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/yz2jiqe8ewoiuiqmhs7f.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/f5zkynorgsgplntp5ens.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/lu674pxlmewosagkrtby.jpg"
     ]
   },
   {
@@ -30791,6 +31345,30 @@
     ]
   },
   {
+    "id": "igdb-6639-gba",
+    "name": "The Tower SP",
+    "platform": "gba",
+    "publisher": "Nintendo, Sega",
+    "developer": "Vivarium",
+    "release_year": 2006,
+    "genres": [
+      "Simulator"
+    ],
+    "rating": 0.4,
+    "rating_count": 1,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Based on a hit PC game, players manage a tower and all tenants who reside within. Your goal is to make your tenants happy, collect greater investment funds and expand your tower upwards. This isn't as easy as it seems, as you have to keep your tenants' stress level down or they'll take flight and leave you with vacancies and unpaid dept. As the building manager, you have lots of responsibilities. You have to make sure elevator access is smooth, perhaps making use of more funds to install new elevators. You even have to clean the toilets by pressing the A button real fast. Listening to your tenant's opinions is also important, and the game offers a quick way of viewing complaints and comments from your tenants in real time.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobxkz.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc12z3b.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc12z3c.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc12z3d.jpg"
+    ]
+  },
+  {
     "id": "igdb-6640-gba",
     "name": "Tiny Toon Adventures: Scary Dreams",
     "platform": "gba",
@@ -31635,6 +32213,31 @@
     "screenshots": [
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/zfzxyqk5hp3iyfvc6ari.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scq9ld.jpg"
+    ]
+  },
+  {
+    "id": "igdb-7550-nes",
+    "name": "Lunar Pool",
+    "platform": "nes",
+    "publisher": "D4 Enterprise, FCI",
+    "developer": "Compile",
+    "release_year": 1987,
+    "genres": [
+      "Sport",
+      "Arcade"
+    ],
+    "rating": 3.824825068445308,
+    "rating_count": 23,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Lunar Pool is the first advanced home video billiards game ever. Never before has the player been able to choose among 60 different \"tables.\" Jump around to your favorite, or master each stage consecutively. Your score is kept automatically. You set up the electronic cue stick, aim the cue ball, choose the power you need and shoot! Then watch the ball ricochet around the \"table\" and land in the pocket. Learn to be a \"hustler\" by mastering all 60 stages (an expansion over the original PC-8801 32 stages).",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2xjf.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/vjgxr3eygl0nm9sdbmqx.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/yvk5j69tz6k6u95i3zol.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/hy5soz5ftkfrztkckppt.jpg"
     ]
   },
   {
@@ -32859,6 +33462,31 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/phyfbczvz3vsncnl6xqj.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7my1.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7my0.jpg"
+    ]
+  },
+  {
+    "id": "igdb-7862-gamecube",
+    "name": "Sonic Adventure 2: Battle",
+    "platform": "gamecube",
+    "publisher": "Sega",
+    "developer": "Sonic Team",
+    "release_year": 2002,
+    "genres": [
+      "Platform",
+      "Adventure"
+    ],
+    "rating": 3.69621298106532,
+    "rating_count": 113,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "E10+",
+    "overview": "Sonic Adventure 2: Battle is a complete conversion of Sonic Adventure 2 from the Dreamcast with additional features. Exclusive to the Gamecube are improved visuals, new 2 player battle games (including Kart Racing, Hunting and Chao Karate) and the ability to grow your Chao and exchange them to the Game Boy Advance game Sonic Advance for portable training.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5p3m.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/tnv2vepfm50chpwmvzl5.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/p3j2r33l0svflp8392xs.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/flq6pqwryznldygvwxch.jpg"
     ]
   },
   {
@@ -35394,6 +36022,31 @@
     ]
   },
   {
+    "id": "igdb-9083-snes",
+    "name": "Tetris 2",
+    "platform": "snes",
+    "publisher": "Bullet-Proof Software, Nintendo, Playtronic",
+    "developer": "Nintendo R\u0026D1",
+    "release_year": 1994,
+    "genres": [
+      "Puzzle",
+      "Strategy"
+    ],
+    "rating": 3.2935658108552426,
+    "rating_count": 14,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "SNES release of \"Tetris 2\".\n\nThe mesmerizing fun of Tetris returns - and the challenge escalates to new heights! Test your dexterity, tease your brain and rack up points with Tetris 2. Your split-second decisions lead you to a new dimension in puzzle-solving action! Play alone or challenge a friend in simultaneous split-screen action. A tougher Tetris with more shapes, more components, 30 levels - and unlimited solutions! If you loved the international game sensation Tetris, you'll be wild for the newest dimension in puzzle fun: Tetris 2!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3a71.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8qiy.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8qiz.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc11n5g.jpg"
+    ]
+  },
+  {
     "id": "igdb-9099-nes",
     "name": "Silver Surfer",
     "platform": "nes",
@@ -36130,6 +36783,32 @@
     ]
   },
   {
+    "id": "igdb-9890-gamecube",
+    "name": "Phantasy Star Online Episode I \u0026 II",
+    "platform": "gamecube",
+    "publisher": "Sega",
+    "developer": "Sonic Team",
+    "release_year": 2002,
+    "genres": [
+      "Role-playing (RPG)",
+      "Hack and slash/Beat 'em up",
+      "Adventure"
+    ],
+    "rating": 3.6759153494642876,
+    "rating_count": 16,
+    "rating_scale": 5,
+    "max_players": 4,
+    "cooperative": true,
+    "esrb": "T",
+    "overview": "Create your own character from one of three races (Android, Human, or Newman) and choose a class (Hunter, Ranger, or Force type) to journey through the new world of Ragol. Play with up to 3 other people. Progress through 4 difficulties and complete side quest story lines to unlock better items.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co96xu.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/pixnin3tbdroreswastj.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/kqczx6canudybhf1muxb.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/yr8gwbnb41ajjzx2hbn7.jpg"
+    ]
+  },
+  {
     "id": "igdb-9891-gamecube",
     "name": "Tom Clancy's Rainbow Six 3",
     "platform": "gamecube",
@@ -36612,6 +37291,30 @@
     ]
   },
   {
+    "id": "igdb-10613-n64",
+    "name": "Killer Instinct Gold",
+    "platform": "n64",
+    "publisher": "Nintendo, Playtronic",
+    "developer": "Rare",
+    "release_year": 1996,
+    "genres": [
+      "Fighting"
+    ],
+    "rating": 3.529123828431632,
+    "rating_count": 29,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "T",
+    "overview": "Rare was a prominent second-party developer for Nintendo, and produced the Killer Instinct series exclusively for the company as their response to Mortal Kombat. Following the success of the 1995 Killer Instinct port for the Super Nintendo home console, Rare began a sequel for the same console. They transitioned development to the Nintendo 64 upon its announcement. Gold was scheduled as a launch title for the new console but was delayed until its North American release in November 1996. It received a wider release in May 1997.\n\nIt was also included in Rare's 2015 Xbox One retrospective compilation, Rare Replay.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/cobxkd.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/z7rhm1xdfisoidpjnec7.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7mkr.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7mku.jpg"
+    ]
+  },
+  {
     "id": "igdb-10614-n64",
     "name": "Mega Man 64",
     "platform": "n64",
@@ -36683,6 +37386,32 @@
     "screenshots": [
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/celaenhwhupdtwaxy0xd.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/hitxxvcnxvzcn5ydeo4d.jpg"
+    ]
+  },
+  {
+    "id": "igdb-10621-n64",
+    "name": "V-Rally Edition '99",
+    "platform": "n64",
+    "publisher": "Infogrames Multimedia",
+    "developer": "Infogrames Multimedia",
+    "release_year": 1999,
+    "genres": [
+      "Racing",
+      "Simulator",
+      "Sport"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Racing insanity! Over 40 original tracks, 11 official World Rally Championship cars, tracks in 8 worldwide locations, realistic race physics and smooth car handling, diverse terrain such as jungles, canyons, deserts, mountains and more, unstable weather patterns like rain, fog, snow and cloudy. Adjust car performance characteristics to suit varied road conditions. Bonus and hidden cars and tracks to unlock!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co39y9.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc145j0.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc145j1.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc145j2.jpg"
     ]
   },
   {
@@ -37469,6 +38198,28 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/rj3ui9kfe2psntnizjds.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9dz6.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9dzd.jpg"
+    ]
+  },
+  {
+    "id": "igdb-11284-gb",
+    "name": "Tamagotchi",
+    "platform": "gb",
+    "publisher": "Bandai",
+    "developer": "",
+    "release_year": 1997,
+    "genres": [
+      "Simulator"
+    ],
+    "rating": 3.2668287179622473,
+    "rating_count": 6,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Tamagotchi is the name of a Game Boy game released in October 1997, also known as Game de Hakken!! Tamagotchi in Japan. It is very much like the original Tamagotchi, but with additional features such as music, contests, and more games.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2dou.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/petj8vt1uw3297nb6paf.jpg"
     ]
   },
   {
@@ -39373,6 +40124,31 @@
     ]
   },
   {
+    "id": "igdb-14697-snes",
+    "name": "Teenage Mutant Ninja Turtles IV: Turtles in Time",
+    "platform": "snes",
+    "publisher": "Hyundai, Konami",
+    "developer": "Konami",
+    "release_year": 1992,
+    "genres": [
+      "Hack and slash/Beat 'em up",
+      "Arcade"
+    ],
+    "rating": 4.261380969908051,
+    "rating_count": 168,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": true,
+    "esrb": "",
+    "overview": "Teenage Mutant Ninja Turtles IV: Turtles in Time, developed by Konami, is a side-scrolling beat ’em up for up to two players. It is the fourth game in the series, following Teenage Mutant Ninja Turtles III: The Manhattan Project on the Nintendo Entertainment System. Originally released as an arcade game, it was later ported to the Super Nintendo Entertainment System in 1992.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7ruz.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88z5.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88z9.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88z7.jpg"
+    ]
+  },
+  {
     "id": "igdb-14731-nes",
     "name": "Teenage Mutant Ninja Turtles III: The Manhattan Project",
     "platform": "nes",
@@ -40173,6 +40949,30 @@
     "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/zuunc5ruqhly3hngy7hc.jpg",
     "screenshots": [
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/a9t1gjpuqgyq8irwfmzt.jpg"
+    ]
+  },
+  {
+    "id": "igdb-18054-gamecube",
+    "name": "Bloody Roar: Primal Fury",
+    "platform": "gamecube",
+    "publisher": "Activision, Hudson Soft",
+    "developer": "Eighting",
+    "release_year": 2002,
+    "genres": [
+      "Fighting"
+    ],
+    "rating": 3.6540844879157803,
+    "rating_count": 12,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "T",
+    "overview": "Bloody Roar Extreme (also known as Bloody Roar: Primal Fury outside of Japan) is a fighting game. It is an updated version of the PS2 game Bloody Roar 3. Players can control a number of characters which have the ability to morph into powerful animals, such as tigers and wolves.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4t49.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scf12o.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scf12n.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scpzn9.jpg"
     ]
   },
   {
@@ -41604,6 +42404,31 @@
     "screenshots": []
   },
   {
+    "id": "igdb-19712-snes",
+    "name": "NBA Jam Tournament Edition",
+    "platform": "snes",
+    "publisher": "Acclaim Entertainment, Acclaim Japan, Atari Corporation, Hyundai, Midway Games, Tec Toy",
+    "developer": "High Voltage Software, Iguana UK, Midway Games",
+    "release_year": 1995,
+    "genres": [
+      "Sport",
+      "Arcade"
+    ],
+    "rating": 3.6637464630761185,
+    "rating_count": 24,
+    "rating_scale": 5,
+    "max_players": 4,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "NBA Jam Tournament Edition brings you more senses-shattering slam dunking excitement than ever! More than twice as many NBA superstars, more than double the secret characters, Hot Spots, Super Jam Power-Ups, battery back-up and - OH MY - nine all-new rim-rattling slam dunks plus all the original jams! NBA JAM Tournament Edition... it's on FIRE!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6vuj.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scm7ix.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scm7iy.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scm7iz.jpg"
+    ]
+  },
+  {
     "id": "igdb-19713-snes",
     "name": "Phantom 2040",
     "platform": "snes",
@@ -42191,6 +43016,31 @@
     ]
   },
   {
+    "id": "igdb-20597-gba",
+    "name": "Final Fantasy V Advance",
+    "platform": "gba",
+    "publisher": "Square Enix",
+    "developer": "Square Enix Product Development Division 7, Tose",
+    "release_year": 2006,
+    "genres": [
+      "Role-playing (RPG)",
+      "Adventure"
+    ],
+    "rating": 4.194443208107716,
+    "rating_count": 21,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "The winds fail. Ships stand still, unable to fill their sails. The world races to its end. Unless a handful of heroes can protect the remaining crystals, the world will fall into ruin. Set off on a grand adventure in the finest version of FINAL FANTASY V ever released!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2yc1.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9czm.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9czn.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9czo.jpg"
+    ]
+  },
+  {
     "id": "igdb-20615-snes",
     "name": "Zoop",
     "platform": "snes",
@@ -42237,6 +43087,31 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc6kqt.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc6kqu.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc6kqv.jpg"
+    ]
+  },
+  {
+    "id": "igdb-20655-gba",
+    "name": "Final Fantasy VI Advance",
+    "platform": "gba",
+    "publisher": "Square Enix",
+    "developer": "Square Enix Product Development Division 7, Tose",
+    "release_year": 2007,
+    "genres": [
+      "Role-playing (RPG)",
+      "Adventure"
+    ],
+    "rating": 4.135351110014581,
+    "rating_count": 23,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E10+",
+    "overview": "Final Fantasy VI Advance is more than a simple port of the SNES classic: every aspect of the games has been reviewed and enhanced. Additionally, a host of brand-new elements has been seamlessly merged with the original game, providing unexpected surprises for longtime fans. With new dungeons, new job classes, and other exciting features, both old-school players and newcomers can enjoy this genre-defining FINAL FANTASY title in a portable format.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2yh2.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7har.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7hav.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc7hat.jpg"
     ]
   },
   {
@@ -42749,6 +43624,32 @@
     ]
   },
   {
+    "id": "igdb-23695-gamecube",
+    "name": "Sonic Adventure DX: Director's Cut",
+    "platform": "gamecube",
+    "publisher": "Sega",
+    "developer": "Sonic Team",
+    "release_year": 2003,
+    "genres": [
+      "Platform",
+      "Racing",
+      "Adventure"
+    ],
+    "rating": 3.4927362366525783,
+    "rating_count": 94,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "An ancient evil lurking within the Master Emerald has been unleashed from its slumber by the devious Dr. Eggman and is on the verge of becoming the ultimate monster using the 7 Chaos Emeralds. Only Sonic and his friends are heroic enough to put a stop to Dr. Eggman and his evil minions.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1te5.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/pfxfvyghdgmmhjvd7vqr.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/lfp854sg8evfle4lanxc.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/po9bxirfeopmujk0vg8f.jpg"
+    ]
+  },
+  {
     "id": "igdb-23716-gba",
     "name": "Space Channel 5: Ulala's Cosmic Attack",
     "platform": "gba",
@@ -43091,6 +43992,32 @@
     "overview": "Naruto: Clash of Ninja 2 offers several different game modes such as Arcade mode, VS mode, and Story mode. You can unlock new features such as new characters, stages, and modes by accomplishing certain tasks in the game.",
     "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1ubb.jpg",
     "screenshots": []
+  },
+  {
+    "id": "igdb-24369-gamecube",
+    "name": "Resident Evil Code: Veronica X",
+    "platform": "gamecube",
+    "publisher": "Capcom",
+    "developer": "Nextech",
+    "release_year": 2003,
+    "genres": [
+      "Shooter",
+      "Puzzle",
+      "Adventure"
+    ],
+    "rating": 3.7289741547999937,
+    "rating_count": 149,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "M",
+    "overview": "Resident Evil Code: Veronica X is a port of the original game with additional content comprised of improved graphics along with an extra nine minutes of cutscenes. The character Steve had his hairstyle changed to have a noticeable fringe, and no longer proudly shows his forehead. This change was made to all cutscenes that feature him, as well as to the family photograph he carries with him. Apart from these changes, the game is almost the same as the original one.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2vzv.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/ngornmeoiu6cfvgjpn6a.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/enxvsz2d4thua1yzqber.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/w8uolvscggmym7dqf79z.jpg"
+    ]
   },
   {
     "id": "igdb-24818-gbc",
@@ -43492,6 +44419,30 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/ujnkwdabgpsaeqxiorwa.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/qn8yckgcpar7emagvhkw.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/hfnyfo3nde3wjgvs40zh.jpg"
+    ]
+  },
+  {
+    "id": "igdb-27525-snes",
+    "name": "Lamborghini: American Challenge",
+    "platform": "snes",
+    "publisher": "Gradiente, Playtronic, Titus Interactive",
+    "developer": "Titus Interactive",
+    "release_year": 1993,
+    "genres": [
+      "Racing"
+    ],
+    "rating": 3.33293539497256,
+    "rating_count": 7,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": true,
+    "esrb": "",
+    "overview": "The game is an upgrade from Titus Interactive's previous entry in the Crazy Cars franchise, Crazy Cars III. It adds a two player mode and a few more options, the game's most notable feature is its Jazz Fusion soundtrack. Another feature of this game is that your car is damaged in every beat you suffer, and so that it goes back to normal state only by paying a little money later to repair it.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2dnr.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/tosgijrdnewdjhrppiuf.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/f9wg35bnhl6yo4pd8ehu.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/pgotw0wxbpzqvn6iukix.jpg"
     ]
   },
   {
@@ -45959,6 +46910,47 @@
     ]
   },
   {
+    "id": "igdb-42424-snes",
+    "name": "Wheel of Fortune: Deluxe Edition",
+    "platform": "snes",
+    "publisher": "GameTek, Inc.",
+    "developer": "Imagitec Design",
+    "release_year": 1994,
+    "genres": [
+      "Puzzle",
+      "Quiz/Trivia"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Wheel of Fortune: Deluxe Edition is an updated sequel to its predecessor that features 4,000 different puzzles and the standard features of Wheel of Fortune such as the bonus round. It also has a digitized likeness of Vanna White along with her voice. There are also digitized photos of people that can be chosen to represent the player. Players can go up against friends or compete against the computer A.I.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co49gy.jpg",
+    "screenshots": []
+  },
+  {
+    "id": "igdb-42428-snes",
+    "name": "World Soccer 94: Road to Glory",
+    "platform": "snes",
+    "publisher": "Atlus, Coconuts Japan, Rage Software",
+    "developer": "Rage Software",
+    "release_year": 1993,
+    "genres": [
+      "Sport"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "The players are drawn large and there is a large scanner to assist with long passing. The standard mode has the ball sticking closely to the feet, which makes mazy runs upfield a common strategy. There are 64 international teams on offer, with a European-style knock-out cup competition included. Many different formations and strategies are offered.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5pmd.jpg",
+    "screenshots": []
+  },
+  {
     "id": "igdb-42429-snes",
     "name": "Tommy Moe's Winter Extreme: Skiing \u0026 Snowboarding",
     "platform": "snes",
@@ -47271,6 +48263,31 @@
     ]
   },
   {
+    "id": "igdb-42554-snes",
+    "name": "Final Fight Guy",
+    "platform": "snes",
+    "publisher": "Capcom",
+    "developer": "Capcom",
+    "release_year": 1992,
+    "genres": [
+      "Hack and slash/Beat 'em up",
+      "Arcade"
+    ],
+    "rating": 3.5566101405382406,
+    "rating_count": 9,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Mayor Mike Haggar vows to snatch the streets of Metro City back from the crooks with his bare knuckles! But the Mad Gear Gang snatches his daughter Jessica. Now there's gonna be some bone-crunching dues to pay!\n\nThe urban ninja Guy hits the streets hard with Haggar, denting heads downtown and slugging it out in the slums. He's a one man army! His weapons are anything he can find -- swords, knives, or pipes.\n\nNow you're Haggar or Guy, each with his own fighting style. Demolish gangland henchmen, samurai swordsmen and musclebound crime bosses in a fist-to-nose frenzy!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4tca.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/gaatrnfgzwz5ujwhi4xb.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/nhd2tuqjxmojzbbxz4dq.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/er10aqv1mfm8f5awubnc.jpg"
+    ]
+  },
+  {
     "id": "igdb-42556-snes",
     "name": "Metal Morph",
     "platform": "snes",
@@ -48200,6 +49217,30 @@
     "overview": "Cyber Spin is a top down racing game. The player takes on the role of Chuck Davis, superstar teenage racer, driving in the Cyber Car. Chuck faces seven opponents in Grands Prix across ten nations. The main obstacle in Cyber Spin is the power supply. Power is depleted when turbo is used and also when damage is taken. When there is no power left, the race is over for Chuck.\n\nThe game is a port of the Japanese game Shinseiki GPX Cyber Formula, removing based on the anime.",
     "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3rs4.jpg",
     "screenshots": []
+  },
+  {
+    "id": "igdb-42616-snes",
+    "name": "ClayFighter: Tournament Edition",
+    "platform": "snes",
+    "publisher": "Interplay",
+    "developer": "Visual Concepts",
+    "release_year": 1994,
+    "genres": [
+      "Fighting"
+    ],
+    "rating": 2.8009708975253567,
+    "rating_count": 10,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "The Tournament Edition of Clay Fighter fixes some glitches and adds new features to the original 2D fighting game. Most scenarios were changed or redone, the graphics are brighter and the gameplay is faster. The characters can now perform three and four-hit combos. More voice-overs and a new introduction cut-scene were added.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4e85.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/wrohc1uwhhht3mia6txg.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8ziu.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8ziv.jpg"
+    ]
   },
   {
     "id": "igdb-42617-snes",
@@ -49819,6 +50860,32 @@
     "screenshots": []
   },
   {
+    "id": "igdb-44958-n64",
+    "name": "Bust-a-Move '99",
+    "platform": "n64",
+    "publisher": "Acclaim, Square Enix, Taito",
+    "developer": "Taito",
+    "release_year": 1999,
+    "genres": [
+      "Puzzle",
+      "Strategy",
+      "Arcade"
+    ],
+    "rating": 3.0011181016603525,
+    "rating_count": 8,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "In the tradition of the Bust-A-Move series, Taito's Bust-A-Move '99 is a traditional puzzle game. The main objective is to destroy or get rid of (by dropping) all the bubbles located within the stage. Once you do this, you'll graduate to the next level.\n\nWhile the premise may sound simple, the logic and execution is not. Using a \"bubble shooter\", you must aim and shoot your bubbles to the top of the screen so that you can bring three bubbles of the same color together. When you do this, the bubbles will pop. One way to earn points is to have the popping bubbles as well as the bubble that was shot fall off the screen (in multi-player, it puts these bubbles on your opponent's side). This also gives you a lot less bubbles to take care of.\n\nBubbles are constantly falling down. Popping them all in a short amount of time is necessary because the longer it takes you to pop them all, the faster they will drop. If you fail to clear out all the bubbles and they reach the bottom of the screen, the game is over.\n\nBust-A-Move '99 contains some new options never seen in the Bust-A-Move series. There are now special bubbles (star, metal and rainbow to name a few), obstructive bubbles and blocks and new backgrounds. You are also given the opportunity to create your very own stages with the create-a-level editor.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coabmn.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8zif.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8zig.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8zih.jpg"
+    ]
+  },
+  {
     "id": "igdb-45066-gbc",
     "name": "Test Drive: Le Mans",
     "platform": "gbc",
@@ -50063,6 +51130,31 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8w2x.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8w2y.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8w2z.jpg"
+    ]
+  },
+  {
+    "id": "igdb-45195-gba",
+    "name": "Super Street Fighter II Turbo: Revival",
+    "platform": "gba",
+    "publisher": "Capcom, Gradiente",
+    "developer": "Capcom",
+    "release_year": 2001,
+    "genres": [
+      "Fighting",
+      "Arcade"
+    ],
+    "rating": 3.9,
+    "rating_count": 3,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Capcom's timeless Street Fighter masterpiece conquers the Game Boy Advance system. Choose from over 16 brawlers from the Street Fighter universe and execute special moves, and super combos to wreak havoc on your opponent and become the best street fighter in the world. Lightning fast animation, unbelievable graphics and Capcom's signature gameplay make Super Street Fighter II Turbo the most respected fighting game of all time.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6dk3.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/ynb9xvqzsoe4aj6geowm.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/o37xst1lj8s4tbsqauv3.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/s47fq3zslhe4bjtrk1d5.jpg"
     ]
   },
   {
@@ -50899,6 +51991,31 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc15aax.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc15aaw.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc15aav.jpg"
+    ]
+  },
+  {
+    "id": "igdb-46285-snes",
+    "name": "Bass Masters Classic: Pro Edition",
+    "platform": "snes",
+    "publisher": "Black Pearl Software",
+    "developer": "Black Pearl Software",
+    "release_year": 1996,
+    "genres": [
+      "Simulator",
+      "Sport"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Bass Masters Classic: Pro Edition is an enhanced version of Bass Masters Classic. This game was released for both the Super Nintendo Entertainment System and the Sega Genesis video game devices.\n\nDon't miss your chance to compete in the most realistic fishing game for the Genesis. Featuring pro bass anglers George Cochran, Shaw Grigsby Jr., Gary Klein, Tom Mann Jr., Dee Thomas and Kevin VanDam, BASS MASTERS CLASSIC PRO EDITION brings world championship bass fishing indoors! Compete as one of six actual pro fishermen or as an amateur enthusiast in the Bass Masters Classic. Fish the waters in five three-day tournaments at five different lakes. Rich graphics recreate the outdoor fishing experience in vivid detail. Choose your rod, reel, lure, and even boat engine.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2w1k.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc781u.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc781v.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc781w.jpg"
     ]
   },
   {
@@ -57281,6 +58398,30 @@
     ]
   },
   {
+    "id": "igdb-48694-nes",
+    "name": "Jeopardy!: 25th Anniversary Edition",
+    "platform": "nes",
+    "publisher": "GameTek, Inc.",
+    "developer": "Rare",
+    "release_year": 1990,
+    "genres": [
+      "Quiz/Trivia"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "For the last quarter of a century, some of the smartest people in the world have been competing for cash prizes on Jeopardy!, the high-pressure answers and questions television game show. Now It's your turn. Share the excitement with thousands of TV winners. Test your memory against even more challenging \"Answers\" In this all-new edition especially created to commemorate Jeopardy's Silver Anniversary. You'll be amazed at the things you know!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6o1n.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc12k3i.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc12k3j.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc12k3k.jpg"
+    ]
+  },
+  {
     "id": "igdb-48697-nes",
     "name": "Dragon Power",
     "platform": "nes",
@@ -57972,6 +59113,33 @@
     ]
   },
   {
+    "id": "igdb-48932-nes",
+    "name": "Kira-kira Star Night DX",
+    "platform": "nes",
+    "publisher": "Columbus Circle, Limited Run Games, Sansai Books",
+    "developer": "Riki",
+    "release_year": 2021,
+    "genres": [
+      "Music",
+      "Platform",
+      "Adventure",
+      "Indie"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Kira Kira Star Night DX follows Fami-chan. She’s a young woman jumping around environments, attempting to catch stars while chiptunes play in the background. The goal is to get a certain number of stars before time runs out. There are nine stages total, and the game features music from Takeaki Kunimoto, Yuriko Keino, Yuzo Koshiro, Nobuyuki Koshiro, Tappy, Manami Matsumae, Hally, Bun, Robokabuto, Yasuhisa Watanabe, and Takeshi Yokemura.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co4ssf.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8b6c.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/schld1.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/schld2.jpg"
+    ]
+  },
+  {
     "id": "igdb-48935-nes",
     "name": "Gun Nac",
     "platform": "nes",
@@ -58374,6 +59542,33 @@
     "screenshots": [
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sclx72.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sclx71.jpg"
+    ]
+  },
+  {
+    "id": "igdb-48958-gb",
+    "name": "BurgerTime Deluxe",
+    "platform": "gb",
+    "publisher": "Data East, G-MODE",
+    "developer": "Data East",
+    "release_year": 1991,
+    "genres": [
+      "Platform",
+      "Puzzle",
+      "Adventure",
+      "Arcade"
+    ],
+    "rating": 2.9977835491801264,
+    "rating_count": 9,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Based on BurgerTime, the Arcade classic from 1982, BurgerTime Deluxe once again puts you in the role of chef Peter Pepper, a guy who can really build a burger. You maneuver the cook up and down ladders and left and right across floors in order to walk across various parts of giant hamburgers, such as large lettuce, big buns and massive meat patties. After you cross any section of any hamburger, it will drop one level and push any other burger part within that stack down a floor as well. The object of the game is to build all the hamburgers in each stage by dropping all the makings of each burger into completed stacks at the bottom of the screen.\n\nAs you go about your burger building business, Food Foes Mr. Pickle, Mr. Egg and Mr. Hot dog (also known as Frank N. Furter) will chase after you. You can destroy these culinary cutups by trapping them in falling burger parts or by tricking them into walking on a burger part you are in the process of dropping. To freeze the Food Foes, you can sprinkle a dash of pepper on them. You begin the game with a small pepper supply and can pick up additional pepper shakers that appear throughout the levels. You can also pick up bonus points (in the guise of cups and saucers) and extra lives.\n\nUnlike the original BurgerTime, which had less than 10 different non-scrolling screens, BurgerTime Deluxe has seven levels with four stages in each level for a grand total of 28 screens, most of which scroll to some degree. A password feature enables you to return to the beginning of last level you played. Also, this version of the game features a two-player competitive mode (as long as you have two copies of the game, an extra Game Boy, and a link cable).",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6aso.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scg91f.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scg91g.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scg91h.jpg"
     ]
   },
   {
@@ -60543,6 +61738,27 @@
     ]
   },
   {
+    "id": "igdb-49088-gb",
+    "name": "Power Racer",
+    "platform": "gb",
+    "publisher": "Tecmo",
+    "developer": "Graphic Research Co., Ltd.",
+    "release_year": 1991,
+    "genres": [
+      "Racing",
+      "Arcade"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Power Racer is a conversion of the arcade game Head On to the Game Boy that includes an extra special mode with multiplayer.\n\nViewed from a top down perspective, the player has to race around a circuit consisting of five lanes and collect all the dots that lies scattered around. This mode features ten difficulty levels.\n\nThe special mode has items and obstacles to face. You can also play in the special mode against a second human player.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7yez.jpg",
+    "screenshots": []
+  },
+  {
     "id": "igdb-49089-gb",
     "name": "Power Mission",
     "platform": "gb",
@@ -61405,6 +62621,31 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scml3f.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scml3g.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scml3h.jpg"
+    ]
+  },
+  {
+    "id": "igdb-49188-gba",
+    "name": "Harvest Moon: More Friends of Mineral Town",
+    "platform": "gba",
+    "publisher": "Marvelous Interactive, Natsume Inc.",
+    "developer": "Marvelous Interactive",
+    "release_year": 2005,
+    "genres": [
+      "Role-playing (RPG)",
+      "Simulator"
+    ],
+    "rating": 3.8684210526315788,
+    "rating_count": 7,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Live the simple life as a farmer in Harvest Moon: More Friends of Mineral Town. This game is similar to the original Harvest Moon: Friends of Mineral Town, but now you can play as a girl who has left the city to pursue a life on the farm. You'll take part in growing crops, managing livestock, finding a husband, and raising children.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2xm5.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/rr0yxpwwk9ht6cuxpm3i.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/gl5o6z13nlgedkfyobww.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/buma0wgzip2dk1hyfulc.jpg"
     ]
   },
   {
@@ -66517,6 +67758,30 @@
     ]
   },
   {
+    "id": "igdb-49875-gbc",
+    "name": "Tetris DX",
+    "platform": "gbc",
+    "publisher": "Gradiente, Nintendo",
+    "developer": "Nintendo",
+    "release_year": 1998,
+    "genres": [
+      "Puzzle",
+      "Strategy"
+    ],
+    "rating": 4.618160115837617,
+    "rating_count": 21,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Tetris DX has everything you need to satisfy your puzzle appetite. Play marathon, the classic Tetris game. Try your hand at ultra or 40 lines, two Tetris games with a twist. The vs. game will have you playing for hours!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3a6u.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc75x9.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc75x8.jpg"
+    ]
+  },
+  {
     "id": "igdb-49876-gbc",
     "name": "Test Drive 2001",
     "platform": "gbc",
@@ -66535,6 +67800,30 @@
     "overview": "All of the action and excitement of sports car racing comes to the Game Boy Color with TEST DRIVE 2001. You can choose from 13 real world cars including the Lotus Elise, Dodge Viper, Jaguar XK-R, and a 1985 Ford Mustang and customize any of them to meet your driving style. Then you can hit one of 48 tracks in 12 different locations. While on the track, you need to watch out for jumps, shortcuts, and traffic that will ram into your vehicle. Try to learn all of curves of a track in a Single Race, or if you are looking for extended competition, try to win a Tournament. For the ultimate challenge, try to catch speeding criminals in the Cop Chase. If your friends want to race you, they can with the link cable option. Get a car and lay some rubber on the street in TEST DRIVE 2001.",
     "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/xyburhilugdezmu0lh9g.jpg",
     "screenshots": []
+  },
+  {
+    "id": "igdb-49877-gbc",
+    "name": "Super Mario Bros. Deluxe",
+    "platform": "gbc",
+    "publisher": "Gradiente, Nintendo",
+    "developer": "Nintendo, Nintendo R\u0026D2",
+    "release_year": 1999,
+    "genres": [
+      "Platform"
+    ],
+    "rating": 3.417913085830252,
+    "rating_count": 45,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Bowser has once again taken over the Mushroom Kingdom, and it's up to Mario to put an end to his sinister reign. Battle Bowser's vile henchmen through 32 different levels - all taken directly from the 1985 classic! Then move on to collect special Red Coins and Yoshi Eggs in the Challenge Mode. Or face off against a friend and race through 8 competition courses in the all-new VS Mode! This time there's a lot more to do than just save a Princess, so get ready for a brick-smashin', pipe-warpin', turtle-stompin' good time!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2299.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/hdohmn2tmdlg7loubiwv.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/gcgv3hygvehbwngvrvsd.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/zu2e4esuyy7vtdch07rx.jpg"
+    ]
   },
   {
     "id": "igdb-49878-gbc",
@@ -69174,6 +70463,26 @@
     ]
   },
   {
+    "id": "igdb-50567-gamecube",
+    "name": "Virtua Striker 2002",
+    "platform": "gamecube",
+    "publisher": "",
+    "developer": "Amusement Vision",
+    "release_year": 2002,
+    "genres": [
+      "Sport"
+    ],
+    "rating": 3.35,
+    "rating_count": 3,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "The Virtua Striker series returns with 64 national football teams from around the world. Whether you play as France, Brazil, or Argentina, you can take your team to the final of the International Cup for a chance to win the trophy. On the road to the International Cup, you'll encounter more than 1,400 different players with their own stats and play in 13 stadiums. Virtua Striker 2002 also includes player edit and replay functions.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co1per.jpg",
+    "screenshots": []
+  },
+  {
     "id": "igdb-50571-gamecube",
     "name": "Knockout Kings 2003",
     "platform": "gamecube",
@@ -69906,6 +71215,30 @@
     "screenshots": [
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8afb.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8afa.jpg"
+    ]
+  },
+  {
+    "id": "igdb-61518-gb",
+    "name": "Q*bert for Game Boy",
+    "platform": "gb",
+    "publisher": "Jaleco",
+    "developer": "",
+    "release_year": 1992,
+    "genres": [
+      "Puzzle"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Q*bert for Game Boy brings new challenges to the classic series.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3o72.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scvzq2.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scvzq3.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scvzq4.jpg"
     ]
   },
   {
@@ -72847,6 +74180,31 @@
     ]
   },
   {
+    "id": "igdb-78872-gamecube",
+    "name": "Harvest Moon: Another Wonderful Life",
+    "platform": "gamecube",
+    "publisher": "Marvelous Interactive, Natsume Inc.",
+    "developer": "Marvelous Interactive",
+    "release_year": 2005,
+    "genres": [
+      "Role-playing (RPG)",
+      "Simulator"
+    ],
+    "rating": 4.047598149506949,
+    "rating_count": 9,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Another Wonderful Life's gameplay is very similar to its predecessors, involving growing crops while taking care of the variety of animals inhabiting the farm.\n\nThe game also includes the ability to court three bachelors and marry one of them by the end of the first chapter of the story. The game progresses through 6 chapters in the game, which shows the player character going from young adulthood to old age.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2xk8.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88rn.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88ro.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc88rp.jpg"
+    ]
+  },
+  {
     "id": "igdb-78875-gbc",
     "name": "Top Gear Pocket 2",
     "platform": "gbc",
@@ -72928,6 +74286,31 @@
     "screenshots": [
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scjun5.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scjun6.jpg"
+    ]
+  },
+  {
+    "id": "igdb-79149-gamecube",
+    "name": "Phantasy Star Online Episode I \u0026 II Plus",
+    "platform": "gamecube",
+    "publisher": "Sega",
+    "developer": "Sonic Team",
+    "release_year": 2004,
+    "genres": [
+      "Role-playing (RPG)",
+      "Hack and slash/Beat 'em up",
+      "Adventure"
+    ],
+    "rating": 4.146543192421886,
+    "rating_count": 8,
+    "rating_scale": 5,
+    "max_players": 4,
+    "cooperative": true,
+    "esrb": "T",
+    "overview": "SEGA re-released in 2003 an updated version of Phantasy Star Online Episode I \u0026 II for the Nintendo GameCube in 2003 called Phantasy Star Online Episode I \u0026 II Plus.\n\nEarly in the effort to run unsigned code on the GameCube, people found that when playing PSO and connecting to a server using the GameCube Broadband Adapter, a regular PC could be made to pretend it was a server which would fool the game.\n\nAfter making the connection, data could be streamed back to the GameCube, making it easy for hacking and false servers. Phantasy Star Online Episode I \u0026 II Plus was created in mind to fix this problem. Along with this problem, SEGA included extra content for offline with this game including:\n- Episode II Challenge Mode, which was perviously only online.\n- Perviously Online only quests, Seat of the Heart, West Tower and East Tower are now available offline.\n- Central Dome Fire Swirl, a downloadable quest for the Xbox, is now available offline.\n- The downloadable goods from Fake in Yellow quest are now available offline.\n\nAside from some extra cheat protection, Phantasy Star Online Episode I \u0026 II Plus ran exactly the same as the original version and all data from characters, items, ect, can be swapped between the two instantly.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7g3z.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc898i.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc898h.jpg"
     ]
   },
   {
@@ -74423,6 +75806,30 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc85fj.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc85fl.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc85fk.jpg"
+    ]
+  },
+  {
+    "id": "igdb-86343-gamecube",
+    "name": "Capcom vs. SNK 2 EO",
+    "platform": "gamecube",
+    "publisher": "Capcom",
+    "developer": "Capcom",
+    "release_year": 2003,
+    "genres": [
+      "Fighting"
+    ],
+    "rating": 3.9844652221018917,
+    "rating_count": 5,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "T",
+    "overview": "Capcom vs. SNK 2 EO is the same game but with minor changes in gameplay and the inclusion of an EO (\"Easy Operation\") system that allows the player to perform specific attacks by simply moving the right analog stick in a certain direction. Like all other home versions of the game, CvS2: EO also contains four bonus characters: Evil Ryu, Orochi Iori, Shin Akuma (Shin Gouki in Japan), and Ultimate Rugal (God Rugal in Japan), powered-up versions of four regular characters.\n\nBefore selecting a team, the game offers a selection of \"Grooves\", which change the way the game is played, as well as \"AC-ism\" or \"GC-ism\" Grooves; GC-ism simplifies the control scheme, originally designed for the GameCube gamepad. In the Xbox version it is called EO-ism. Capcom vs. SNK 2 EO also removed the Roll Cancel glitch that was in the original versions. In addition, the Xbox version of CvS2: EO also included online play for up to two players on Xbox Live as well as progressive-scan (480p) support, which was noticeably absent in the PlayStation 2 version.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9djw.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8a24.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8a22.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8a23.jpg"
     ]
   },
   {
@@ -77113,6 +78520,56 @@
     ]
   },
   {
+    "id": "igdb-123211-gb",
+    "name": "Tobu Tobu Girl Deluxe",
+    "platform": "gb",
+    "publisher": "First Press Games",
+    "developer": "Tangram Games",
+    "release_year": 2019,
+    "genres": [
+      "Platform",
+      "Indie",
+      "Arcade"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Your cat is floating into the atmosphere and you are the only one who can save it. Jump, dash, and flap your arms to maneuver around perilous obstacles racing against the clock to retrieve your pet friend before it is too late!\n\nTobu Tobu Girl is a fun and challenging arcade platformer developed by Tangram Games featuring an original soundtrack by potato-tan.\n\nTobu Tobu Girl Deluxe is a new and enhanced version of the original featuring improved, full-color graphics and is fully compatible with the Game Boy, Game Boy Color, and Super Game Boy.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2gtw.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8vba.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8vbb.jpg"
+    ]
+  },
+  {
+    "id": "igdb-123211-gbc",
+    "name": "Tobu Tobu Girl Deluxe",
+    "platform": "gbc",
+    "publisher": "First Press Games",
+    "developer": "Tangram Games",
+    "release_year": 2019,
+    "genres": [
+      "Platform",
+      "Indie",
+      "Arcade"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Your cat is floating into the atmosphere and you are the only one who can save it. Jump, dash, and flap your arms to maneuver around perilous obstacles racing against the clock to retrieve your pet friend before it is too late!\n\nTobu Tobu Girl is a fun and challenging arcade platformer developed by Tangram Games featuring an original soundtrack by potato-tan.\n\nTobu Tobu Girl Deluxe is a new and enhanced version of the original featuring improved, full-color graphics and is fully compatible with the Game Boy, Game Boy Color, and Super Game Boy.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2gtw.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8vba.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8vbb.jpg"
+    ]
+  },
+  {
     "id": "igdb-123628-gba",
     "name": "Waimanu: Grinding Block Adventure",
     "platform": "gba",
@@ -77728,6 +79185,30 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8511.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8510.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8512.jpg"
+    ]
+  },
+  {
+    "id": "igdb-132723-gba",
+    "name": "Donkey Kong Country 3",
+    "platform": "gba",
+    "publisher": "Nintendo",
+    "developer": "Rare",
+    "release_year": 2005,
+    "genres": [
+      "Platform"
+    ],
+    "rating": 4.009114310927624,
+    "rating_count": 13,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": true,
+    "esrb": "E",
+    "overview": "Donkey Kong Country 3 is the Game Boy Advance version of the SNES game \"Donkey Kong Country 3: Dixie Kong's Double Trouble!\". Although being developed as a port, the game has a different soundtrack composed by the veteran of the series David Wise, new minigames, worlds and overworld map layout.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co2ven.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8yb0.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8yb1.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc8yb2.jpg"
     ]
   },
   {
@@ -80767,6 +82248,30 @@
     ]
   },
   {
+    "id": "igdb-144588-gb",
+    "name": "IndestructoTank!",
+    "platform": "gb",
+    "publisher": "Antony Lavelle, Incube8 Games",
+    "developer": "Antony Lavelle",
+    "release_year": 2021,
+    "genres": [
+      "Arcade"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "A Game Boy port of the first Indestructotank game including features from the game Indestruc2tank!.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5v8s.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc94wn.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc94wm.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc94wo.jpg"
+    ]
+  },
+  {
     "id": "igdb-144589-nes",
     "name": "The Magnilo Case",
     "platform": "nes",
@@ -81610,6 +83115,31 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc9tpg.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scbtll.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scbtlm.jpg"
+    ]
+  },
+  {
+    "id": "igdb-150028-gba",
+    "name": "Donkey Kong Country",
+    "platform": "gba",
+    "publisher": "Nintendo",
+    "developer": "Rare",
+    "release_year": 2003,
+    "genres": [
+      "Platform",
+      "Adventure"
+    ],
+    "rating": 3.9635865885677726,
+    "rating_count": 11,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "An expanded port of the original Donkey Kong Country for the SNES. Includes extra collectables, remixed/remastered music and sound design, and additional game modes and minigames.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7j9s.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sca4vi.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sca4vj.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sca4vk.jpg"
     ]
   },
   {
@@ -82853,6 +84383,32 @@
     ]
   },
   {
+    "id": "igdb-169910-gb",
+    "name": "Lock 'n' Chase",
+    "platform": "gb",
+    "publisher": "Data East, G-MODE, Sun Electronics",
+    "developer": "Data East",
+    "release_year": 1990,
+    "genres": [
+      "Puzzle",
+      "Strategy",
+      "Arcade"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "Lock 'n' Chase is a video game developed by Data East and released in arcades in Japan in 1981. It was licensed to Taito for distribution in North America. A maze game, Lock 'n' Chase was Data East's response to Pac-Man.\n\nAn updated version was published for the Game Boy in 1990 and later re-released on 3DS in 2011.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3tn5.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scde8v.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scde8w.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scde8x.jpg"
+    ]
+  },
+  {
     "id": "igdb-171559-gba",
     "name": "Feline",
     "platform": "gba",
@@ -82921,6 +84477,31 @@
     "overview": "Fist of the North Star is a side-scrolling action video game produced by Toei Animation and developed by Shouei System for the Nintendo Entertainment System (NES). It was first released in Japan under the title Hokuto no Ken 2, on April 17, 1987, being the second Hokuto no Ken video game released for the Family Computer (Famicom) by the anime production company (which briefly entered the video game publishing business after their success with the original Hokuto no Ken game for the Famicom in 1986), while also serving as a tie-in to the Hokuto no Ken 2 anime series which began airing on Fuji TV a few weeks earlier. Taxan published the localized NES version on April 1989, making it one of the earliest Fist of the North Star products released in the U.S. alongside Viz Communications' English adaptation of the manga.\n\nThe main differences from the Japanese version are:\n\n- The Japanese version is harder because projectiles are randomly thrown at you from the sides of the screen like in the previous game and the first two mini-bosses have to be hit in their heads.\n- Kenshiro's color was changed from black to blue.\n- The \"abeshi\" and \"hidebu\" power-ups were changed to white and black stars.\n- The NPCs that appear at the end of some stages were removed for the US version.\n- In the Japanese version, when you use a continue you are dropped in Stage 4. In the US version, you continue from the stage you were on.",
     "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6nw2.jpg",
     "screenshots": []
+  },
+  {
+    "id": "igdb-172518-snes",
+    "name": "Super Turrican: Director's Cut",
+    "platform": "snes",
+    "publisher": "Analogue, Strictly Limited Games",
+    "developer": "Factor 5",
+    "release_year": 2022,
+    "genres": [
+      "Shooter",
+      "Platform"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "The lost colony of Alterra is a completely man-made lifeworld abandoned long ago in a nearby galaxy. Alterra is actually five colonies in one. Each self-contained habitat has been separately bio-engineered by a powerful ecosystem generation network known as a Multiple Organism Unit Link. MORGUL, for short. Early colonists used MORGUL to render Alterra inhabitable. But a cataclysmic quake severed all system interface functions, and MORGUL murderously rebelled. The few colonists lucky enough to escape told a grim tale of a higher intelligence gone berserk.\n\nFor generations, mankind sought a return to Alterra. Finally, genetic science created a saviour: Turrican, a mutant warrior, bio-engineered for the task of planetary reclamation. In the meantime, MORGUL has diligently twisted Alterran life forms to his brutal, destructive purposes. Thus, Turrican's challenges consist in eliminating hostile organisms from Alterra's five multi-level worlds and, finally, destroying the three faces of MORGUL.\n\nThis previously unreleased game is available exclusively on the Analogue Super Nt consoles and in limited release prints.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co3w5v.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmlf8.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmlf9.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmlfa.jpg"
+    ]
   },
   {
     "id": "igdb-172687-snes",
@@ -83474,6 +85055,30 @@
     ]
   },
   {
+    "id": "igdb-178237-gba",
+    "name": "Donkey Kong Country 2",
+    "platform": "gba",
+    "publisher": "Nintendo",
+    "developer": "Rare",
+    "release_year": 2004,
+    "genres": [
+      "Platform"
+    ],
+    "rating": 4.06937923628829,
+    "rating_count": 19,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": true,
+    "esrb": "E",
+    "overview": "Donkey Kong Country 2 is a remake of the SNES game Donkey Kong Country 2: Diddy's Kong Quest. It is the second game in the series of remakes of the original Country trilogy for the Game Boy Advance.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7n25.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sceecv.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sceecw.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sceecu.jpg"
+    ]
+  },
+  {
     "id": "igdb-178582-gb",
     "name": "Borbo's Quest",
     "platform": "gb",
@@ -83766,6 +85371,29 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scekzk.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scekzl.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scekzj.jpg"
+    ]
+  },
+  {
+    "id": "igdb-180278-nes",
+    "name": "Tetris",
+    "platform": "nes",
+    "publisher": "Tengen",
+    "developer": "Tengen",
+    "release_year": 1989,
+    "genres": [
+      "Puzzle"
+    ],
+    "rating": 3.640374286153295,
+    "rating_count": 9,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Tengen, an Atari label, released an unlicensed version of Tetris for the Nintendo Entertainment System. After they lost a lawsuit to Nintendo, which acquired the rights from Russia to port the game to home consoles (they already had the handheld consoles rights), Tengen had to destroy every spare cartridge unsold at the time.\n\nThe Tengen game featured a two-player simultaneous mode not available in Nintendo's version",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc4yb.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sche2f.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sche2g.jpg"
     ]
   },
   {
@@ -85367,6 +86995,27 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmd57.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmd56.jpg"
     ]
+  },
+  {
+    "id": "igdb-194569-snes",
+    "name": "Wheel of Fortune",
+    "platform": "snes",
+    "publisher": "GameTek, Inc.",
+    "developer": "Imagitec Design",
+    "release_year": 1992,
+    "genres": [
+      "Puzzle",
+      "Quiz/Trivia"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Wheel of Fortune is based on the television game show of the same name. The game features 4,500 different word puzzles for the player to solve with Vanna White turning the tiles on the board.\n\nThe game is played between 3 contestants (either controlled by human or computer players). The game contains six contestant pictures to select from to represent the contestants who will be playing. As in the show, players can spin the wheel, buy a vowel, or solve the puzzle. The game consists of three rounds of word puzzles with the goal being to make the most money by the end of all of these rounds in order to be chosen to play for one of the grand prizes in the bonus round.\n\nBoth platforms feature minor graphical differences from each other. Other differences include the Genesis version of the game also has an options screen where players can select the difficulty level of the computer opponents, how fast the timer is, listen to sounds from a sound test, and select which control pad player 2 and 3 will use. The Super Nintendo version lets the player select a different puzzle category if they don't like the current one.\n\nThis is the 16-bit version of Wheel of Fortune: Featuring Vanna White that now features more puzzles, digitized photography that came from the actual set of the gameshow, and contains digitized speech clips of Vanna White.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5p23.jpg",
+    "screenshots": []
   },
   {
     "id": "igdb-194697-gb",
@@ -89963,6 +91612,30 @@
     ]
   },
   {
+    "id": "igdb-212707-nes",
+    "name": "Jackal",
+    "platform": "nes",
+    "publisher": "Konami, Playtronic",
+    "developer": "Konami",
+    "release_year": 1988,
+    "genres": [
+      "Arcade"
+    ],
+    "rating": 3.5026886948488056,
+    "rating_count": 18,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Jackal, also distributed under the title of Top Gunner, is an overhead run-and-gun shooter by Konami released as an arcade video game in 1986. The player must maneuver an armed jeep in order to rescue prisoners of war (POWs) trapped in enemy territory.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6o0c.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmeh1.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmeh2.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmeh3.jpg"
+    ]
+  },
+  {
     "id": "igdb-213191-nes",
     "name": "Gradius",
     "platform": "nes",
@@ -90140,6 +91813,29 @@
     "screenshots": [
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scifj9.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scifja.jpg"
+    ]
+  },
+  {
+    "id": "igdb-213880-snes",
+    "name": "Joe \u0026 Mac",
+    "platform": "snes",
+    "publisher": "Data East Corporation, Data East USA, Elite Systems",
+    "developer": "Data East Corporation",
+    "release_year": 1992,
+    "genres": [
+      "Platform"
+    ],
+    "rating": 3.1247517971340364,
+    "rating_count": 16,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": true,
+    "esrb": "",
+    "overview": "The Super NES version of Joe \u0026 Mac is a reworked game which features an overworld map used to choose the levels (unlike in other versions where all of them have to be played), which were longer, plus some bonus stages (either in the levels or out in the world map) and a different final boss.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coahfs.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scif7x.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scif7y.jpg"
     ]
   },
   {
@@ -91083,6 +92779,30 @@
     ]
   },
   {
+    "id": "igdb-219488-gba",
+    "name": "Super Ghouls 'n Ghosts",
+    "platform": "gba",
+    "publisher": "Capcom",
+    "developer": "Capcom",
+    "release_year": 2002,
+    "genres": [
+      "Platform"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "The Game Boy Advance version of Super Ghouls 'n Ghosts includes an \"Arrange\" Mode not present in the original.\nThe Arrange Mode lacks a second run, so the Goddess' Bracelet can be obtained anytime when Arthur is equipped with the Golden Armor. Both modes contain a new Save feature, letting the player resume at the last checkpoint with whichever armor and weapon they had equipped.\nArrange Mode also features new routes and new bosses",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5esz.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckxkp.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckxkq.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckxkr.jpg"
+    ]
+  },
+  {
     "id": "igdb-220781-gb",
     "name": "Shock Lobster",
     "platform": "gb",
@@ -91387,6 +93107,29 @@
     ]
   },
   {
+    "id": "igdb-224864-gamecube",
+    "name": "The Sims",
+    "platform": "gamecube",
+    "publisher": "Electronic Arts",
+    "developer": "Edge of Reality",
+    "release_year": 2003,
+    "genres": [
+      "Role-playing (RPG)",
+      "Simulator",
+      "Strategy",
+      "Adventure"
+    ],
+    "rating": 3.6613295671431247,
+    "rating_count": 23,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": true,
+    "esrb": "T",
+    "overview": "Home consoles version of The Sims.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8gpk.jpg",
+    "screenshots": []
+  },
+  {
     "id": "igdb-225246-gamecube",
     "name": "The Sims 2",
     "platform": "gamecube",
@@ -91580,6 +93323,30 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc1390c.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc1390d.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc1390e.jpg"
+    ]
+  },
+  {
+    "id": "igdb-227987-gamecube",
+    "name": "SoulCalibur II",
+    "platform": "gamecube",
+    "publisher": "Namco",
+    "developer": "Project Soul",
+    "release_year": 2003,
+    "genres": [
+      "Fighting"
+    ],
+    "rating": 4.008319657513523,
+    "rating_count": 26,
+    "rating_scale": 5,
+    "max_players": 2,
+    "cooperative": false,
+    "esrb": "T",
+    "overview": "SoulCalibur II for the Nintendo GameCube is an expanded port of the Arcade game, including Link from The Legend of Zelda as a playable character and new game modes.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co61zk.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmosj.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmosk.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scmosm.jpg"
     ]
   },
   {
@@ -92259,6 +94026,31 @@
     ]
   },
   {
+    "id": "igdb-229416-gba",
+    "name": "The Legend of Zelda: A Link to the Past",
+    "platform": "gba",
+    "publisher": "Nintendo",
+    "developer": "Nintendo Entertainment Analysis \u0026 Development",
+    "release_year": 2002,
+    "genres": [
+      "Puzzle",
+      "Adventure"
+    ],
+    "rating": 4.286688258977519,
+    "rating_count": 15,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "The Game Boy Advance port of A Link to the Past has some small design differences with the original version, like Link's voice and an additional quest and dungeon unlocked after the completion of the main content. The new dungeon is only available after finishing Four Swords.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co5x34.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckfqo.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckfqn.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckfqj.jpg"
+    ]
+  },
+  {
     "id": "igdb-229493-gbc",
     "name": "Repugnant Bounty",
     "platform": "gbc",
@@ -92726,6 +94518,53 @@
     ]
   },
   {
+    "id": "igdb-230478-gamecube",
+    "name": "SSX on Tour",
+    "platform": "gamecube",
+    "publisher": "EA Sports BIG",
+    "developer": "EA Canada",
+    "release_year": 2005,
+    "genres": [
+      "Sport"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E10+",
+    "overview": "As an addition to the Nintendo GameCube version of the game, Mario, Luigi, and Princess Peach were added as playable characters, along with a new race track called Nintendo Village.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9ed1.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckfjh.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckfji.jpg"
+    ]
+  },
+  {
+    "id": "igdb-230484-gamecube",
+    "name": "NBA Street V3",
+    "platform": "gamecube",
+    "publisher": "EA Sports BIG",
+    "developer": "EA Canada",
+    "release_year": 2005,
+    "genres": [
+      "Sport"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 4,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "The GameCube version features Mario, Luigi, and Princess Peach as playable characters, collectively known in-game as the \"Nintendo All-Stars\". This is in response to a deal between EA and Nintendo in which EA would include Nintendo characters and properties in a few of their games; another game to take advantage of this was SSX Tour. A basketball court based on the Mario franchise, named the Nintendo Court, is also featured in the GameCube version.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7l5k.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckfjg.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckfje.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckfjd.jpg"
+    ]
+  },
+  {
     "id": "igdb-230605-gb",
     "name": "Impossible Game(boy)",
     "platform": "gb",
@@ -92910,6 +94749,26 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckxcr.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sckxcw.jpg"
     ]
+  },
+  {
+    "id": "igdb-237471-snes",
+    "name": "Tecmo Super Bowl",
+    "platform": "snes",
+    "publisher": "Tecmo",
+    "developer": "Tecmo",
+    "release_year": 1993,
+    "genres": [
+      "Sport"
+    ],
+    "rating": 3.9950248756218905,
+    "rating_count": 6,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Use your favorite NFL team the real NFL players and your football skills to experience the ultimate in football. Use your knowledge of football and game playing skills to take your favorite NFL team of real NFL players through the football season and win the Super Bowl.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co7qr5.jpg",
+    "screenshots": []
   },
   {
     "id": "igdb-237551-gb",
@@ -97252,6 +99111,27 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scq616.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scq617.jpg"
     ]
+  },
+  {
+    "id": "igdb-248131-snes",
+    "name": "Return of Double Dragon",
+    "platform": "snes",
+    "publisher": "Retroism, Tommo Inc",
+    "developer": "Technos Japan",
+    "release_year": 2018,
+    "genres": [
+      "Fighting",
+      "Hack and slash/Beat 'em up"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Return of Double Dragon features several significant differences from Super Double Dragon: the title theme and most of the background music were shuffled around (e.g. the Mission 1 theme from Super Double Dragon is played during Mission 4 in Return of Double Dragon) and the player can perform certain actions which cannot be done in Super Double Dragon (such as retrieving a boomerang after throwing it or hitting an opponent more than once successively with the hurricane kick). The enemy placement is also different in both versions and weapons such as knives and incendiary bombs do less damage in Return of Double Dragon. Enemies can duck end combo blows, thus preventing the player from finishing their combos. The final Mission also features two additional levels before the final battle. An Option Mode is included in Return of Double Dragon as well, allowing players to adjust the game's difficulty level, as well as listen to the game's music and sound effects.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6fyu.jpg",
+    "screenshots": []
   },
   {
     "id": "igdb-248143-gba",
@@ -101642,6 +103522,27 @@
     ]
   },
   {
+    "id": "igdb-259334-gba",
+    "name": "F-14 Tomcat",
+    "platform": "gba",
+    "publisher": "Majesco Sales",
+    "developer": "Pipedream Interactive, Virtucraft",
+    "release_year": 2001,
+    "genres": [
+      "Shooter",
+      "Simulator"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "E",
+    "overview": "F-14 Tomcat is a port of Absolute Entertainment's 1994 SNES game Turn and Burn: No-Fly Zone with some GBA exclusive content.\n\nIt features a multiplayer mode between other systems and a brand new storyline: the player controls a F-14 pilot chosen by the US government to be assigned in the theater of operations of a war between the republics of China and Taiwan to protect America's \"interests\" in the region.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6v6e.jpg",
+    "screenshots": []
+  },
+  {
     "id": "igdb-259471-gb",
     "name": "NFL Football",
     "platform": "gb",
@@ -102200,6 +104101,32 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scnvq2.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scnvq3.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scnvq4.jpg"
+    ]
+  },
+  {
+    "id": "igdb-261150-nes",
+    "name": "Doodle World: Redrawn",
+    "platform": "nes",
+    "publisher": "Limited Run Games",
+    "developer": "Nate Peters",
+    "release_year": 2023,
+    "genres": [
+      "Platform",
+      "Adventure",
+      "Indie"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Doodle World Redrawn is new, never before released, re-imagining of Doodle World with tougher levels, enemies, and bosses! Use the new double jump ability to navigate through these tougher levels. \"Kids Mode\" is still available in this new version, so even younger players can enjoy this new game!",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co6x9f.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scnvs6.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scnvs7.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scnvs8.jpg"
     ]
   },
   {
@@ -103053,6 +104980,30 @@
     ]
   },
   {
+    "id": "igdb-266659-nes",
+    "name": "Track \u0026 Field",
+    "platform": "nes",
+    "publisher": "Kemco, Konami",
+    "developer": "Konami",
+    "release_year": 1985,
+    "genres": [
+      "Sport"
+    ],
+    "rating": 2.916771618569377,
+    "rating_count": 12,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "A sports game, port of the arcade game Track \u0026 Field. It was later released in Europe as Track \u0026 Field in Barcelona in 1992, in the light of the 1992 Summer Olympics, earlier versions were simply known as Track \u0026 Field. The opening song for the NES version is the Chariots of Fire theme by Vangelis (which was also used in the arcade version's high score screen).",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9v0q.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scpqcv.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scpqcw.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scpq9w.jpg"
+    ]
+  },
+  {
     "id": "igdb-266840-nes",
     "name": "Ghostbusters II",
     "platform": "nes",
@@ -103647,6 +105598,30 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scoye5.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scoye6.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scoye7.jpg"
+    ]
+  },
+  {
+    "id": "igdb-270350-gba",
+    "name": "Yoshi's Island",
+    "platform": "gba",
+    "publisher": "Nintendo, iQue",
+    "developer": "Nintendo, Nintendo R\u0026D2",
+    "release_year": 2002,
+    "genres": [
+      "Platform"
+    ],
+    "rating": 3.9732544880150713,
+    "rating_count": 7,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "The remake of Yoshi's Island included in Super Mario Advance 3.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co779t.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scpxvv.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scpxvx.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scpxvy.jpg"
     ]
   },
   {
@@ -109650,6 +111625,30 @@
     ]
   },
   {
+    "id": "igdb-300040-n64",
+    "name": "Cruis'n World",
+    "platform": "n64",
+    "publisher": "Gradiente, Nintendo",
+    "developer": "Eurocom Entertainment Software",
+    "release_year": 1998,
+    "genres": [
+      "Racing"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "Features exclusive to the Nintendo 64 include a new Moon track, a few new modes and some of the vehicles being renamed.",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co86a1.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scs4dl.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scs4dm.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scs4dn.jpg"
+    ]
+  },
+  {
     "id": "igdb-300045-gbc",
     "name": "1942",
     "platform": "gbc",
@@ -112493,6 +114492,27 @@
     "screenshots": [
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scthbt.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scthbu.jpg"
+    ]
+  },
+  {
+    "id": "igdb-312222-gb",
+    "name": "Soul Void Redux",
+    "platform": "gb",
+    "publisher": "Kadabura",
+    "developer": "Kadabura",
+    "release_year": 2023,
+    "genres": [],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co8vhz.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scthbv.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/scthbw.jpg"
     ]
   },
   {
@@ -116182,6 +118202,27 @@
     "esrb": "E",
     "overview": "",
     "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9pxk.jpg",
+    "screenshots": []
+  },
+  {
+    "id": "igdb-341417-snes",
+    "name": "Rampart",
+    "platform": "snes",
+    "publisher": "Electronic Arts",
+    "developer": "",
+    "release_year": 1992,
+    "genres": [
+      "Puzzle",
+      "Strategy"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/co9pxq.jpg",
     "screenshots": []
   },
   {
@@ -121561,6 +123602,32 @@
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc136rk.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc136rn.jpg",
       "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc136ro.jpg"
+    ]
+  },
+  {
+    "id": "igdb-400860-gbc",
+    "name": "Unknown Space",
+    "platform": "gbc",
+    "publisher": "Monstrous Entertainment",
+    "developer": "Monstrous Entertainment",
+    "release_year": 2024,
+    "genres": [
+      "Role-playing (RPG)",
+      "Adventure",
+      "Indie"
+    ],
+    "rating": 0,
+    "rating_count": 0,
+    "rating_scale": 5,
+    "max_players": 0,
+    "cooperative": false,
+    "esrb": "",
+    "overview": "The Darkness Guild is lost in Unknown Space! Go on a top down, bite-sized adventure and blast off to three far out planets. Explore Unknown Space from your ship and collect resources to change the ship's look for the climactic Shoot 'Em Up battle! Do you have what it takes escape from Unknown Space?",
+    "box_art": "https://images.igdb.com/igdb/image/upload/t_cover_big_2x/coc193.jpg",
+    "screenshots": [
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc138g1.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc138g2.jpg",
+      "https://images.igdb.com/igdb/image/upload/t_screenshot_huge/sc138g3.jpg"
     ]
   },
   {

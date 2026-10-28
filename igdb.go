@@ -28,7 +28,10 @@ const (
 	catalogCacheTTL  = 24 * time.Hour
 
 	igdbGameTypeMain = 0
-	igdbGameTypePort = 11
+	// IGDB labels some standalone retro releases as expanded games, including
+	// Mega Man 2 and Pokémon Yellow.
+	igdbGameTypeExpanded = 10
+	igdbGameTypePort     = 11
 	// IGDB rarely populates game_status for retro games, so the query accepts
 	// both "Released" and null. Other statuses remain excluded.
 	igdbGameStatusReleased = 0
@@ -194,11 +197,11 @@ func (c *igdbClient) fetchCatalog(ctx context.Context) ([]Game, error) {
 
 func (c *igdbClient) fetchGames(ctx context.Context) ([]igdbGame, error) {
 	base := fmt.Sprintf(
-		"fields %s; where platforms = (%s) & game_type = (%d,%d) & "+
+		"fields %s; where platforms = (%s) & game_type = (%d,%d,%d) & "+
 			"(game_status = %d | game_status = null); sort id asc; limit %d; offset ",
 		igdbGameFields,
 		strings.Join(supportedPlatformIDs(), ","),
-		igdbGameTypeMain, igdbGameTypePort,
+		igdbGameTypeMain, igdbGameTypeExpanded, igdbGameTypePort,
 		igdbGameStatusReleased,
 		c.pageSize,
 	)

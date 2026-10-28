@@ -68,6 +68,9 @@ func TestIGDBClientPagination(t *testing.T) {
 			if !strings.Contains(body.String(), "(game_status = 0 | game_status = null)") {
 				t.Errorf("query does not accept null game status: %s", body.String())
 			}
+			if !strings.Contains(body.String(), "game_type = (0,10,11)") {
+				t.Errorf("query does not accept expanded games: %s", body.String())
+			}
 
 			match := offsetPattern.FindStringSubmatch(body.String())
 			if match == nil {

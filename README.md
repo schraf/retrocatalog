@@ -89,8 +89,8 @@ uploads it as a Pages artifact.
 ## Catalog rules
 
 - One tile per platform release, with ID `igdb-<gameID>-<platform>`.
-- Only `main_game` and `port` entries. Records marked Released, or with no
-  IGDB status, are included; other statuses are excluded.
+- Only `main_game`, `expanded_game`, and `port` entries. Records marked
+  Released, or with no IGDB status, are included; other statuses are excluded.
 - Releases dated after a platform's commercial lifespan are treated as homebrew,
   bootlegs, or modern re-releases and excluded. The cutoffs are NES 1994, Game
   Boy 1999, SNES 1998, Nintendo 64 2002, Game Boy Color 2003, Game Boy Advance
